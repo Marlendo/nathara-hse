@@ -19,7 +19,7 @@ function html(nonce: string): string {
   return `<!doctype html>
 <html>
   <head>
-    <title>BeaconHS API Reference</title>
+    <title>Nathara HSE API Reference</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
@@ -29,7 +29,7 @@ function html(nonce: string): string {
   <body>
     <script${nonceAttribute} id="api-reference" data-url="/api/v1/openapi.json"></script>
     <script${nonceAttribute}>
-      var configuration = { theme: 'default', metaData: { title: 'BeaconHS API Reference' } }
+      var configuration = { theme: 'default', metaData: { title: 'Nathara HSE API Reference' } }
       document.getElementById('api-reference').dataset.configuration = JSON.stringify(configuration)
     </script>
     <script${nonceAttribute} src="${SCALAR_SCRIPT_URL}" integrity="${SCALAR_SCRIPT_INTEGRITY}" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

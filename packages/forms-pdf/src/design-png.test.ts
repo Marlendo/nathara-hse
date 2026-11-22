@@ -20,7 +20,7 @@ describe('design studio PNG rendering', () => {
       const images = await renderDesignDocumentPngs({
         document,
         data: {
-          tenantName: 'BeaconHS',
+          tenantName: 'Nathara HSE',
           recipientFullName: 'Alex Worker',
           credentialName: 'Site Orientation',
         },

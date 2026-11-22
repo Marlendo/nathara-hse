@@ -176,7 +176,7 @@ function csvRow(values: string[]): string {
 
 async function toWorkbook(result: Result, reportName: string): Promise<ExcelJS.Buffer> {
   const workbook = new ExcelJS.Workbook()
-  workbook.creator = 'BeaconHS'
+  workbook.creator = 'Nathara HSE'
   for (const [index, group] of result.groups.entries()) {
     const sheet = workbook.addWorksheet(sheetName(group.title || `Results ${index + 1}`))
     sheet.addRow([reportName])

@@ -174,7 +174,7 @@ export function PushToggle({ vapidPublicKey }: { vapidPublicKey: string | null }
     'ios-install': 'iOS delivers push notifications only to apps added to the Home Screen.',
     blocked:
       'Notifications are blocked for this site. Enable them in your browser or system settings, then reload this page.',
-    idle: "Get incidents, overdue actions, and escalations on this device even when BeaconHS isn't open.",
+    idle: "Get incidents, overdue actions, and escalations on this device even when Nathara HSE isn't open.",
     subscribed:
       'This device receives push notifications, routed by your per-category choices below.',
   }

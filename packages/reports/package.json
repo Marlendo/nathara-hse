@@ -1,7 +1,7 @@
 {
   "name": "@beaconhs/reports",
   "version": "0.1.0",
-  "description": "BeaconHS domain catalogue and persistence adapter for AppKit Reports.",
+  "description": "Nathara HSE domain catalogue and persistence adapter for AppKit Reports.",
   "private": true,
   "type": "module",
   "main": "./src/index.ts",

@@ -1,8 +1,8 @@
 # Legacy report parity
 
-This is the clean-cutover inventory for the legacy BeaconHS report screens and
+This is the clean-cutover inventory for the legacy Nathara HSE report screens and
 scheduled reports. A green row has a production replacement. Equipment charges
-and ROI remain outside BeaconHS. Maintenance expense history is recorded in
+and ROI remain outside Nathara HSE. Maintenance expense history is recorded in
 equipment logs; billing, revenue, and accounting remain external.
 
 All replacements in the Reports module support an in-app paginated preview,

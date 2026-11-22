@@ -66,7 +66,7 @@ export default async function PrintingSettingsPage({
           <div className="flex gap-3">
             <Printer className="mt-0.5 shrink-0" size={18} />
             <p>
-              <GeneratedValue value="Card Studio chooses the provider for each CR80 design. BeaconHS sends the rendered front and back only when that provider is enabled here. Zebra, Evolis, and HID FARGO use your organization's secured HTTPS bridge to reach locally attached printers." />
+              <GeneratedValue value="Card Studio chooses the provider for each CR80 design. Nathara HSE sends the rendered front and back only when that provider is enabled here. Zebra, Evolis, and HID FARGO use your organization's secured HTTPS bridge to reach locally attached printers." />
             </p>
           </div>
         </div>

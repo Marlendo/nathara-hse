@@ -42,9 +42,9 @@ describe('application message catalogs', () => {
     }
   })
 
-  it('preserves the BeaconHS brand name in every locale', () => {
+  it('preserves the Nathara HSE brand name in every locale', () => {
     for (const catalog of [en, fr, es]) {
-      expect(catalog.Generated.m_1721f79d9a7f66).toBe('BeaconHS')
+      expect(catalog.Generated.m_1721f79d9a7f66).toBe('Nathara HSE')
     }
   })
 

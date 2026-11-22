@@ -1441,7 +1441,7 @@ export default async function HazidAssessmentDetailPage({
                               : item.started
                                 ? 'Continue'
                                 : item.externalCapture
-                                  ? 'Fill in BeaconHS'
+                                  ? 'Fill in Nathara HSE'
                                   : 'Start'
                           return (
                             <div
@@ -1546,7 +1546,7 @@ export default async function HazidAssessmentDetailPage({
                                     <input type="hidden" name="assessmentId" value={id} />
                                     <input type="hidden" name="typeAppId" value={item.app.id} />
                                     <Button type="submit" className="w-full">
-                                      <GeneratedValue value="Fill in BeaconHS" />
+                                      <GeneratedValue value="Fill in Nathara HSE" />
                                     </Button>
                                   </OnlineActionForm>
                                   <ExternalCapture

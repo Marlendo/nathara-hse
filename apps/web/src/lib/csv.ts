@@ -23,7 +23,7 @@ export function csvExportOverflowResponse(rowCount: number): NextResponse | null
       status: 422,
       headers: {
         'Cache-Control': 'private, no-store',
-        'X-BeaconHS-Export-Row-Limit': String(CSV_EXPORT_MAX_ROWS),
+        'X-Nathara HSE-Export-Row-Limit': String(CSV_EXPORT_MAX_ROWS),
       },
     },
   )

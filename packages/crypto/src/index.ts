@@ -1,11 +1,11 @@
 // Server-only secret sealing (AES-256-GCM). Single shared implementation for
-// every tenant credential BeaconHS stores at rest — sync-connection creds,
+// every tenant credential Nathara HSE stores at rest — sync-connection creds,
 // email/SMS/AI provider keys, API keys, outbound-integration secrets.
 //
-// The key is derived from the existing BETTER_AUTH_SECRET via HKDF — no new env
+// The key is derived from the existing HSE_APP_SECRET via HKDF — no new env
 // var, no plaintext secrets in the DB. Because the derivation is fixed, a secret
 // sealed by a web admin action unseals in the worker (and vice-versa) as long as
-// both share the same BETTER_AUTH_SECRET. This module replaces the four
+// both share the same HSE_APP_SECRET. This module replaces the four
 // byte-identical copies that previously lived in apps/web, sync, sms and emails.
 
 import { createCipheriv, createDecipheriv, hkdfSync, randomBytes } from 'node:crypto'
@@ -14,14 +14,14 @@ const FALLBACK_SECRET = 'beaconhs-dev-insecure-secret'
 const HKDF_INFO = 'beaconhs.secret.v1'
 
 function sourceSecret(): string {
-  const secret = process.env.BETTER_AUTH_SECRET
+  const secret = process.env.HSE_APP_SECRET
   if (secret && (process.env.NODE_ENV !== 'production' || secret.length >= 32)) return secret
   // Never let a real deployment seal secrets under a publicly-known key: the
   // ciphertext would be trivially decryptable by anyone with the source. Local
   // dev (NODE_ENV !== 'production') keeps the convenience fallback.
   if (process.env.NODE_ENV === 'production') {
     throw new Error(
-      '[crypto] BETTER_AUTH_SECRET must contain at least 32 characters in production to seal tenant secrets. ' +
+      '[crypto] HSE_APP_SECRET must contain at least 32 characters in production to seal tenant secrets. ' +
         'Set it to the same value across every service sharing this database.',
     )
   }

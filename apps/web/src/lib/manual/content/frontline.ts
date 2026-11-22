@@ -20,7 +20,7 @@ export const FRONTLINE_ARTICLES: ManualArticle[] = [
 2. Enter **Issued by**. Add notes or photos of the completed paper form if needed.
 3. Choose **Complete external capture**. The app is marked complete, and the assessment and its PDF show the reference, issuer, and photo count.
 
-Choose **Fill in BeaconHS** when you are completing the app digitally. A copied assessment keeps the external capture mode and issuer, uses the new JSA reference, and does not copy paper-form photos.
+Choose **Fill in Nathara HSE** when you are completing the app digitally. A copied assessment keeps the external capture mode and issuer, uses the new JSA reference, and does not copy paper-form photos.
 
 New Fall Protection Plans group anchorage, equipment inspection, and hierarchy checks under **Access & communication**. The **Rescue** section covers rescue equipment and the rescue plan.`,
   },
@@ -61,7 +61,7 @@ A journal entry protects you and your crew. If a question comes up months later,
 
 ## Where to find it
 
-Open **Journals** in the left menu. Today’s entry opens directly in the full editor. If none exists, BeaconHS creates a draft automatically and opens the same editor. **Date**, **Log type**, **Location**, and **Supervisor** are available immediately. On a desktop your past entries sit in a list on the left. On a phone, tap **Browse** to see them.
+Open **Journals** in the left menu. Today’s entry opens directly in the full editor. If none exists, Nathara HSE creates a draft automatically and opens the same editor. **Date**, **Log type**, **Location**, and **Supervisor** are available immediately. On a desktop your past entries sit in a list on the left. On a phone, tap **Browse** to see them.
 
 Supervisors can open **Records** beside **Journals**, or tap **Browse**, then **Records**, on a phone. This follows their assigned reading scope. **Manage** is only for journal administrators; on a phone it is **Browse** → **Manage journals**. The Manage workspace opens **Tags** with the grouped navigation beside it. The standard **Foreman / Supervisor** role can edit its own journals and read its assigned scope; it does not administer journals.
 
@@ -73,7 +73,7 @@ Supervisors can open **Records** beside **Journals**, or tap **Browse**, then **
 4. Use the microphone button to dictate by voice instead of typing, if you prefer.
 5. Choose the **Location** and an active **Supervisor**. You can save a draft without them, but you must choose both before submitting.
 
-Your words save to this device first, then send to BeaconHS. The badge in the header shows **Saved on device**, **Offline · saved on device**, or **Synced**. You can keep writing with no signal — the entry sends by itself when signal comes back, even if you close the app. Entries you already opened stay available offline. Opening another entry, starting a new date, adding photos, and AI writing help need signal. See [Working without signal](/help/forms) for how recovery and conflicts work.
+Your words save to this device first, then send to Nathara HSE. The badge in the header shows **Saved on device**, **Offline · saved on device**, or **Synced**. You can keep writing with no signal — the entry sends by itself when signal comes back, even if you close the app. Entries you already opened stay available offline. Opening another entry, starting a new date, adding photos, and AI writing help need signal. See [Working without signal](/help/forms) for how recovery and conflicts work.
 
 ## Starting tomorrow's entry or another date
 
@@ -81,7 +81,7 @@ Your words save to this device first, then send to BeaconHS. The badge in the he
 2. Tap **Tomorrow** to prepare the next day's journal, or **Today** to return to today's entry. These dates follow your account's time zone.
 3. For any other past or future day, use **Choose date**, then tap **Open journal**.
 
-BeaconHS saves your current changes before switching. If you already have a journal for the chosen day, it opens that entry instead of creating a duplicate. Submitted entries stay read-only until you unlock them. Starting another day does not change the date of the entry you were writing.
+Nathara HSE saves your current changes before switching. If you already have a journal for the chosen day, it opens that entry instead of creating a duplicate. Submitted entries stay read-only until you unlock them. Starting another day does not change the date of the entry you were writing.
 
 ## Using AI writing help
 
@@ -89,7 +89,7 @@ BeaconHS saves your current changes before switching. If you already have a jour
 2. Choose the writing action you want.
 3. For a long entry, select the part you want changed first. AI writing help accepts up to 8,000 characters at a time.
 
-BeaconHS leaves your original words in place until the AI response finishes. If the request fails, your journal is not changed.
+Nathara HSE leaves your original words in place until the AI response finishes. If the request fails, your journal is not changed.
 
 ## Adding photos
 
@@ -112,7 +112,7 @@ Tags help people find entries later (for example a tag for concrete pours). Tap 
 ## Submitting
 
 1. Choose the **Location** and an active **Supervisor** in the full editor, then tap **Submit** in the header when your entry is done. You can write and save a draft before choosing them. **Submit** becomes available after you have chosen both, and stays above the scrolling text on a phone.
-2. **Submit** needs signal. It sends your latest words first, then marks the entry **Submitted**. Autosave alone keeps an entry as a draft. Without signal, BeaconHS says so and your entry stays on this device.
+2. **Submit** needs signal. It sends your latest words first, then marks the entry **Submitted**. Autosave alone keeps an entry as a draft. Without signal, Nathara HSE says so and your entry stays on this device.
 3. Submitted entries become read-only. To correct your own entry, tap **Unlock**, confirm, make your changes, then **Submit** again. Unlocking is permission-checked and recorded in Activity.
 
 ## Viewing past entries
@@ -294,21 +294,21 @@ Once an assessment is open, keep working with no signal. The **General Informati
 
 Question answers save by themselves — tap an answer, or type it and move on. There is no save button.
 
-You need signal to add, edit, move, or delete tasks, hazards, PPE, and questions, to open an attached app, for crew sign-on and signatures, to add photos, and to submit, unlock, copy, review, or email the assessment. Without signal, BeaconHS says **You need signal for this step. Your answers are saved on this device.** See [Working without signal](/help/forms) for how recovery and conflicts work.
+You need signal to add, edit, move, or delete tasks, hazards, PPE, and questions, to open an attached app, for crew sign-on and signatures, to add photos, and to submit, unlock, copy, review, or email the assessment. Without signal, Nathara HSE says **You need signal for this step. Your answers are saved on this device.** See [Working without signal](/help/forms) for how recovery and conflicts work.
 
 ## Tips
 
 - Changing the job keeps earlier signatures in **Previous signatures** and prepares fresh signature spaces. Adding crew members preserves signatures already collected for the same job.
 - Conditions change. If the job changes, update the assessment (use **Unlock** first if submitted), or start a new one.
-- **Completed by** on the record and on the assessment list is the person who filled the assessment in. BeaconHS records it when the assessment is started — there is nothing to type, and it cannot be edited. It is the **Completed by** line on the printed PDF too.
-- **Print blank** on the assessment list prints a paper copy to fill in by hand — for a job where a phone is not practical. Pick the assessment type first: the sheet carries that type's real hazards, PPE and questions, with the **Specific controls**, **Applies**, and answer columns left empty and a ruled sign-on block at the end. Key it into BeaconHS afterwards so the record is the system of record.
+- **Completed by** on the record and on the assessment list is the person who filled the assessment in. Nathara HSE records it when the assessment is started — there is nothing to type, and it cannot be edited. It is the **Completed by** line on the printed PDF too.
+- **Print blank** on the assessment list prints a paper copy to fill in by hand — for a job where a phone is not practical. Pick the assessment type first: the sheet carries that type's real hazards, PPE and questions, with the **Specific controls**, **Applies**, and answer columns left empty and a ruled sign-on block at the end. Key it into Nathara HSE afterwards so the record is the system of record.
 - **Copy assessment** starts a new one pre-filled from an old one — handy for repeat work. On a phone it lives under **Actions**. The button reads **Copying…** while the new assessment is built, then opens it — tap it once and wait.
 
 ## Copying an assessment
 
 1. Choose **Copy assessment**. On a phone, open **Actions** first.
 2. Leave **Include existing photos** unchecked for a fresh set of site photos. Check it only when you want the original photos carried forward.
-3. Tap **Create copy**. BeaconHS saves pending edits first, then opens the new draft.
+3. Tap **Create copy**. Nathara HSE saves pending edits first, then opens the new draft.
 4. Review the new date, job details, PPE answers, question answers, controls, attached plans and crew names. These carry forward so you do not have to retype the job. Open each copied plan and submit it again after reviewing it.
 5. Collect new signatures. Previous signatures and safety approvals never carry forward. Confined-space atmospheric readings, entry logs and the all-entrants-out confirmation must be recorded again.
 
@@ -321,7 +321,7 @@ When signing as yourself, your Account signature-reuse setting can offer **Use m
 
 To include a contractor or visitor, choose **Add external worker**, enter their **Full name** and optional company, then choose **Add to crew**. Ask that worker to sign their own space on your device; no account is needed. Email requests are for employees with an account. If a JSA changes after a request is sent, the link explains the change and offers **Review current JSA**. Expired requests must be resent by the supervisor. Changing job details, hazards, controls or plans requires fresh signatures. Reordering rows alone keeps signatures. Open **Previous signatures** to search earlier signers, filter by **Signing version**, and choose **View signed version** to read the exact earlier job content. Those signatures do not approve the current version. On new Fall Protection Plans, **Rescue equipment** means the equipment used to retrieve a person safely.
 
-Some earlier signatures have no saved content snapshot. Their ink remains visible in **Previous signatures**, with **Earlier content snapshot unavailable** instead of a version link. BeaconHS does not reconstruct what those workers reviewed.`,
+Some earlier signatures have no saved content snapshot. Their ink remains visible in **Previous signatures**, with **Earlier content snapshot unavailable** instead of a version link. Nathara HSE does not reconstruct what those workers reviewed.`,
   },
   {
     slug: 'inspections',
@@ -419,7 +419,7 @@ ${CSV_EXPORT_LIMIT_GUIDANCE}
 
 Once an inspection is open, keep working with no signal. The record details and every item's answer, severity, finding, action taken, correction, assignee, due date, and notes save to this device first and send when signal comes back. The badge at the top shows **Saved on device**, **Offline · saved on device**, or **Synced**.
 
-You need signal to add photos, capture the customer signature, use **Mark remaining items Pass** or **Mark section N/A**, and to submit, unlock, copy, email, or delete the record. Without signal, BeaconHS says **You need signal for this step. Your answers are saved on this device.** With signal, BeaconHS sends your saved answers first. See [Working without signal](/help/forms) for how recovery and conflicts work.
+You need signal to add photos, capture the customer signature, use **Mark remaining items Pass** or **Mark section N/A**, and to submit, unlock, copy, email, or delete the record. Without signal, Nathara HSE says **You need signal for this step. Your answers are saved on this device.** With signal, Nathara HSE sends your saved answers first. See [Working without signal](/help/forms) for how recovery and conflicts work.
 
 ## Tips
 
@@ -550,7 +550,7 @@ ${CSV_EXPORT_LIMIT_GUIDANCE}
 
 Once an incident is open, every field on the page saves to this device first and sends when signal comes back. The badge at the top shows **Saved on device**, **Offline · saved on device**, or **Synced**.
 
-You need signal to submit the report, change the status, add or edit people, injuries, lost time, timeline events, causes, whys, and preventative steps, add photos, and to copy or delete the incident. Without signal, BeaconHS says **You need signal for this step. Your answers are saved on this device.** See [Working without signal](/help/forms) for how recovery and conflicts work.
+You need signal to submit the report, change the status, add or edit people, injuries, lost time, timeline events, causes, whys, and preventative steps, add photos, and to copy or delete the incident. Without signal, Nathara HSE says **You need signal for this step. Your answers are saved on this device.** See [Working without signal](/help/forms) for how recovery and conflicts work.
 
 ## Tips
 
@@ -641,7 +641,7 @@ ${CSV_EXPORT_LIMIT_GUIDANCE}
 
 Every field in **Details** and **Work** saves to this device first and sends when signal comes back. The badge at the top shows **Saved on device**, **Offline · saved on device**, or **Synced**.
 
-You need signal to change the status, add a step or signature, verify, close, reopen, email, and add photos. BeaconHS sends your saved changes before it closes or verifies the action. Without signal, BeaconHS says **You need signal for this step. Your answers are saved on this device.** See [Working without signal](/help/forms) for how recovery and conflicts work.
+You need signal to change the status, add a step or signature, verify, close, reopen, email, and add photos. Nathara HSE sends your saved changes before it closes or verifies the action. Without signal, Nathara HSE says **You need signal for this step. Your answers are saved on this device.** See [Working without signal](/help/forms) for how recovery and conflicts work.
 
 ## Tips
 
@@ -711,7 +711,7 @@ The **Total km** column and the month totals at the bottom update as you type.
 - Press Enter in a field to jump to the same field on the next day — you can run down the whole month fast.
 - In odometer mode, leaving **Start** blank chains each day off the previous recorded ending reading, including across months.
 - **Linked to previous end** means correcting the earlier end also updates this start and its saved distance.
-- Typed starting readings stay fixed. If a starting reading differs from the previous end, check the warning. Select **Use previous end** to link it. Older entries also need this choice because BeaconHS did not record how their starting readings were entered.
+- Typed starting readings stay fixed. If a starting reading differs from the previous end, check the warning. Select **Use previous end** to link it. Older entries also need this choice because Nathara HSE did not record how their starting readings were entered.
 - On an individual entry, select **Use previous ending reading** to keep it linked.
 - A correction that would put the next ending reading below its linked start is rejected. Correct the conflicting readings before saving again.
 
@@ -771,7 +771,7 @@ Open **Settings** from the vehicle log to choose which entry modes the company u
       'sync',
       'saved on device',
     ],
-    body: `Your company builds its own digital forms in BeaconHS — toolbox talks, lift plans, permits, checklists, and more. You fill them in the app instead of on paper.
+    body: `Your company builds its own digital forms in Nathara HSE — toolbox talks, lift plans, permits, checklists, and more. You fill them in the app instead of on paper.
 
 ## Record actions
 
@@ -809,19 +809,19 @@ Person fields on forms offer active people who have not been deleted. If a perso
 
 ## Working without signal
 
-BeaconHS keeps your work on your phone or tablet as you type. This covers forms — entries you start with **New entry**, assigned forms in your Workspace, **Tools**, and forms inside an assessment — and the record pages of hazard assessments, inspections, PPE and equipment inspections, incidents, corrective actions, journals, training, people, locations, equipment, and documents. Losing signal, switching apps, or the phone closing the page does not lose your changes.
+Nathara HSE keeps your work on your phone or tablet as you type. This covers forms — entries you start with **New entry**, assigned forms in your Workspace, **Tools**, and forms inside an assessment — and the record pages of hazard assessments, inspections, PPE and equipment inspections, incidents, corrective actions, journals, training, people, locations, equipment, and documents. Losing signal, switching apps, or the phone closing the page does not lose your changes.
 
-You need signal to start something new — for example **New entry** — because BeaconHS creates it on the server. Open it before you head into a dead zone. Once it is open, keep working with no signal.
+You need signal to start something new — for example **New entry** — because Nathara HSE creates it on the server. Open it before you head into a dead zone. Once it is open, keep working with no signal.
 
 Check the badge at the top of the page:
 
 - **Saved on device** with **Pending (2)** — your changes are on this device. Two are waiting to send.
 - **Offline · saved on device** — no signal. Keep working. Your changes send by themselves when signal comes back, even if you close the page.
 - **Syncing…** — sending now.
-- **Synced** — BeaconHS has everything. It is safe to close the page.
-- **Sync failed — retry** — BeaconHS could not accept a change. Tap it to try again. If it keeps failing, tell your supervisor.
+- **Synced** — Nathara HSE has everything. It is safe to close the page.
+- **Sync failed — retry** — Nathara HSE could not accept a change. Tap it to try again. If it keeps failing, tell your supervisor.
 
-On a record page, each field also shows its own status. **…** means the change is waiting to send. **Saved ✓** means BeaconHS has it. **Not saved — retry** means BeaconHS refused that value. The reason shows under the field. Fix the field and it sends again.
+On a record page, each field also shows its own status. **…** means the change is waiting to send. **Saved ✓** means Nathara HSE has it. **Not saved — retry** means Nathara HSE refused that value. The reason shows under the field. Fix the field and it sends again.
 
 If the page closed before your changes synced, open it again:
 
@@ -829,13 +829,13 @@ If the page closed before your changes synced, open it again:
 2. Tap **Dismiss** to keep going.
 3. To throw them away instead, tap **Discard and use saved version**. On a brand-new entry from **Tools** or your Workspace the button reads **Discard and start over**.
 
-If someone changed the same field from another tab or device in the meantime, **This form was changed somewhere else** appears and editing pauses. Tap **Use this device's copy** to keep your changes, or **Use saved version** to keep the other copy. BeaconHS never overwrites a newer change without asking.
+If someone changed the same field from another tab or device in the meantime, **This form was changed somewhere else** appears and editing pauses. Tap **Use this device's copy** to keep your changes, or **Use saved version** to keep the other copy. Nathara HSE never overwrites a newer change without asking.
 
 If the record was locked or submitted while your changes waited, **These changes can't be saved** appears. Tap **Discard these changes** to clear them from the device.
 
-Some steps always need signal: **Submit**, **Finalize**, **Lock**, signing, adding or removing rows, adding photos or files, and emailing a record. BeaconHS sends anything still waiting first. Without signal, BeaconHS says **You need signal for this step. Your answers are saved on this device.** Nothing is lost.
+Some steps always need signal: **Submit**, **Finalize**, **Lock**, signing, adding or removing rows, adding photos or files, and emailing a record. Nathara HSE sends anything still waiting first. Without signal, Nathara HSE says **You need signal for this step. Your answers are saved on this device.** Nothing is lost.
 
-When you sign out, BeaconHS first tries to send anything waiting. If something still has not synced, you are warned before it is deleted from the device. Always sign out of a shared tablet so the next person never sees your work.
+When you sign out, Nathara HSE first tries to send anything waiting. If something still has not synced, you are warned before it is deleted from the device. Always sign out of a shared tablet so the next person never sees your work.
 
 ## Finding a past entry
 

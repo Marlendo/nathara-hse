@@ -103,12 +103,17 @@ async function main() {
 
   await db.transaction(async (tx) => {
     // --- Super-admin ----------------------------------------------------
+    // PM-HSE-0001: akun seed awal staging TANPA password (login password mati).
+    // Email dari SEED_ADMIN_EMAIL (TODO-BRAND-2 dari human); default placeholder
+    // yang eksplisit bukan alamat asli. `supabase_sub` diisi saat first SSO
+    // login (atau pre-fill bila sub sudah diketahui).
     const adminId = randomUUID()
+    const adminEmail = (process.env.SEED_ADMIN_EMAIL ?? 'admin@nathara-hse.local').trim()
     const inserted = await tx
       .insert(user)
       .values({
         id: adminId,
-        email: 'admin@beaconhs.local',
+        email: adminEmail,
         name: 'Super Admin',
         emailVerified: true,
         isSuperAdmin: true,
@@ -1397,11 +1402,11 @@ async function main() {
     await seedPeopleGroupsAndTitles(tx, tenant.id)
 
     console.log(`  · tenant: ${tenant.name} (${tenant.slug})`)
-    console.log(`  · super-admin: ${admin.email}`)
+    console.log(`  · super-admin: ${admin.email} (tanpa password — login via SSO Nathara)`)
     console.log(
       `  · seeded: ${insertedPeople.length} people, ${courses.length} courses, 4 incidents (1 rich), ${caRows.length} CAs, ${docDefs.length} documents w/ versions+acks, 8 equipment, 6 harnesses w/ inspections, 5 toolbox talks`,
     )
-    console.log(`  · sign in via Magic link (Mailpit: http://localhost:8025)`)
+    console.log(`  · sign in via Nathara SSO (kontrak SSO TODO-SSO-1..5 menunggu PM Production)`)
   })
 
   // Every report is an ordinary tenant-owned AppKit definition. Seed identity

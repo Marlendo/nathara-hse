@@ -16,7 +16,7 @@ export type EmailDeliveryInput = {
   /**
    * Per-send sender display name (a person, e.g. the record's submitter or
    * the acting user). The transport keeps the configured From ADDRESS and
-   * shows "<senderName> via BeaconHS" as the display name, so replies and
+   * shows "<senderName> via Nathara HSE" as the display name, so replies and
    * recognition work without spoofing an unverified From domain.
    */
   senderName?: string

@@ -8,7 +8,7 @@ import { redirect } from 'next/navigation'
 import { headers } from 'next/headers'
 import { revalidatePath } from 'next/cache'
 import { and, eq } from 'drizzle-orm'
-import { getAuth } from '@beaconhs/auth'
+import { getSsoSession } from '@beaconhs/auth'
 import { db, withSuperAdmin } from '@beaconhs/db'
 import { auditLog, sessions, tenantUsers } from '@beaconhs/db/schema'
 
@@ -19,11 +19,12 @@ import { auditLog, sessions, tenantUsers } from '@beaconhs/db/schema'
  * actor. A no-op (back to the dashboard) when not impersonating.
  */
 export async function stopImpersonation(): Promise<void> {
-  const authSession = await getAuth().api.getSession({
-    headers: (await headers()) as unknown as Headers,
-  })
-  const token = authSession?.session?.token
-  const actorUserId = authSession?.user?.id
+  // Pointer impersonasi dikunci oleh token sesi app milik aktor. Sampai sesi
+  // app SSO final (TODO-SSO-4), tidak ada sesi yang bisa diterbitkan sehingga
+  // overlay "view as" nonaktif dan stop selalu no-op kembali ke dashboard.
+  const authSession = await getSsoSession((await headers()) as unknown as Headers)
+  const token = authSession?.sessionToken ?? null
+  const actorUserId = authSession?.userId ?? null
   if (!token || !actorUserId) redirect('/dashboard')
 
   // Runs on the BYPASSRLS super pool: tenant_users + audit_log enforce FORCE ROW

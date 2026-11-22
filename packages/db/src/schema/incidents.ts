@@ -1,4 +1,4 @@
-// Incidents — full taxonomy matching the legacy BeaconHS incident detail page:
+// Incidents — full taxonomy matching the legacy Nathara HSE incident detail page:
 //   General (people involved, supervisor, location, classification, events, witnesses, PPE worn)
 //   Medical (injury type, EMS/MOL/first-aid/medical/lost-time/modified-duty with conditional sub-fields)
 //   Key Metrics (actual + potential severity, 1-5 scales)

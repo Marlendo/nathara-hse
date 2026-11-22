@@ -3,9 +3,9 @@ import { createHmac, hkdfSync, timingSafeEqual } from 'node:crypto'
 const MAX_CLOCK_SKEW_MS = 5 * 60_000
 
 function signingKey(): Buffer {
-  const secret = process.env.BETTER_AUTH_SECRET
+  const secret = process.env.HSE_APP_SECRET
   if (!secret && process.env.NODE_ENV === 'production') {
-    throw new Error('BETTER_AUTH_SECRET is required for internal domain-event dispatch')
+    throw new Error('HSE_APP_SECRET is required for internal domain-event dispatch')
   }
   return Buffer.from(
     hkdfSync(

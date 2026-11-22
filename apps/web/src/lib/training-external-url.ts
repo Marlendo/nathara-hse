@@ -149,7 +149,7 @@ export function normalizeTrainingExternalUrl(
 
   const hostname = assertExternalDnsHostname(url.hostname)
   if (normalizedBlockedHostnames(options.blockedOrigins).has(hostname)) {
-    throw new Error('Training links cannot point to BeaconHS or its document editor.')
+    throw new Error('Training links cannot point to Nathara HSE or its document editor.')
   }
 
   if (YOUTUBE_HOSTS.has(hostname)) {

@@ -110,7 +110,7 @@ function vapidDetails() {
   const privateKey = process.env.VAPID_PRIVATE_KEY
   if (!publicKey || !privateKey) return null
   return {
-    subject: process.env.VAPID_SUBJECT ?? 'mailto:ops@beaconhs.app',
+    subject: process.env.VAPID_SUBJECT ?? 'mailto:ops@nathara-hse.app',
     publicKey,
     privateKey,
   }
@@ -137,7 +137,7 @@ export async function sendTestPush() {
   }
 
   const payload = {
-    title: 'BeaconHS test',
+    title: 'Nathara HSE test',
     body: 'Push notifications are working on this device.',
     linkPath: '/notifications/preferences',
   }

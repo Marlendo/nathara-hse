@@ -41,7 +41,7 @@ async function test(ctx: DestinationTestContext): Promise<IntegrationResult> {
     return { ok: false, error: 'The webhook URL is not valid.' }
   }
   try {
-    const r = await post(url, { text: 'BeaconHS connection test ✅' })
+    const r = await post(url, { text: 'Nathara HSE connection test ✅' })
     return r.ok
       ? { ok: true, summary: 'Posted a test message to the channel.' }
       : {

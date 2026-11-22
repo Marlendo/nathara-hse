@@ -43,7 +43,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
       .where(eq(tenants.id, ctx.tenantId))
       .limit(1)
     // Visibility was checked above, so no extra scope predicate is needed.
-    const labels = await loadEquipmentLabelData(tx, t?.name ?? 'BeaconHS', [id], undefined)
+    const labels = await loadEquipmentLabelData(tx, t?.name ?? 'Nathara HSE', [id], undefined)
     return { document: normalizeEquipmentLabelDesign(t?.settings ?? {}), labels }
   })
   if (!result || result.labels.length === 0) {

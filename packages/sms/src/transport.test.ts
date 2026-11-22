@@ -90,13 +90,13 @@ describe('resolveSmsTransport (unseal)', () => {
     const raw: RawSmsConfig = {
       enabled: true,
       provider: 'messagebird',
-      fromNumber: 'BeaconHS',
+      fromNumber: 'Nathara HSE',
       ...sealed('live_key'),
     }
     expect(resolveSmsTransport(raw)).toMatchObject({
       provider: 'messagebird',
       accessKey: 'live_key',
-      from: 'BeaconHS',
+      from: 'Nathara HSE',
     })
   })
 
@@ -132,7 +132,7 @@ describe('validateStoredSmsConfig', () => {
       validateStoredSmsConfig({
         enabled: true,
         provider: 'messagebird',
-        fromNumber: 'BeaconHS',
+        fromNumber: 'Nathara HSE',
         keyCiphertext: 'ciphertext',
       }),
     ).toThrow('credential is incomplete')

@@ -1,12 +1,12 @@
 // HMAC-signed write proposals. A draft tool builds a `preview` and signs it; the
 // commit server action re-hashes the client-returned preview and rejects any
-// tampering or expiry. The signing key is derived from BETTER_AUTH_SECRET (same
+// tampering or expiry. The signing key is derived from HSE_APP_SECRET (same
 // approach as lib/crypto.ts) — no new env var, no secret in the DB.
 
 import { createHmac, hkdfSync, timingSafeEqual } from 'node:crypto'
 import type { RequestContext } from '@beaconhs/tenant'
 
-const SOURCE = process.env.BETTER_AUTH_SECRET || 'beaconhs-dev-insecure-secret'
+const SOURCE = process.env.HSE_APP_SECRET || 'beaconhs-dev-insecure-secret'
 const KEY = Buffer.from(
   hkdfSync('sha256', Buffer.from(SOURCE), Buffer.alloc(0), Buffer.from('beaconhs.proposal.v1'), 32),
 )

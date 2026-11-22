@@ -7,7 +7,7 @@ From the repo root:
 - macOS: double-click `scripts/launchers/dev.command`
 - Windows: double-click `scripts/launchers/dev.bat`
 - Linux: run `scripts/launchers/install-linux-desktop.sh`, then launch
-  **BeaconHS Dev** from your application menu
+  **Nathara HSE Dev** from your application menu
 
 The launchers install dependencies when needed, start Docker services, run
 `pnpm dev`, and clean up launcher-started processes on exit. They default to

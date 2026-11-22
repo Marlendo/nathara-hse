@@ -6,7 +6,7 @@ const originalEnv = { ...process.env }
 
 beforeEach(() => {
   process.env.INTERNAL_WEB_URL = 'http://web:3000'
-  process.env.BETTER_AUTH_SECRET = 'domain-event-test-secret-with-sufficient-entropy'
+  process.env.HSE_APP_SECRET = 'domain-event-test-secret-with-sufficient-entropy'
 })
 
 afterEach(() => {

@@ -1,4 +1,4 @@
-# BeaconHS dev stack for Dokploy.
+# Nathara HSE dev stack for Dokploy.
 #
 # The GitHub deploy workflow injects all ${VARS} at deploy time. The same image
 # runs web, worker, and scheduler roles selected by APP_ROLE.
@@ -28,9 +28,8 @@ services:
       # Dedicated BYPASSRLS pool for super-admin / cross-tenant access.
       SUPERADMIN_DATABASE_URL: ${SUPERADMIN_DATABASE_URL}
       REDIS_URL: ${REDIS_URL}
-      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET}
+      HSE_APP_SECRET: ${HSE_APP_SECRET}
       ATTACHMENT_CAPABILITY_SECRET: ${ATTACHMENT_CAPABILITY_SECRET}
-      BETTER_AUTH_URL: ${APP_URL}
       APP_URL: ${APP_URL}
       R2_ENDPOINT: ${R2_ENDPOINT}
       R2_ACCESS_KEY_ID: ${R2_ACCESS_KEY_ID}
@@ -91,7 +90,7 @@ services:
       # The worker unseals DB-stored provider secrets (email/SMS/AI keys,
       # connector creds) with the same key web seals them with — without this
       # every sealed transport fails closed instead of using the configured provider.
-      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET}
+      HSE_APP_SECRET: ${HSE_APP_SECRET}
       DATABASE_URL: ${DATABASE_URL}
       # Dedicated cross-tenant DML pool. Migration credentials are never
       # injected into a long-running application container.
@@ -177,7 +176,7 @@ services:
   # at APP_URL (aliasgroup1 allow-list).
   collabora:
     # Pin both the tested CODE release and linux/amd64 digest. `latest` can
-    # otherwise change independently of BeaconHS CI and silently break WOPI.
+    # otherwise change independently of Nathara HSE CI and silently break WOPI.
     image: ${COLLABORA_IMAGE}
     environment:
       aliasgroup1: ${APP_URL}
@@ -187,7 +186,7 @@ services:
       # load ceiling matches MAX_PPTX_FILE_BYTES (exactly 1 GiB).
       extra_params: --o:ssl.enable=false --o:ssl.termination=true --o:net.frame_ancestors=${APP_URL} --o:welcome.enable=false --o:home_mode.enable=true --o:storage.wopi.max_file_size=1073741824
     volumes:
-      # BeaconHS theme via the sanctioned branding.js hook. The deploy workflow
+      # Nathara HSE theme via the sanctioned branding.js hook. The deploy workflow
       # writes this file onto the swarm manager before deploying the stack.
       - /etc/dokploy/beaconhs/collabora-branding.js:/usr/share/coolwsd/browser/dist/branding.js:ro
     networks: [dokploy-network]

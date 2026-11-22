@@ -556,7 +556,7 @@ export default async function ConnectionPage({
                               name="missing"
                               defaultValue={syncPolicy.missing === 'archive' ? 'archive' : 'keep'}
                             >
-                              <option value="keep">{'Keep BeaconHS rows'}</option>
+                              <option value="keep">{'Keep Nathara HSE rows'}</option>
                               <option value="archive">{'Archive after safe full pulls'}</option>
                             </Select>
                           </div>

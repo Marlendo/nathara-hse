@@ -3,7 +3,7 @@
 // (enabled / auto-start / roles) live in walkthrough_settings; per-user
 // completion in walkthrough_progress (see lib/walkthroughs/service.ts).
 //
-// The tour set is deliberately frontline-first: legacy BeaconHS usage shows
+// The tour set is deliberately frontline-first: legacy Nathara HSE usage shows
 // daily journals, PPE checks, hazard assessments (JSHAs), site inspections and
 // truck logs are what field workers actually enter day to day.
 //
@@ -92,7 +92,7 @@ export const WALKTHROUGHS: Walkthrough[] = [
   },
   {
     id: 'welcome',
-    title: 'Welcome to BeaconHS',
+    title: 'Welcome to Nathara HSE',
     description: 'A quick lap of the app: the menu, your workspace, and where to get help.',
     startPath: '/dashboard',
     defaultEnabled: true,
@@ -100,7 +100,7 @@ export const WALKTHROUGHS: Walkthrough[] = [
     steps: [
       {
         title: 'Welcome',
-        body: 'BeaconHS is where your crew logs safety work: journals, hazard assessments, inspections, incidents and more. This quick tour shows you around. You can leave it any time with Skip.',
+        body: 'Nathara HSE is where your crew logs safety work: journals, hazard assessments, inspections, incidents and more. This quick tour shows you around. You can leave it any time with Skip.',
       },
       {
         target: '[data-walkthrough="nav:/dashboard"]',
@@ -125,7 +125,7 @@ export const WALKTHROUGHS: Walkthrough[] = [
       {
         target: '[data-walkthrough="report-issue"]',
         title: 'Report an issue',
-        body: 'See something broken in the app? Tap the target icon in the top bar. Describe what happened. BeaconHS checks the user guide first, then files a product report if it is a defect.',
+        body: 'See something broken in the app? Tap the target icon in the top bar. Describe what happened. Nathara HSE checks the user guide first, then files a product report if it is a defect.',
       },
       {
         title: 'That is the basics',
@@ -198,7 +198,7 @@ export const WALKTHROUGHS: Walkthrough[] = [
       },
       {
         title: 'Attached assessment apps',
-        body: 'For a Builder app, choose Fill in BeaconHS to complete it digitally. If the customer requires a paper form, choose Use external form, write the JSA reference on the paper, enter who issued it, and attach optional photos before completing the capture. In new Fall Protection Plans, anchorage, equipment inspection, and hierarchy checks are under Access & communication; Rescue covers the rescue plan and equipment.',
+        body: 'For a Builder app, choose Fill in Nathara HSE to complete it digitally. If the customer requires a paper form, choose Use external form, write the JSA reference on the paper, enter who issued it, and attach optional photos before completing the capture. In new Fall Protection Plans, anchorage, equipment inspection, and hierarchy checks are under Access & communication; Rescue covers the rescue plan and equipment.',
       },
       {
         title: 'Submit it',

@@ -75,7 +75,7 @@ archive_creates_public_schema=$(
 
 createdb --maintenance-db="$admin_database" --template=template0 --owner="$owner_role" "$database"
 # PostgreSQL creates public in every new database. A pg_dump archive also owns
-# that schema when BeaconHS has transferred it to the dedicated owner, so the
+# that schema when Nathara HSE has transferred it to the dedicated owner, so the
 # restore would otherwise fail with "schema public already exists". Drop only
 # the empty schema in this brand-new disposable database, and only when the
 # validated archive declares that it will recreate it.

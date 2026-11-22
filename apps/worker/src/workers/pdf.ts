@@ -368,7 +368,7 @@ async function renderRecordSummary(
       .from(tenants)
       .where(eq(tenants.id, data.tenantId))
       .limit(1)
-    return t?.name ?? 'BeaconHS'
+    return t?.name ?? 'Nathara HSE'
   })
   const pdf = await renderRecordSummaryPdf({
     tenantName,

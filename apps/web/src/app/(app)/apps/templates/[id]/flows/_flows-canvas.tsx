@@ -1988,7 +1988,7 @@ function ActionInspector({
                           set({ ...a, sender: e.target.value as 'beaconhs' | 'submitter' })
                         }
                       >
-                        <option value="beaconhs">{'BeaconHS'}</option>
+                        <option value="beaconhs">{'Nathara HSE'}</option>
                         <option value="submitter">{'Submitter (replies go to them)'}</option>
                       </Select>
                     </Field>

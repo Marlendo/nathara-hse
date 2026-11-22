@@ -55,7 +55,7 @@ export function requireCutoverDatabaseTarget(apply: boolean): string {
     fingerprint !== DEV_DATABASE_POOL_FINGERPRINT &&
     fingerprint !== DEV_DATABASE_DIRECT_FINGERPRINT
   ) {
-    throw new Error('SUPERADMIN_DATABASE_URL is not the audited BeaconHS dev database')
+    throw new Error('SUPERADMIN_DATABASE_URL is not the audited Nathara HSE dev database')
   }
   if (apply && fingerprint !== DEV_DATABASE_DIRECT_FINGERPRINT) {
     throw new Error('Apply mode requires the direct dev database port, not transaction pooling')
@@ -83,7 +83,7 @@ export function requireCutoverStorageTarget(): {
   required('R2_SECRET_ACCESS_KEY')
   const bucket = required('R2_BUCKET')
   if (storageFingerprint(endpoint, bucket) !== DEV_STORAGE_FINGERPRINT) {
-    throw new Error('R2_ENDPOINT/R2_BUCKET are not the audited BeaconHS dev object store')
+    throw new Error('R2_ENDPOINT/R2_BUCKET are not the audited Nathara HSE dev object store')
   }
   if (
     parsed.hostname.toLowerCase().endsWith('.r2.cloudflarestorage.com') &&
@@ -127,7 +127,7 @@ export async function assertCutoverDatabaseSession(sql: CutoverSql): Promise<voi
     session.read_only ||
     session.in_recovery
   ) {
-    throw new Error('Database session is not the writable BeaconHS BYPASSRLS maintenance role')
+    throw new Error('Database session is not the writable Nathara HSE BYPASSRLS maintenance role')
   }
 }
 
@@ -138,7 +138,7 @@ export function requireCutoverCapabilitySecret(): void {
   }
   const secret = required('ATTACHMENT_CAPABILITY_SECRET')
   if (secret.length < 32 || sha256(secret) !== DEV_ATTACHMENT_CAPABILITY_FINGERPRINT) {
-    throw new Error('ATTACHMENT_CAPABILITY_SECRET is not the audited BeaconHS dev secret')
+    throw new Error('ATTACHMENT_CAPABILITY_SECRET is not the audited Nathara HSE dev secret')
   }
 }
 

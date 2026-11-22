@@ -126,7 +126,7 @@ function Invoke-Cleanup {
   }
 
   if ($script:DevProcess -and -not $script:DevProcess.HasExited) {
-    Write-LauncherLog "Stopping BeaconHS dev processes..."
+    Write-LauncherLog "Stopping Nathara HSE dev processes..."
     Stop-ProcessTree -ProcessId $script:DevProcess.Id
   }
 
@@ -439,7 +439,7 @@ function Start-DevServer {
 }
 
 try {
-  Write-LauncherLog "BeaconHS development launcher"
+  Write-LauncherLog "Nathara HSE development launcher"
   Ensure-EnvFile
   Resolve-DatabaseMode
   Ensure-NodeAndPnpm

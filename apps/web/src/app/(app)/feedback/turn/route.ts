@@ -170,7 +170,7 @@ export async function POST(req: Request): Promise<Response> {
     const generated = await generateText({
       model,
       system: feedbackSystemPrompt({
-        productName: 'BeaconHS',
+        productName: 'Nathara HSE',
         forceFile: request.forceFile,
       }),
       prompt: composeFeedbackUserMessage({

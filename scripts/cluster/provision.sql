@@ -1,4 +1,4 @@
--- BeaconHS database provisioning (run as a PostgreSQL superuser).
+-- Nathara HSE database provisioning (run as a PostgreSQL superuser).
 --
 -- Usage:
 --   psql "postgresql://postgres:***@localhost:5432/postgres" \

@@ -36,7 +36,7 @@ export default async function AuthContinuePage({
   const title = pending.length > 0 ? 'Accept your invitation' : 'Access is not active'
   const body =
     pending.length > 0
-      ? 'Open the one-time link in your invitation email. Signing in by itself does not activate a pending membership.'
+      ? 'Sign in with Nathara SSO, then open the invitation link from your invitation email. Signing in by itself does not activate a pending membership.'
       : suspended.length > 0
         ? 'Your membership or workspace is suspended. Contact your administrator to restore access.'
         : 'This account is not attached to an active workspace. Contact your administrator.'

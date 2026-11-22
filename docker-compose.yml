@@ -79,7 +79,7 @@ services:
     extra_hosts:
       - 'host.docker.internal:host-gateway'
     volumes:
-      # BeaconHS theme via the sanctioned branding.js hook (navy header etc.).
+      # Nathara HSE theme via the sanctioned branding.js hook (navy header etc.).
       - ./deploy/collabora-branding.js:/usr/share/coolwsd/browser/dist/branding.js:ro
     restart: unless-stopped
 

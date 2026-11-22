@@ -50,7 +50,7 @@ export function DocumentEditorPortal({ model }: { model: DocumentEditorModel }) 
         park.style.visibility = 'visible'
         park.style.pointerEvents = 'auto'
         park.style.zIndex = 'auto'
-        if (wasHidden) window.dispatchEvent(new Event('beaconhs-collabora-relayout'))
+        if (wasHidden) window.dispatchEvent(new Event('hse-collabora-relayout'))
         return
       }
       park.style.visibility = 'hidden'

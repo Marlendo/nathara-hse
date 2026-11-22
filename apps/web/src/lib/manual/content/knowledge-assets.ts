@@ -79,7 +79,7 @@ The certificate **Person / employee** picker searches active people by name, emp
 1. Open **Training** → **Certificates**.
 2. Search or filter the list, then select the checkbox beside each record you need. You can also select every visible row.
 3. In the action bar, choose **Print wallet cards** and tap **Print**.
-4. BeaconHS downloads one print-ready PDF with the front and back of every available card. Open that file and print the full run together.
+4. Nathara HSE downloads one print-ready PDF with the front and back of every available card. Open that file and print the full run together.
 
 A print run from the certificates list can contain up to 50 records. Revoked, inaccessible, or missing wallet-card outputs are skipped, and the action bar tells you how many cards were prepared and skipped.
 
@@ -91,9 +91,9 @@ To filter first, then print, open **Reports → Training — Wallet cards**. Add
 2. Search by class, course, code, or location. Filter by **Upcoming**, **Past**, or **All**. When customer tracking is enabled, you can also filter by **Customer**.
 3. Each class shows the date, course, location, and a status: **Scheduled**, **Awaiting completion**, **Completed**, or **Cancelled**. When customer tracking is enabled, the customer appears as its own column.
 
-When a manager marks a class complete, timesheet exports credit only the people marked **Attended**, plus the class instructor when they are an employee in BeaconHS. People marked absent are never credited. If an export to another system fails, the completed class shows a warning with the error. An admin can fix the connection and click **Re-send** on the class or under **Admin → Integrations**.
+When a manager marks a class complete, timesheet exports credit only the people marked **Attended**, plus the class instructor when they are an employee in Nathara HSE. People marked absent are never credited. If an export to another system fails, the completed class shows a warning with the error. An admin can fix the connection and click **Re-send** on the class or under **Admin → Integrations**.
 
-If your company connected class schedules to another system (an admin sets this up under **Admin → Integrations**), BeaconHS sends that system the full class schedule whenever the roster, dates, class days, hours, or course change. Cancelling or deleting a class tells it to remove the class. The instructor is never sent as an attendee. A person with no employee ID cannot be booked there — the class shows **Not booked: no employee ID** with their name so you can fix their record. If the other system reports rows it skipped, the class shows those notes too.
+If your company connected class schedules to another system (an admin sets this up under **Admin → Integrations**), Nathara HSE sends that system the full class schedule whenever the roster, dates, class days, hours, or course change. Cancelling or deleting a class tells it to remove the class. The instructor is never sent as an attendee. A person with no employee ID cannot be booked there — the class shows **Not booked: no employee ID** with their name so you can fix their record. If the other system reports rows it skipped, the class shows those notes too.
 
 ## Carry your tickets with you
 
@@ -132,9 +132,9 @@ To send one reminder, choose **Automatic reminder email** on **Details**: **1 da
 3. Use **Insert**, **Layers**, **Style**, and **Print** to build the layout. One artboard can hold up to 240 elements.
    To show record details, insert a data field such as **Credential name**, **Credential code**, or **Record details**. **Record details** prints the **Details** text on that person's training record; it stays blank when the record has none and on skill-ticket cards.
 4. Choose **Preview PDF** to check the current design with sample data.
-5. Choose **Save designs**. BeaconHS checks names, colours, dimensions, fields, links, and design size before saving. If it finds a problem, it shows the exact design, artboard, or element to fix and leaves the saved designs unchanged.
+5. Choose **Save designs**. Nathara HSE checks names, colours, dimensions, fields, links, and design size before saving. If it finds a problem, it shows the exact design, artboard, or element to fix and leaves the saved designs unchanged.
 
-For a CR80 design, open **Print** and choose **cardPresso Web Print Server**, **Zebra Browser Print**, **Evolis SDK**, or **HID FARGO SDK**. A tenant administrator connects that provider under **Admin → Direct printing**. Each issued wallet card then shows the matching direct-print button beside **Open PDF**. BeaconHS renders the saved front and back at 300 DPI, sends them only to that workspace's configured provider, confirms the accepted job, and records it in the audit log. cardPresso requires a .card file with the configured full-card front and back image items. Zebra, Evolis, and HID FARGO use the workspace's secured HTTPS print bridge.
+For a CR80 design, open **Print** and choose **cardPresso Web Print Server**, **Zebra Browser Print**, **Evolis SDK**, or **HID FARGO SDK**. A tenant administrator connects that provider under **Admin → Direct printing**. Each issued wallet card then shows the matching direct-print button beside **Open PDF**. Nathara HSE renders the saved front and back at 300 DPI, sends them only to that workspace's configured provider, confirms the accepted job, and records it in the audit log. cardPresso requires a .card file with the configured full-card front and back image items. Zebra, Evolis, and HID FARGO use the workspace's secured HTTPS print bridge.
 
 Course completions use their configured card designs. Skill types generate only the designs selected on that type; no selection means no generated card or certificate. Uploaded skill credentials remain available through **View**. Only current **Complete** skill tickets with a selected wallet design appear in **My Workspace → Wallet**.
 
@@ -164,7 +164,7 @@ On **Certificates**, **People: Active only** shows certificates for active emplo
 
 On **Assessments**, search by person, assessment, or course. The person, assessment type, course, status, and date controls narrow the same list; no filter option is hidden after the first few values. Select an assessment title or use **Continue**, **Review**, or **View** to open the record. Completed and cancelled assessments open read-only. Historical imported assessments show their recorded dates without inventing an attempt duration that the old system did not preserve.
 
-To start one, click **New assessment**. In the flyout, choose the person, then choose an active assessment type. BeaconHS creates the assessment and immediately opens the same record page used to answer, submit, review, or cancel it.
+To start one, click **New assessment**. In the flyout, choose the person, then choose an active assessment type. Nathara HSE creates the assessment and immediately opens the same record page used to answer, submit, review, or cancel it.
 
 ## Answer an assessment
 
@@ -176,7 +176,7 @@ To start one, click **New assessment**. In the flyout, choose the person, then c
 6. A graded assessment with a free-text answer shows **Awaiting review**. Your answers are locked while training staff award the points. Other graded assessments show the score and pass or fail result immediately.
 7. A completion-only assessment shows **Completed**. It records your answers without inventing a score or pass mark.
 
-Your answers save as you go, to this device first, so you can answer with no signal and come back later. **Submit for grading** and **Complete assessment** need signal. BeaconHS sends your saved answers first, then grades them.
+Your answers save as you go, to this device first, so you can answer with no signal and come back later. **Submit for grading** and **Complete assessment** need signal. Nathara HSE sends your saved answers first, then grades them.
 
 Use **Actions → Print / PDF** in the assessment header for a paper copy in the same question order as the page, including every answer choice and your selected answer. Results use a green check for correct answers and a red cross for incorrect answers. Training staff can also see the correct answer after submission. A passed assessment also offers **Certificate**.
 
@@ -202,7 +202,7 @@ ${CSV_EXPORT_LIMIT_GUIDANCE}
       'drag questions',
     ],
     requiredPermission: 'training.course.manage',
-    body: `Training managers verify externally hosted online courses before BeaconHS issues a record. They can also keep source evidence with records and build native assessments in the same visual editor used for inspections.
+    body: `Training managers verify externally hosted online courses before Nathara HSE issues a record. They can also keep source evidence with records and build native assessments in the same visual editor used for inspections.
 
 ## Record actions
 
@@ -213,13 +213,13 @@ Open **Activity** on a record to see its full change history. Search it, filter 
 ## Verify an online course
 
 1. The learner opens the **Online** course, follows the provider link, and chooses **Submit for verification** after finishing the provider requirements.
-2. BeaconHS shows **Completion submitted** to the learner. No training record or certificate is issued yet.
+2. Nathara HSE shows **Completion submitted** to the learner. No training record or certificate is issued yet.
 3. Open the course under **Training → Courses**, then choose **Completions**.
 4. Confirm the learner's result in the external provider system.
 5. Add an optional verification note and choose **Complete course**. Confirm the message.
-6. BeaconHS records who verified the completion, issues the training record and certificate, and refreshes compliance.
+6. Nathara HSE records who verified the completion, issues the training record and certificate, and refreshes compliance.
 
-Only **Self-paced** courses completed inside BeaconHS issue automatically. Their required lessons, quizzes, and other completion rules are checked directly by BeaconHS.
+Only **Self-paced** courses completed inside Nathara HSE issue automatically. Their required lessons, quizzes, and other completion rules are checked directly by Nathara HSE.
 
 ## Attach evidence to a training record
 
@@ -252,13 +252,13 @@ To remove a type, open **Settings**, choose **Delete type**, and confirm. A succ
 2. Choose the **Awaiting review** status filter.
 3. Open an assessment. The learner's answers are locked and cannot be changed.
 4. Under **Manual review**, enter whole-number **Points awarded** for every submitted free-text answer. Add **Review notes** when the learner needs feedback.
-5. Choose **Complete review**. BeaconHS calculates the final score and pass or fail result, issues any earned linked-course record, and refreshes compliance.
+5. Choose **Complete review**. Nathara HSE calculates the final score and pass or fail result, issues any earned linked-course record, and refreshes compliance.
 
 ## Working without signal
 
 Certificates, skill tickets (including additional fields), skill types, classes, and authority account numbers save to this device first and send when signal comes back. The badge at the top shows **Saved on device**, **Offline · saved on device**, or **Synced**. A class's **Starts** and **Ends** save together; an end before the start shows a note right away.
 
-You need signal to start, renew, or revoke a record, attach files, add attendees, email a class, complete, cancel, reopen, or delete a class, and add or remove additional fields. Without signal, BeaconHS says **You need signal for this step. Your answers are saved on this device.**`,
+You need signal to start, renew, or revoke a record, attach files, add attendees, email a class, complete, cancel, reopen, or delete a class, and add or remove additional fields. Without signal, Nathara HSE says **You need signal for this step. Your answers are saved on this device.**`,
   },
   {
     slug: 'training-courses',
@@ -300,7 +300,7 @@ On a class record, open **Actions** for **Email class**, **Print / PDF**, presen
 1. Open the course.
 2. In the course header, open **Actions** and choose **Delete course**, then confirm.
 
-The course leaves the course list, pickers, and learner views. Everyone's completion records and certificates for it stay. BeaconHS will not delete a course while a compliance requirement still requires it, or while classes for it are still scheduled — turn off or change that requirement, and cancel or finish those classes first.
+The course leaves the course list, pickers, and learner views. Everyone's completion records and certificates for it stay. Nathara HSE will not delete a course while a compliance requirement still requires it, or while classes for it are still scheduled — turn off or change that requirement, and cancel or finish those classes first.
 
 ## Pick the delivery type
 
@@ -322,9 +322,9 @@ Online and external certificate courses do not show the content builder — thei
 4. Drag modules or lessons to change their order. If the course header shows **Order not saved — retry**, tap it before you leave.
 5. Use **Preview as learner** to see the course as a worker sees it. **Play** presents the whole course full-screen.
 
-Use the **Completion** menu to decide how a lesson is finished. For **Minimum time**, enter **Minimum time (min)**. The timer starts when the worker opens the lesson, and BeaconHS will not mark it complete early.
+Use the **Completion** menu to decide how a lesson is finished. For **Minimum time**, enter **Minimum time (min)**. The timer starts when the worker opens the lesson, and Nathara HSE will not mark it complete early.
 
-**Embedded page** and **Video URL** lessons accept credential-free HTTPS links to external public sites. Links cannot point back to BeaconHS or the document editor. YouTube and Vimeo links are converted to their official players. Other embedded pages run without forms, pop-ups, or top-window navigation; some providers still refuse to be embedded. Use **Preview as learner** and choose an uploaded file when a provider does not work in the frame.
+**Embedded page** and **Video URL** lessons accept credential-free HTTPS links to external public sites. Links cannot point back to Nathara HSE or the document editor. YouTube and Vimeo links are converted to their official players. Other embedded pages run without forms, pop-ups, or top-window navigation; some providers still refuse to be embedded. Use **Preview as learner** and choose an uploaded file when a provider does not work in the frame.
 
 ## Reuse material from the Content Library
 
@@ -334,7 +334,7 @@ The **Reuse library item**, **Assessment**, and **Scheduled class** fields searc
 
 ## Run a classroom (present the content)
 
-For instructor-led courses, BeaconHS is the screen you run the class from. Build the deck, quizzes, and practical once on the course, then present it to the room.
+For instructor-led courses, Nathara HSE is the screen you run the class from. Build the deck, quizzes, and practical once on the course, then present it to the room.
 
 1. Open the class from **Training → Classes** (or schedule a new one).
 2. Tap **Present content** in the top corner. The course opens full-screen, ready to project.
@@ -354,7 +354,7 @@ Presenting never changes anyone's records. When the class is done, issue records
 3. Open **Roster**. Search the existing roster or use **Add a person to the roster…** to search active workers by name, employee number, job title, or email. If the picker says more results exist, add more detail to the search. Select the worker and choose **Add**.
 4. Open **Completion** after the class. Search the roster and review attendance, grade, and pass state for every person on the current page. Type an optional one-line note in **Comments** for anyone who needs it, such as arriving late.
 5. Choose **Save this page** before moving to another page. The reviewed count shows how many people remain.
-6. When everyone is reviewed, choose **Mark class complete**. BeaconHS locks the class and issues a training record for each person marked as passed.
+6. When everyone is reviewed, choose **Mark class complete**. Nathara HSE locks the class and issues a training record for each person marked as passed.
 7. Open **Activity** any time to see who changed the class, every email sent about it, and whether exports to other systems arrived.
 
 A person marked as a no-show cannot pass. A cancelled class is read-only; choose **Reopen class** before changing details, the roster, or completion decisions. A completed class stays locked so its issued records cannot drift.
@@ -406,7 +406,7 @@ When signing as yourself, your Account signature-reuse setting can offer **Use m
       'collabora',
     ],
     requiredPermission: 'training.course.manage',
-    body: `Every slideshow is a real PowerPoint file. Import a deck you already have, or start a blank one. BeaconHS opens that same .pptx in PowerPoint-compatible editing and presentation modes. It does not turn the deck into PDFs or slide images.
+    body: `Every slideshow is a real PowerPoint file. Import a deck you already have, or start a blank one. Nathara HSE opens that same .pptx in PowerPoint-compatible editing and presentation modes. It does not turn the deck into PDFs or slide images.
 
 ## Where to find it
 
@@ -443,7 +443,7 @@ Click **Replace** and drop in a different .pptx. It immediately becomes the deck
 
 Tap **Present** in the slideshow editor, **Play** in the course, or **Present content** on a class. Self-paced learners get the same PowerPoint playback in their lesson. Animations, builds, transitions, timings, links, audio, and video run inside the PowerPoint engine.
 
-Use PowerPoint's own controls inside the presentation to move through the deck. In course or class presentation mode, use the BeaconHS controls below the presentation to move to the next course element.
+Use PowerPoint's own controls inside the presentation to move through the deck. In course or class presentation mode, use the Nathara HSE controls below the presentation to move to the next course element.
 
 ## Tips
 
@@ -613,7 +613,7 @@ On a phone, use **Zoom in** or pinch with two fingers to enlarge a PDF, then dra
       'assistant',
     ],
     requiredPermission: 'documents.manage',
-    body: `Documents are Word files. You write them in a full Word editor right inside BeaconHS, and readers always see a numbered, published PDF that looks identical on every device and on paper.
+    body: `Documents are Word files. You write them in a full Word editor right inside Nathara HSE, and readers always see a numbered, published PDF that looks identical on every device and on paper.
 
 ## Start a document
 
@@ -666,7 +666,7 @@ The editor is blocked while an administrator is using **View as user**. Exit tha
 1. If the document is Published, click **Unpublish** at the top of the page to return it to Draft.
 2. Click **Publish** in the Write toolbar.
 3. Add a short note about what changed (optional), then confirm.
-4. BeaconHS waits for the Word editor to confirm that the working file is saved. If saving fails or times out, no version is created and you can try again without publishing a blank file.
+4. Nathara HSE waits for the Word editor to confirm that the working file is saved. If saving fails or times out, no version is created and you can try again without publishing a blank file.
 5. The saved draft is frozen as the next whole numbered version — v1, v2, v3 — and its PDF renders in the background. Imported decimal revisions such as v1.1 stay in the history. Readers see the latest published version while the document is Published. Draft documents stay private until you publish them.
 
 Draft documents show **Publish**. Published documents show **Unpublish**. Only one of these actions appears at a time. **Unpublish** withdraws the document from readers until it is published again.
@@ -704,7 +704,7 @@ If your role manages Documents, use the document tabs to keep the library organi
 
 1. Open **Categories** to arrange the library into a hierarchy. Search by category, description, or parent. Use **Level** to show top-level or nested categories, and **Usage** to find categories with or without documents. Use the searchable **Parent** picker to move a category within the hierarchy. Category names must be unique under the same parent, but different branches can reuse a name.
 2. Open **Types** to manage classifications such as Policy, Procedure, SDS, and Manual. Use the search box to find a type by name, key, or description. Use **Usage** to show types that are used or unused.
-3. The **Management reviews** tab is available only to people with **Manage documents** permission. Open it to record board reviews of the safety management system. **Actions → Print / PDF** on a review gives you the minutes: attendees, documents reviewed, decisions, and actions raised. Under **Documents reviewed**, add the published documents the board reviewed, then click **Save documents**. BeaconHS pins each document to its exact published version, so a later revision cannot change the historical review record. Search by review title, or use **Next review** to show reviews that have or do not have another review scheduled.
+3. The **Management reviews** tab is available only to people with **Manage documents** permission. Open it to record board reviews of the safety management system. **Actions → Print / PDF** on a review gives you the minutes: attendees, documents reviewed, decisions, and actions raised. Under **Documents reviewed**, add the published documents the board reviewed, then click **Save documents**. Nathara HSE pins each document to its exact published version, so a later revision cannot change the historical review record. Search by review title, or use **Next review** to show reviews that have or do not have another review scheduled.
 
 Periodic reviews on an individual document also record the exact published version. Open the document's **Reviews** tab, click **Record review**, and explicitly choose the outcome. Historical reviews whose old source did not capture an outcome are labelled **outcome not recorded** instead of being treated as approvals.
 
@@ -726,7 +726,7 @@ A document book combines approved documents into one controlled PDF.
 1. Open [Document books](/documents/books) and click **New book**.
 2. Add published documents from the **Build** panel on the left. Draft, archived, and deleted documents are not available in the picker.
 3. Add chapters and sections to structure a long manual, and drag everything into the required order. **Publish book** is unavailable while the order is saving. If saving fails, the previous order returns and the error is shown. Set how it prints in the **Print** panel and fill in the **Settings** panel, then click **Publish book**.
-4. BeaconHS checks that every document has a valid published PDF and pins the book to those exact version numbers. If a document is still Draft or its PDF is unavailable, the message names the problem. The book stays Draft. Publish or remove that document, then try **Publish book** again. The version labels update when publication succeeds.
+4. Nathara HSE checks that every document has a valid published PDF and pins the book to those exact version numbers. If a document is still Draft or its PDF is unavailable, the message names the problem. The book stays Draft. Publish or remove that document, then try **Publish book** again. The version labels update when publication succeeds.
 5. A published book's contents, order, and settings are locked. Click **Unpublish** before making changes, then click **Publish book** again when the revised book is ready.
 
 A document cannot be unpublished, archived, or deleted while it belongs to a published book. Unpublish the book first. A document also cannot be unpublished, archived, or deleted while an active compliance obligation requires it. Pause or delete the obligation first. These checks prevent an approved book or live requirement from silently losing its document.
@@ -739,7 +739,7 @@ A document cannot be unpublished, archived, or deleted while it belongs to a pub
 
 ## Working without signal
 
-The **Overview** details save to this device first and send when signal comes back. The badge at the top shows **Saved on device**, **Offline · saved on device**, or **Synced**. If BeaconHS refuses a value — for example a key another live document already uses — the reason shows under the field. Writing in Word, publishing, and the PDF preview need signal.
+The **Overview** details save to this device first and send when signal comes back. The badge at the top shows **Saved on device**, **Offline · saved on device**, or **Synced**. If Nathara HSE refuses a value — for example a key another live document already uses — the reason shows under the field. Writing in Word, publishing, and the PDF preview need signal.
 
 ## Tips
 
@@ -952,7 +952,7 @@ Use custom fields when your company needs an equipment detail that is not built 
 3. Enter the label and field type. Choose **All types** or one equipment type under **Applies to type**.
 4. Select **Create field**. The field appears on each matching equipment record and saves inline.
 
-The field type is fixed after creation. Changing a field's scope, removing a choice option, or tightening a number range can remove saved values that no longer fit; BeaconHS warns you before it saves. **Delete field** permanently removes the field and every value captured under it. If a saved report or Insights Card uses the field, BeaconHS blocks **Hidden** and **Delete field** until you remove that reference.
+The field type is fixed after creation. Changing a field's scope, removing a choice option, or tightening a number range can remove saved values that no longer fit; Nathara HSE warns you before it saves. **Delete field** permanently removes the field and every value captured under it. If a saved report or Insights Card uses the field, Nathara HSE blocks **Hidden** and **Delete field** until you remove that reference.
 
 The **Custom fields** count on [Equipment types](/equipment/types) shows definitions scoped to each type. A type cannot be deleted until its scoped custom fields are moved to another scope or deleted.
 
@@ -969,7 +969,7 @@ ${CSV_EXPORT_LIMIT_GUIDANCE}
 
 ## Working without signal
 
-On a unit's page, every field — including company-specific fields — saves to this device first and sends when signal comes back. The badge at the top shows **Saved on device**, **Offline · saved on device**, or **Synced**. Work orders, log entries, files, custody changes, schedules, and reminders need signal. Without signal, BeaconHS says **You need signal for this step. Your answers are saved on this device.**
+On a unit's page, every field — including company-specific fields — saves to this device first and sends when signal comes back. The badge at the top shows **Saved on device**, **Offline · saved on device**, or **Synced**. Work orders, log entries, files, custody changes, schedules, and reminders need signal. Without signal, Nathara HSE says **You need signal for this step. Your answers are saved on this device.**
 
 ## Tips
 
@@ -1177,7 +1177,7 @@ If you manage equipment, submitted inspections can send emails on their own — 
 
 ## Working without signal
 
-You need signal to submit the inspection, use **Pass all**, reopen, delete, or add photos. BeaconHS sends your saved answers before it submits. Without signal, BeaconHS says **You need signal for this step. Your answers are saved on this device.** See [Working without signal](/help/forms) for how recovery and conflicts work.
+You need signal to submit the inspection, use **Pass all**, reopen, delete, or add photos. Nathara HSE sends your saved answers before it submits. Without signal, Nathara HSE says **You need signal for this step. Your answers are saved on this device.** See [Working without signal](/help/forms) for how recovery and conflicts work.
 
 ## Tips
 
@@ -1317,7 +1317,7 @@ The issue list shows each report's **Source**. A manual report is labelled **man
 3. Enter the label and field type. Choose **All types** or one PPE type under **Applies to type**.
 4. Select **Create field**. The field appears on each matching PPE record and saves inline.
 
-The field type is fixed after creation. Changing a field's scope, removing a choice option, or tightening a number range can remove saved values that no longer fit; BeaconHS warns you before it saves. **Delete field** permanently removes the field and every value captured under it. If a saved report or Insights Card uses the field, BeaconHS blocks **Hidden** and **Delete field** until you remove that reference.
+The field type is fixed after creation. Changing a field's scope, removing a choice option, or tightening a number range can remove saved values that no longer fit; Nathara HSE warns you before it saves. **Delete field** permanently removes the field and every value captured under it. If a saved report or Insights Card uses the field, Nathara HSE blocks **Hidden** and **Delete field** until you remove that reference.
 
 The **Custom fields** count on [PPE types](/ppe/types) shows definitions scoped to each type. A type cannot be deleted until its scoped custom fields are moved to another scope or deleted.
 
@@ -1340,7 +1340,7 @@ ${CSV_EXPORT_LIMIT_GUIDANCE}
 
 A PPE inspection is created when you submit it. Until then, your answers, failure reasons, and notes stay on this device as you go. If the page closes, open the inspection again: **Recovered unsynced changes** appears and your answers are back. Tap **Discard and start over** to clear them.
 
-You need signal to submit the inspection and to add photos. Without signal, BeaconHS says **You need signal for this step. Your answers are saved on this device.**
+You need signal to submit the inspection and to add photos. Without signal, Nathara HSE says **You need signal for this step. Your answers are saved on this device.**
 
 On a PPE item's page, the item's fields — including company-specific fields — save to this device first and send when signal comes back.
 

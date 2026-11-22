@@ -62,7 +62,7 @@ function serializeEntities(): string {
 
 const ENTITY_CATALOGUE = serializeEntities()
 
-const BHQL_SYSTEM = `You translate a natural-language analytics request into a BHQL query for BeaconHS, a construction & industrial health-and-safety platform. Output a SINGLE JSON object matching this TypeScript shape and NOTHING else (no prose, no markdown fences):
+const BHQL_SYSTEM = `You translate a natural-language analytics request into a BHQL query for Nathara HSE, a construction & industrial health-and-safety platform. Output a SINGLE JSON object matching this TypeScript shape and NOTHING else (no prose, no markdown fences):
 
 type BhqlQuery = {
   version: "bhql/1"

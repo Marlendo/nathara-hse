@@ -28,7 +28,7 @@ async function main(): Promise<void> {
   const transport = resolveEmailTransport(config)
   if (!transport) {
     throw new Error(
-      'Platform email provider is incomplete or its credential cannot be decrypted with BETTER_AUTH_SECRET',
+      'Platform email provider is incomplete or its credential cannot be decrypted with HSE_APP_SECRET',
     )
   }
   if (transport.provider === 'smtp') {

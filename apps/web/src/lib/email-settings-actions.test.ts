@@ -49,7 +49,7 @@ const context = {
 const transport = {
   provider: 'sendgrid' as const,
   apiKey: 'SG.must-never-be-audited',
-  from: 'BeaconHS <beacon@example.com>',
+  from: 'Nathara HSE <beacon@example.com>',
 }
 
 const unchanged = {
@@ -64,7 +64,7 @@ function settingsForm(extra: Record<string, string> = {}) {
   const values = {
     enabled: 'on',
     provider: 'sendgrid',
-    fromName: 'BeaconHS',
+    fromName: 'Nathara HSE',
     fromEmail: 'beacon@example.com',
     replyTo: '',
     mailgunDomain: '',

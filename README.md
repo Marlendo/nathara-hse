@@ -37,20 +37,20 @@
 
 ---
 
-## What is BeaconHS?
+## What is Nathara HSE?
 
-BeaconHS is a multi-tenant HSE platform built for the realities of industrial
+Nathara HSE is a multi-tenant HSE platform built for the realities of industrial
 construction — crews spread across sites, equipment that moves, certifications
 that expire, permits that have to be signed before anyone enters a space, and an
 auditor who will eventually ask for the paper trail.
 
-BeaconHS is open source — **self-host it, extend it, or run it as the backbone of
+Nathara HSE is open source — **self-host it, extend it, or run it as the backbone of
 your safety program.**
 
-## Why BeaconHS is different
+## Why Nathara HSE is different
 
 - **A form engine that replaces modules.** Most safety apps bolt a rigid form
-  tool onto hard-coded screens. BeaconHS inverts that. A single serious
+  tool onto hard-coded screens. Nathara HSE inverts that. A single serious
   **Builder** — conditional logic, formulas, repeating sections, entity lookups,
   scoring, drawn signatures, multi-step workflows, and a visual automation canvas
   — is powerful enough that job-specific paperwork like lift plans, JSAs,
@@ -140,7 +140,7 @@ itself editable per tenant — modules are registered, not hard-coded.
 
 ## The Builder
 
-The Builder is the heart of BeaconHS — the reason job-specific paperwork doesn't
+The Builder is the heart of Nathara HSE — the reason job-specific paperwork doesn't
 require a new module.
 
 - **Design visually.** Drag-and-drop layout with a rich field library: text,
@@ -179,7 +179,7 @@ talks as fully editable, per-tenant templates.
 
 ## Architecture
 
-BeaconHS is a Turborepo monorepo: two apps over a set of focused packages.
+Nathara HSE is a Turborepo monorepo: two apps over a set of focused packages.
 Tenant-scoped data is always accessed through a request-scoped DB executor that
 sets the PostgreSQL RLS context, so isolation holds even if application code has
 a bug.
@@ -224,7 +224,7 @@ One-click launchers live in [`scripts/launchers`](scripts/launchers):
 - **macOS** — double-click `scripts/launchers/dev.command`
 - **Windows** — double-click `scripts/launchers/dev.bat`
 - **Linux** — run `scripts/launchers/install-linux-desktop.sh`, then launch
-  **BeaconHS Dev** from your application menu
+  **Nathara HSE Dev** from your application menu
 
 Or set it up manually:
 
@@ -317,14 +317,14 @@ to that toolchain.
 
 ## License
 
-BeaconHS is licensed under the
+Nathara HSE is licensed under the
 **[GNU Affero General Public License v3.0](LICENSE)**.
 
 In plain terms: you're free to use, modify, and self-host it — but if you run a
 modified version as a network service, you must make your modified source
 available to its users. See [`LICENSE`](LICENSE) for the full terms.
 
-Copyright © 2026 the BeaconHS contributors.
+Copyright © 2026 the Nathara HSE contributors.
 
 ---
 
@@ -336,4 +336,4 @@ Copyright © 2026 the BeaconHS contributors.
 
 ## Also in this suite
 
-BeaconHS is safety. [OpenBooks](https://github.com/braedonsaunders/openbooks) is the books. [BidWright](https://github.com/braedonsaunders/bidwright) is estimating. Built to work together for project-based companies. Same design language. Same self-host posture. Each repo is still its own install today.
+Nathara HSE is safety. [OpenBooks](https://github.com/braedonsaunders/openbooks) is the books. [BidWright](https://github.com/braedonsaunders/bidwright) is estimating. Built to work together for project-based companies. Same design language. Same self-host posture. Each repo is still its own install today.

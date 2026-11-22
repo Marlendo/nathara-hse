@@ -8,7 +8,7 @@ type CredentialOutputAction = {
 
 /**
  * Each distinct credential design gets one action. Printing and saving happen
- * in the browser's PDF viewer instead of multiplying controls in BeaconHS.
+ * in the browser's PDF viewer instead of multiplying controls in Nathara HSE.
  */
 export function credentialOutputActions(
   outputs: CredentialOutput[],

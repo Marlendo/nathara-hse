@@ -1,4 +1,4 @@
-// BeaconHS owns only the HSE entity catalogue and database adapter. The report
+// Nathara HSE owns only the HSE entity catalogue and database adapter. The report
 // definition, compiler, studio, paper viewer, schedules, and result contracts
 // come directly from AppKit.
 export * from '@braedonsaunders/appkit-reports'

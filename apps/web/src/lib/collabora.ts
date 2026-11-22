@@ -33,7 +33,7 @@ const MAX_DISCOVERY_ELEMENTS = 16_384
 const RESERVED_EDITOR_QUERY_KEYS = new Set([
   'access_token',
   'access_token_ttl',
-  'bhstheme',
+  'hsetheme',
   'darktheme',
   'ui_defaults',
   'wopisrc',
@@ -52,7 +52,6 @@ function wopiCallbackBase(): string {
   const base =
     process.env.COLLABORA_WOPI_URL ??
     process.env.APP_URL ??
-    process.env.BETTER_AUTH_URL ??
     'http://localhost:3000'
   return base.replace(/\/+$/, '')
 }
@@ -308,7 +307,7 @@ function parseDiscoveryActions(xml: string): DiscoveryAction[] | null {
 }
 
 /**
- * Select and validate the exact edit action BeaconHS will use. MIME actions
+ * Select and validate the exact edit action Nathara HSE will use. MIME actions
  * take precedence over the legacy extension layout, and the first semantic
  * match wins. An invalid first match fails closed instead of falling through
  * to a later URL. This prevents discovery XML from redirecting WOPI tokens to
@@ -391,7 +390,7 @@ const UI_DEFAULTS = [
  * plus our WOPISrc and UI defaults. Collabora tolerates trailing placeholder
  * tokens in urlsrc (<ui=UI_LLCC&>…); strip them before appending. Colors live
  * in the mounted branding.js (deploy/collabora-branding.js); the embed adds
- * the theme (bhsTheme, enforced by branding.js) client-side to match the app.
+ * the theme (hseTheme, enforced by branding.js) client-side to match the app.
  * NEVER pass Collabora's own darkTheme param — the mere presence of the param
  * (even darkTheme=false) makes COOL default to dark AND clobbers ui_defaults.
  */
@@ -402,7 +401,7 @@ export function buildEditorUrl(editUrl: string, attachmentId: string): string {
 /**
  * Full iframe form-POST URL for read-only, native Impress presentation mode.
  * `startPresentation=true` is a Collabora host parameter, not a simulated
- * BeaconHS slideshow: Impress owns every build, transition, timer, link, and
+ * Nathara HSE slideshow: Impress owns every build, transition, timer, link, and
  * embedded-media interaction inside the frame.
  */
 export function buildPresentationUrl(viewUrl: string, attachmentId: string): string {

@@ -70,7 +70,7 @@ const seed = (
 })
 
 /**
- * The complete BeaconHS report catalogue. These are ordinary editable AppKit
+ * The complete Nathara HSE report catalogue. These are ordinary editable AppKit
  * definitions seeded once per tenant. A re-seed inserts a missing seed but
  * never overwrites a tenant's edits.
  *

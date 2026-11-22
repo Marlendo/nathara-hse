@@ -59,7 +59,7 @@ RUN node scripts/ci/verify-worker-report-runtime.mjs /prod/worker
 # --- Runtime ---
 FROM base AS runner
 ARG TARGETARCH
-RUN test "$TARGETARCH" = amd64 || { echo "BeaconHS runtime requires linux/amd64" >&2; exit 1; }
+RUN test "$TARGETARCH" = amd64 || { echo "Nathara HSE runtime requires linux/amd64" >&2; exit 1; }
 ENV NODE_ENV=production
 
 # Headless-browser shared libs for PDF rendering (worker), plus LibreOffice

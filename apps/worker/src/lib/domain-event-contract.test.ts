@@ -3,15 +3,15 @@ import { signDomainEventRequest, verifyDomainEventRequest } from '@beaconhs/even
 import { assertDomainEventIdentity } from '@beaconhs/events/outbox'
 
 describe('domain event contract', () => {
-  const originalSecret = process.env.BETTER_AUTH_SECRET
+  const originalSecret = process.env.HSE_APP_SECRET
 
   beforeEach(() => {
-    process.env.BETTER_AUTH_SECRET = 'domain-event-test-secret-with-sufficient-entropy'
+    process.env.HSE_APP_SECRET = 'domain-event-test-secret-with-sufficient-entropy'
   })
 
   afterEach(() => {
-    if (originalSecret === undefined) delete process.env.BETTER_AUTH_SECRET
-    else process.env.BETTER_AUTH_SECRET = originalSecret
+    if (originalSecret === undefined) delete process.env.HSE_APP_SECRET
+    else process.env.HSE_APP_SECRET = originalSecret
   })
 
   it('authenticates a fresh worker-to-web request and rejects tampering or replay', () => {

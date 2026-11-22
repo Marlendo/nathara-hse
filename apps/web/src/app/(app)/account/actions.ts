@@ -1,29 +1,24 @@
 'use server'
 
 // Self-service account actions for the signed-in user: edit profile (name, time
-// zone, language), change password, or request a set/reset-password email. All
-// are blocked while impersonating — they must never mutate the target's identity
-// (and Better-Auth's session/profile semantics get muddy) under the admin's hand.
+// zone, language) or save a signature. Password changes and reset emails are
+// DISABLED — credentials live in the Nathara identity provider (SSO), not in
+// this app. All are blocked while impersonating — they must never mutate the
+// target's identity under the admin's hand.
 
 import { revalidatePath } from 'next/cache'
-import { headers } from 'next/headers'
 import { getTranslations } from 'next-intl/server'
 import { and, eq } from 'drizzle-orm'
-import { getAuth, withAuthEmailContext } from '@beaconhs/auth'
 import { db, withSuperAdmin } from '@beaconhs/db'
 import { people, tenantUsers, users } from '@beaconhs/db/schema'
 import { parseAppLocale } from '@beaconhs/i18n'
 import { assertNotImpersonating } from '@beaconhs/tenant'
 import { withStoredSignatureAttachment } from '@/lib/signature-storage'
 import { signatureReuseMode } from '@/lib/saved-signature'
-import { getSessionUser, requireRequestContext } from '@/lib/auth'
+import { requireRequestContext } from '@/lib/auth'
 import { recordAudit, recordAuditInTransaction } from '@/lib/audit'
 
 type Result = { ok?: boolean; error?: string }
-
-async function reqHeaders(): Promise<Headers> {
-  return (await headers()) as unknown as Headers
-}
 
 export async function updateProfile(_prev: Result | null, formData: FormData): Promise<Result> {
   const ctx = await requireRequestContext()
@@ -89,14 +84,8 @@ export async function updateProfile(_prev: Result | null, formData: FormData): P
   })
   if (!before) return { error: t('accountNotFound') }
 
-  // Sync Better-Auth's session copy of the name so the header + account menu
-  // reflect it immediately (its 5-min cookie cache would otherwise lag).
-  try {
-    await getAuth().api.updateUser({ body: { name }, headers: await reqHeaders() })
-  } catch {
-    // The DB row is the source of truth; a Better-Auth sync hiccup isn't fatal.
-  }
-
+  // `users` is the source of truth for the display name (the SSO session
+  // carries its own copy; no local password/session store remains to sync).
   await recordAudit(ctx, {
     entityType: 'user',
     entityId: ctx.userId,
@@ -112,34 +101,13 @@ export async function updateProfile(_prev: Result | null, formData: FormData): P
 }
 
 export async function changePassword(_prev: Result | null, formData: FormData): Promise<Result> {
-  const ctx = await requireRequestContext()
-  assertNotImpersonating(ctx, 'account')
-
-  const currentPassword = String(formData.get('currentPassword') ?? '')
-  const newPassword = String(formData.get('newPassword') ?? '')
-  const confirm = String(formData.get('confirmPassword') ?? '')
-  const revokeOtherSessions = formData.get('revokeOther') === 'on'
-  if (newPassword.length < 8) return { error: 'New password must be at least 8 characters.' }
-  if (newPassword !== confirm) return { error: 'New passwords do not match.' }
-  if (newPassword === currentPassword)
-    return { error: 'Choose a password different from the current one.' }
-
-  try {
-    await getAuth().api.changePassword({
-      body: { newPassword, currentPassword, revokeOtherSessions },
-      headers: await reqHeaders(),
-    })
-  } catch {
-    return { error: 'Your current password is incorrect.' }
+  void formData
+  // Password lokal dimatikan total (PM-HSE-0001): kredensial dikelola di
+  // Nathara IdP (SSO). UI memanggil ini hanya bila komponen lama tersisa.
+  return {
+    error:
+      'Passwords are managed in Nathara SSO, not in this app. Use your identity provider to change your password.',
   }
-  await recordAudit(ctx, {
-    entityType: 'user',
-    entityId: ctx.userId,
-    action: 'update',
-    summary: 'Changed own account password',
-    metadata: { revokedOtherSessions: revokeOtherSessions },
-  })
-  return { ok: true }
 }
 
 /**
@@ -222,27 +190,14 @@ export async function clearMySignature(): Promise<Result> {
 }
 
 /**
- * Email the signed-in user a reset link — used both to SET a first password
- * (magic-link-only accounts) and to recover when they've forgotten the current
- * one. Reuses Better-Auth's reset flow + the existing /reset-password page.
+ * Set/reset password via email — DINONAKTIFKAN. Kredensial dikelola di Nathara
+ * IdP (SSO); tidak ada token reset yang diterbitkan aplikasi ini.
  */
 export async function sendPasswordResetEmail(): Promise<Result> {
-  const ctx = await requireRequestContext()
-  assertNotImpersonating(ctx, 'account')
-  const sessionUser = await getSessionUser()
-  if (!sessionUser?.email) return { error: 'No email is on file for your account.' }
-  try {
-    const requestHeaders = await reqHeaders()
-    await withAuthEmailContext({ tenantId: ctx.tenantId, userId: ctx.userId }, () =>
-      getAuth().api.requestPasswordReset({
-        body: { email: sessionUser.email, redirectTo: '/reset-password' },
-        headers: requestHeaders,
-      }),
-    )
-  } catch {
-    // Swallow — never surface mail/lookup failures.
+  return {
+    error:
+      'Passwords are managed in Nathara SSO, not in this app. Use your identity provider to reset your password.',
   }
-  return { ok: true }
 }
 
 /** Personal consent, isolated from managers editing employee settings. */

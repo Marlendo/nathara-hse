@@ -31,12 +31,7 @@ describe('training external URL policy', () => {
   it.each([
     ['APP_URL', { APP_URL: 'https://app.beaconhs.com' }, 'https://app.beaconhs.com/api/auth'],
     [
-      'BETTER_AUTH_URL',
-      { BETTER_AUTH_URL: 'https://auth.beaconhs.com' },
-      'https://auth.beaconhs.com/session',
-    ],
-    [
-      'Collabora browser origin',
+      'COLLABORA_URL',
       { COLLABORA_URL: 'https://office.beaconhs.com' },
       'https://office.beaconhs.com/browser/hash/cool.html',
     ],
@@ -48,7 +43,7 @@ describe('training external URL policy', () => {
   ])('rejects the configured %s', async (_label, environment, url) => {
     const resolver = vi.fn(publicResolver)
     await expect(validateTrainingExternalUrl(url, { environment, resolver })).rejects.toThrow(
-      /cannot point to BeaconHS or its document editor/,
+      /cannot point to Nathara HSE or its document editor/,
     )
     expect(resolver).not.toHaveBeenCalled()
   })
@@ -58,7 +53,7 @@ describe('training external URL policy', () => {
       normalizeTrainingExternalUrl('https://app.beaconhs.com:8443/embed', {
         blockedOrigins: ['https://app.beaconhs.com'],
       }),
-    ).toThrow(/cannot point to BeaconHS/)
+    ).toThrow(/cannot point to Nathara HSE/)
   })
 
   it('normalizes only exact, vetted YouTube and Vimeo URL shapes', () => {
@@ -123,7 +118,6 @@ describe('training external URL policy', () => {
     expect(
       configuredTrainingBlockedOrigins({
         APP_URL: 'https://app.beaconhs.com/path',
-        BETTER_AUTH_URL: 'https://app.beaconhs.com',
         COLLABORA_URL: 'https://office.beaconhs.com',
       }),
     ).toEqual(['https://app.beaconhs.com', 'https://office.beaconhs.com'])

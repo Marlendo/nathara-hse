@@ -5,8 +5,8 @@ import { auditLog, tenants, tenantUsers, users } from '@beaconhs/db/schema'
 import { materializeUserIdentityAudienceObligations } from '@beaconhs/compliance'
 
 const INVITE_GRANT_VERSION = 1
-const INVITE_HKDF_INFO = 'beaconhs.invite.v1'
-const DEV_SECRET = 'beaconhs-dev-invite-secret'
+const INVITE_HKDF_INFO = 'nathara-hse.invite.v1'
+const DEV_SECRET = 'nathara-hse-dev-invite-secret'
 const MAX_GRANT_LENGTH = 4096
 
 /** Invitations last seven days; ordinary sign-in links use their own shorter limit. */
@@ -52,10 +52,12 @@ type InviteInspection = {
 }
 
 function sourceSecret(): string {
-  const secret = process.env.BETTER_AUTH_SECRET
+  // Secret khusus invite/SSO — DILARANG reuse secret sesi/auth lain. Sengaja
+  // BUKAN warisan secret auth lama (jalur password dimatikan total).
+  const secret = process.env.HSE_INVITE_SECRET
   if (secret) return secret
   if (process.env.NODE_ENV === 'production') {
-    throw new Error('[auth] BETTER_AUTH_SECRET is required to sign invite grants.')
+    throw new Error('[auth] HSE_INVITE_SECRET is required to sign invite grants.')
   }
   return DEV_SECRET
 }
@@ -101,8 +103,8 @@ function parsePayload(value: unknown): InviteGrantPayload | null {
 
 /**
  * Mint a seven-day, membership-targeted grant for an invitation callback.
- * Better Auth's own magic-link token remains the one-time credential; this
- * signed payload binds that verified callback to exactly one pending membership.
+ * The SSO session is the credential; this signed payload binds the verified
+ * SSO callback to exactly one pending membership.
  */
 export function createInviteGrant(input: InviteGrantInput, now = Date.now()): string {
   if (!Number.isSafeInteger(now)) throw new Error('Invalid invite issuance time.')
@@ -234,11 +236,11 @@ async function loadInviteRecord(tx: Database, membershipId: string, lock: boolea
 }
 
 /**
- * Called only by the successful Better Auth magic-link verification hook.
+ * Called only after a successful SSO login (post-SSO provisioning hook).
  * The conditional update and acceptance audit commit together, so concurrent
  * links cannot double-accept or reactivate a membership an admin suspended.
  */
-export async function acceptInviteAfterMagicLink(
+export async function acceptInviteAfterSso(
   rawGrant: string,
   sessionUserId: string,
 ): Promise<InviteAccessState> {
@@ -286,7 +288,7 @@ export async function acceptInviteAfterMagicLink(
       summary: 'Accepted membership invitation',
       before: { status: 'invited' },
       after: { status: 'active', joinedAt: acceptedAt.toISOString() },
-      metadata: { acceptedVia: 'magic_link' },
+      metadata: { acceptedVia: 'sso' },
     })
     return 'active'
   })

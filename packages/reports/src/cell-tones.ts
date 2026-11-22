@@ -3,7 +3,7 @@ import type { ReportCellTone, ReportRunResult } from '@braedonsaunders/appkit-re
 // Domain colouring for report cells.
 //
 // AppKit owns the MECHANISM (ReportColumn.tones, applied identically by the
-// screen view and the PDF). BeaconHS owns the MEANING — what "expired" is, and
+// screen view and the PDF). Nathara HSE owns the MEANING — what "expired" is, and
 // how urgent it should look — so the rules live here in the adapter rather than
 // being baked into the platform.
 //

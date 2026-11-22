@@ -1,18 +1,15 @@
 import { signatureReuseMode } from '@/lib/saved-signature'
 import { getGeneratedValueTranslations, getGeneratedTranslations } from '@/i18n/generated.server'
 import { GeneratedValue } from '@/i18n/generated'
-import { headers } from 'next/headers'
 import { getTranslations } from 'next-intl/server'
 import { eq } from 'drizzle-orm'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, PageHeader } from '@beaconhs/ui'
-import { getAuth } from '@beaconhs/auth'
 import { db, withSuperAdmin } from '@beaconhs/db'
 import { attachments, people, users } from '@beaconhs/db/schema'
 import { attachmentUrl } from '@/lib/attachment-url'
 import { requireRequestContext } from '@/lib/auth'
 import { PageContainer } from '@/components/page-layout'
 import { ProfileForm } from './_profile-form'
-import { PasswordSection } from './_password-section'
 import { SignatureSection } from './_signature-section'
 
 export async function generateMetadata() {
@@ -56,17 +53,8 @@ export default async function AccountPage() {
     : null
   const signatureUrl = signatureRow?.id ? attachmentUrl(signatureRow.id) : null
 
-  // Does this account have a password credential, or is it magic-link only?
-  // Drives whether the Password card shows "change" vs "set a password".
-  let hasPassword = false
-  try {
-    const accounts = await getAuth().api.listUserAccounts({
-      headers: (await headers()) as unknown as Headers,
-    })
-    hasPassword = Array.isArray(accounts) && accounts.some((a) => a.providerId === 'credential')
-  } catch {
-    hasPassword = false
-  }
+  // Password lokal dimatikan total (PM-HSE-0001): kredensial dikelola di
+  // Nathara IdP (SSO). Kartu password diganti pemberitahuan statis di bawah.
 
   return (
     <PageContainer>
@@ -122,14 +110,9 @@ export default async function AccountPage() {
               <GeneratedValue value={t('password')} />
             </CardTitle>
             <CardDescription>
-              <GeneratedValue
-                value={hasPassword ? t('passwordChangeDescription') : t('passwordAddDescription')}
-              />
+              <GeneratedValue value="Passwords are managed in Nathara SSO, not in this app. Use your identity provider to change or reset your password." />
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <PasswordSection hasPassword={hasPassword} />
-          </CardContent>
         </Card>
       </div>
     </PageContainer>

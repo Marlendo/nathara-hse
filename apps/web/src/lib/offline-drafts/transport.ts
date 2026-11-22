@@ -32,7 +32,7 @@ const REQUEST_TIMEOUT_MS = 20_000
 const BEACON_MAX_BYTES = 60 * 1024
 
 const OFFLINE_ERROR = 'No connection. Changes are kept on this device.'
-const SERVER_ERROR = 'BeaconHS could not be reached. Retrying automatically.'
+const SERVER_ERROR = 'Nathara HSE could not be reached. Retrying automatically.'
 const SIGNED_OUT_ERROR = 'Sign in again to sync your changes.'
 
 type FailureBody = {

@@ -2,7 +2,7 @@
 // "WHMIS within 30 days of hire", "site orientation within 7 days of joining
 // the crew". The obligation has one rule; every person gets their own due date.
 //
-// Event dates come from records BeaconHS already keeps:
+// Event dates come from records Nathara HSE already keeps:
 //   hire           people.hire_date (unknown → still required, no due date yet)
 //   audience_join  compliance_audience_joins, kept by the materializer: the
 //                  scan that first finds the person in the audience records

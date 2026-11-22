@@ -1,15 +1,15 @@
-/* BeaconHS Collabora branding.
+/* Nathara HSE Collabora branding.
  *
  * Mounted over /usr/share/coolwsd/browser/dist/branding.js (the stock CODE
  * hook, preserved below). cool.html loads this file after every stylesheet,
  * so the injected rules win the cascade — the editor chrome follows the
- * BeaconHS theme exactly: white header + slate text in light mode, the app's
+ * Nathara HSE theme exactly: white header + slate text in light mode, the app's
  * slate-900 header in dark mode, teal accents everywhere (replacing the
  * per-app tint that `--doc-type` normally carries).
  */
 
-/* --- BeaconHS theme enforcement ------------------------------------------ */
-/* The embed passes bhsTheme=dark|light on the frame URL. COOL's own darkTheme
+/* --- Nathara HSE theme enforcement ------------------------------------------ */
+/* The embed passes hseTheme=dark|light on the frame URL. COOL's own darkTheme
  * param is unusable (its presence forces dark and clobbers ui_defaults), and
  * COOL persists the last theme in localStorage / per-user browser settings —
  * both of which would override the host app. This hook runs after global.js
@@ -17,7 +17,7 @@
  * the pref caches pins the editor to the app's theme. Re-seed whenever COOL's
  * server-synced browser settings arrive and reset the caches. */
 ;(function () {
-  var match = /[?&]bhsTheme=(dark|light)\b/.exec(window.location.search)
+  var match = /[?&]hseTheme=(dark|light)\b/.exec(window.location.search)
   if (!match) return
   var desired = match[1] === 'dark' ? 'true' : 'false'
   function enforce() {
@@ -47,16 +47,16 @@
   })
 })()
 
-/* --- BeaconHS theme ------------------------------------------------------ */
+/* --- Nathara HSE theme ------------------------------------------------------ */
 ;(function () {
   var TEAL_RGB = '13, 148, 136' /* app accent #0d9488 */
 
   var css = [
     /* Writer's default hit-test cursor is an arrow until a caret exists.
      * Use an I-beam for editable text; keep native link/object/resize cursors. */
-    'body[data-doctype=text][data-beaconhs-editable=true] #document-canvas { cursor: text; }',
-    'body[data-doctype=text][data-beaconhs-editable=true] #document-canvas[style*="cursor: default;"],',
-    'body[data-doctype=text][data-beaconhs-editable=true] #document-canvas[style*="cursor: auto;"] { cursor: text !important; }',
+    'body[data-doctype=text][data-hse-editable=true] #document-canvas { cursor: text; }',
+    'body[data-doctype=text][data-hse-editable=true] #document-canvas[style*="cursor: default;"],',
+    'body[data-doctype=text][data-hse-editable=true] #document-canvas[style*="cursor: auto;"] { cursor: text !important; }',
     /* Accents (selected tab underline, selection handles, focus rings). */
     ':root, [data-doctype] {',
     '  --doc-type: ' + TEAL_RGB + ' !important;',
@@ -96,7 +96,7 @@
     '}',
     /* Stock CODE branding assumes a coloured header and paints the mode
      * label, arrow, border and shortcut icons white. Keep every control
-     * visible on BeaconHS's white header, including in Viewing mode. */
+     * visible on Nathara HSE's white header, including in Viewing mode. */
     'html:not([data-theme=dark]) #viewModeDropdown .unolabel,',
     'html:not([data-theme=dark]) #readonlyMode .unolabel,',
     'html:not([data-theme=dark]) .main-nav #main-menu > li > a,',
@@ -141,7 +141,7 @@
     document.adoptedStyleSheets = document.adoptedStyleSheets.concat(sheet)
   } catch (e) {
     var style = document.createElement('style')
-    style.id = 'beaconhs-brand'
+    style.id = 'hse-brand'
     style.textContent = css
     document.head.appendChild(style)
   }
@@ -181,7 +181,7 @@
   }).observe(document.documentElement, { childList: true, subtree: true })
 })()
 
-/* The host pins the iframe to a pixel size and posts BeaconHS_Relayout.
+/* The host pins the iframe to a pixel size and posts NatharaHSE_Relayout.
  * Writer's page count comes from the document model; the tiles are a separate
  * layer that stays on page 1 until the map is told its container changed.
  * Focusing the map restores the text caret instead of the pan hand. */
@@ -191,7 +191,7 @@
   function syncPermission() {
     var map = window.app && window.app.map
     document.body.setAttribute(
-      'data-beaconhs-editable',
+      'data-hse-editable',
       String(Boolean(map && map.isEditMode && map.isEditMode())),
     )
   }
@@ -238,7 +238,7 @@
         return
       }
     }
-    if (!data || data.MessageId !== 'BeaconHS_Relayout') return
+    if (!data || data.MessageId !== 'NatharaHSE_Relayout') return
     relayoutWhenReady(Boolean(data.Values && data.Values.focus), 0)
   })
 })()

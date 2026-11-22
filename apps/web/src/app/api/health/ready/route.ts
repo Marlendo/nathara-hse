@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
 import { sql } from 'drizzle-orm'
-import { getAuth } from '@beaconhs/auth'
 import { db, superDb } from '@beaconhs/db'
 import { assertRedisReady } from '@beaconhs/jobs/health'
 
@@ -12,9 +11,8 @@ let pending: Promise<boolean> | undefined
 
 async function runChecks() {
   try {
-    // Initialize auth as part of readiness so a missing/weak signing secret
-    // cannot pass deployment health and fail on the first login request.
-    getAuth()
+    // Readiness = DB + Redis. Auth readiness (kontrak SSO TODO-SSO-1..5) divalidasi
+    // di rute SSO / halaman login, bukan di sini — tidak ada secret sesi lokal lagi.
     await Promise.all([
       db.execute(sql`select 1`),
       superDb.execute(sql`select 1`),

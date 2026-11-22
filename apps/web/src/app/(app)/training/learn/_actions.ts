@@ -215,7 +215,7 @@ export async function enrollInCourse(courseId: string, personIdArg?: string) {
   revalidatePath('/compliance/mine')
 }
 
-// Online providers are external to BeaconHS, so a learner can only submit a
+// Online providers are external to Nathara HSE, so a learner can only submit a
 // verification request. Training staff issue the record/certificate later from
 // the course completions screen after checking the provider result.
 export async function requestOnlineCourseCompletion(enrollmentId: string) {

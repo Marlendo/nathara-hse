@@ -66,7 +66,7 @@ export function validateMigrationState(
   if (migrations.length === 0) throw new Error('No migration files were provided')
   if (trackerRows.length === 0) {
     throw new Error(
-      'Existing BeaconHS schema has no migration history. Refusing to guess which DDL is applied.',
+      'Existing Nathara HSE schema has no migration history. Refusing to guess which DDL is applied.',
     )
   }
 

@@ -22,15 +22,15 @@ const input = {
 }
 
 describe('invite grants', () => {
-  const originalSecret = process.env.BETTER_AUTH_SECRET
+  const originalSecret = process.env.HSE_INVITE_SECRET
 
   beforeEach(() => {
-    process.env.BETTER_AUTH_SECRET = 'test-invite-secret-with-enough-entropy'
+    process.env.HSE_INVITE_SECRET = 'test-invite-secret-with-enough-entropy'
   })
 
   afterEach(() => {
-    if (originalSecret === undefined) delete process.env.BETTER_AUTH_SECRET
-    else process.env.BETTER_AUTH_SECRET = originalSecret
+    if (originalSecret === undefined) delete process.env.HSE_INVITE_SECRET
+    else process.env.HSE_INVITE_SECRET = originalSecret
   })
 
   it('binds a seven-day grant to one membership, tenant, user, and invitation', () => {
@@ -57,7 +57,7 @@ describe('invite grants', () => {
     const key = Buffer.from(
       hkdfSync(
         'sha256',
-        Buffer.from(process.env.BETTER_AUTH_SECRET!),
+        Buffer.from(process.env.HSE_INVITE_SECRET!),
         Buffer.alloc(0),
         Buffer.from('beaconhs.invite.v1'),
         32,

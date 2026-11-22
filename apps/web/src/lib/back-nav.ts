@@ -7,11 +7,11 @@
 // in priority order — an explicit `?from` param, the in-app history stack, then
 // the fallback.
 
-const SITE_TITLE_SUFFIX = ' · BeaconHS'
+const SITE_TITLE_SUFFIX = ' · Nathara HSE'
 
 /**
  * Clean a document.title into a short back-link noun. Strips the site suffix
- * ("Foo · BeaconHS" → "Foo") and drops any trailing " · <id>" disambiguator so
+ * ("Foo · Nathara HSE" → "Foo") and drops any trailing " · <id>" disambiguator so
  * "Person · a1b2c3d4" reads as "Person". Returns null when nothing usable
  * remains.
  */

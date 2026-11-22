@@ -80,7 +80,7 @@ export async function loadTenantBranding(ctx: RequestContext) {
       .limit(1),
   )
   return {
-    name: tenant?.name ?? 'BeaconHS',
+    name: tenant?.name ?? 'Nathara HSE',
     logoUrl: await resolveTenantLogoUrl({
       tenantId: ctx.tenantId!,
       logoUrl: tenant?.branding?.logoUrl,

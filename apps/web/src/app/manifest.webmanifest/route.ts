@@ -14,6 +14,7 @@ import { eq } from 'drizzle-orm'
 import { db, withSuperAdmin } from '@beaconhs/db'
 import { tenants } from '@beaconhs/db/schema'
 import { getRequestContext } from '@/lib/auth'
+import { PRODUCT_NAME } from '@/lib/brand'
 
 export const dynamic = 'force-dynamic'
 
@@ -24,7 +25,7 @@ const ICONS = [
 ]
 
 export async function GET() {
-  let name = 'BeaconHS'
+  let name: string = PRODUCT_NAME
   let themeColor = '#1B2B4A'
 
   try {

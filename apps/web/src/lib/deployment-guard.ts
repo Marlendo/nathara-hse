@@ -3,14 +3,14 @@
 // Native field autosaves use version-independent routes and remain available.
 
 export type DeploymentStaleReason = 'version_mismatch' | 'action_not_found'
-export const DEPLOYMENT_STALE_EVENT = 'beaconhs:deployment-stale'
+export const DEPLOYMENT_STALE_EVENT = 'hse:deployment-stale'
 const CHECK_INTERVAL_MS = 15_000
 const CHECK_TIMEOUT_MS = 3_000
 const RELEASE = /^[a-f0-9]{40}$/
 
 class DeploymentChangedError extends Error {
   constructor() {
-    super('BeaconHS has been updated. Refresh the app before continuing.')
+    super('Nathara HSE has been updated. Refresh the app before continuing.')
     this.name = 'DeploymentChangedError'
   }
 }

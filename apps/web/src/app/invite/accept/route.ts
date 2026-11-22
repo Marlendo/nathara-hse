@@ -1,7 +1,11 @@
 import { appBaseUrl } from '@/lib/app-base-url'
 import { NextRequest, NextResponse } from 'next/server'
-import { getAuth } from '@beaconhs/auth'
-import { inspectInviteForUser, type InviteAccessState } from '@beaconhs/auth/invites'
+import { getSsoSession } from '@beaconhs/auth'
+import {
+  acceptInviteAfterSso,
+  inspectInviteForUser,
+  type InviteAccessState,
+} from '@beaconhs/auth/invites'
 import { ACTIVE_ROLE_COOKIE, ACTIVE_TENANT_COOKIE } from '@/lib/auth'
 
 export const dynamic = 'force-dynamic'
@@ -13,19 +17,18 @@ function statusRedirect(state: InviteAccessState): NextResponse {
 }
 
 export async function GET(req: NextRequest): Promise<NextResponse> {
-  // Better Auth adds `error=INVALID_TOKEN` here when its one-time token is
-  // expired, invalid, or already consumed. Never inspect/activate in that case.
-  if (req.nextUrl.searchParams.has('error')) return statusRedirect('expired')
-
   const grant = req.nextUrl.searchParams.get('grant') ?? ''
   if (!grant) return statusRedirect('invalid')
 
-  const session = await getAuth()
-    .api.getSession({ headers: req.headers })
-    .catch(() => null)
-  if (!session?.user?.id) return statusRedirect('invalid')
+  // Undangan berjangkar SSO: sesi SSO yang memverifikasi grant mengaktifkan
+  // membership tertunda (post-SSO provisioning).
+  const session = await getSsoSession(req.headers).catch(() => null)
+  if (!session?.userId) return statusRedirect('invalid')
 
-  const invite = await inspectInviteForUser(grant, session.user.id).catch(() => null)
+  // Aktivasi idempoten: grant yang sudah dipakai / membership aktif tetap aman.
+  await acceptInviteAfterSso(grant, session.userId).catch(() => null)
+
+  const invite = await inspectInviteForUser(grant, session.userId).catch(() => null)
   if (!invite) return statusRedirect('pending')
   if (invite.state !== 'active' || !invite.tenantId) {
     return statusRedirect(invite.state)

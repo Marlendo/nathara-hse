@@ -366,7 +366,7 @@ describe('rendering', () => {
     expect(html).toContain('https://app.example/journals/0')
     expect(html).toContain('#0d9488')
     expect(renderBriefText(input)).toContain(
-      'Open in BeaconHS: https://app.example/reports/briefs/b/runs/r',
+      'Open in Nathara HSE: https://app.example/reports/briefs/b/runs/r',
     )
   })
 })

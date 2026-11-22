@@ -1,6 +1,5 @@
+import { GeneratedValue } from '@/i18n/generated'
 import { getGeneratedTranslations } from '@/i18n/generated.server'
-
-import { GeneratedText, GeneratedValue } from '@/i18n/generated'
 import { redirect } from 'next/navigation'
 import { Alert, AlertDescription } from '@beaconhs/ui'
 import { Logo } from '@/components/brand-logo'
@@ -11,7 +10,7 @@ import { LoginForm } from './login-form'
 
 export async function generateMetadata() {
   const tGenerated = await getGeneratedTranslations()
-  return { title: tGenerated('m_1d1210bb1b1dca') }
+  return { title: tGenerated('m_06c53a8bd3e768') }
 }
 
 export default async function LoginPage({
@@ -23,25 +22,25 @@ export default async function LoginPage({
   const continueHref = authContinuationPath(pickString(sp.next))
   const userId = await getCurrentUserId()
   if (userId) redirect(continueHref as any)
-  const justReset = sp.reset === '1'
+  const ssoUnavailable = sp.sso === 'unavailable'
   return (
     <main className="grid min-h-screen place-items-center px-4">
       <div className="w-full max-w-sm space-y-6">
         <div className="text-center">
           <Logo animated className="mx-auto h-11 w-auto" />
           <h1 className="mt-5 text-xl font-semibold">
-            <GeneratedText id="m_1d1210bb1b1dca" />
+            <GeneratedValue value="Sign in to Nathara HSE" />
           </h1>
           <p className="mt-1 text-sm text-slate-500">
-            <GeneratedText id="m_089a5f11450410" />
+            <GeneratedValue value="Use your Nathara work account (SSO) to continue." />
           </p>
         </div>
         <GeneratedValue
           value={
-            justReset ? (
-              <Alert variant="success">
+            ssoUnavailable ? (
+              <Alert variant="destructive">
                 <AlertDescription>
-                  <GeneratedText id="m_014a407c031b05" />
+                  <GeneratedValue value="Nathara SSO is not available yet — the SSO contract is still being finalized. Please try again later." />
                 </AlertDescription>
               </Alert>
             ) : null
@@ -49,7 +48,7 @@ export default async function LoginPage({
         />
         <LoginForm continueHref={continueHref} />
         <p className="text-center text-xs text-slate-500">
-          <GeneratedText id="m_03c06c8469b155" />
+          <GeneratedValue value="Need an account? Contact your administrator." />
         </p>
       </div>
     </main>

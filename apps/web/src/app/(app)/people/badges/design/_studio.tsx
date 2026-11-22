@@ -54,7 +54,7 @@ const CATALOG: DesignFieldCatalog = {
     { value: 'verify.qr', label: 'Transcript QR code' },
   ],
   sample: {
-    'tenant.name': 'Beacon Health & Safety',
+    'tenant.name': 'Nathara HSE',
     'recipient.fullName': 'Jordan Miller',
     'recipient.employeeNo': '10482',
     'person.title': 'Mechanical Foreman',

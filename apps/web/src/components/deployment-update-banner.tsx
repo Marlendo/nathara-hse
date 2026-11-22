@@ -47,7 +47,7 @@ export function DeploymentUpdateBanner({ version }: { version: string }) {
     if (refreshing) return
     if (
       !(await confirmDialog({
-        title: t('Refresh BeaconHS'),
+        title: t('Refresh Nathara HSE'),
         message: t(
           'Your journal and record edits will sync first. Check any unfinished form before refreshing. You will need to repeat the action you were trying.',
         ),
@@ -78,7 +78,7 @@ export function DeploymentUpdateBanner({ version }: { version: string }) {
       className="flex shrink-0 flex-wrap items-center justify-between gap-2 border-b border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-950 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-100"
     >
       <p>
-        <GeneratedValue value="BeaconHS has been updated. Refresh the app before continuing." />
+        <GeneratedValue value="Nathara HSE has been updated. Refresh the app before continuing." />
       </p>
       <Button size="sm" disabled={refreshing} onClick={() => void refresh()}>
         <RefreshCw size={14} className={refreshing ? 'animate-spin' : undefined} />

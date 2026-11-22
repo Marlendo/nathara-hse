@@ -65,6 +65,8 @@ export type RiskMatrixConfig = {
 
 // --- Better-Auth tables (singular names, camelCase columns) ---------------
 // SQL column names use camelCase so they match what Better-Auth 1.6.x emits.
+// PM-HSE-0001: jalur password lokal DIMATIKAN — kolom `account.password`
+// dihapus via migrasi 0107 (tidak ada modul HSE yang membacanya).
 
 export const users = pgTable(
   'user',
@@ -74,6 +76,9 @@ export const users = pgTable(
     emailVerified: boolean('emailVerified').default(false).notNull(),
     name: text('name').notNull(),
     image: text('image'),
+    // SSO Nathara (PM-HSE-0001): subject IdP (Supabase `sub`) — dipetakan saat
+    // provisioning login SSO pertama. Unik: satu identitas IdP = satu akun.
+    supabaseSub: text('supabase_sub'),
     isSuperAdmin: boolean('isSuperAdmin').default(false).notNull(),
     timezone: text('timezone').default('America/Toronto').notNull(),
     createdAt: timestamp('createdAt', { withTimezone: true }).defaultNow().notNull(),
@@ -81,6 +86,7 @@ export const users = pgTable(
   },
   (t) => ({
     emailUx: uniqueIndex('user_email_ux').on(t.email),
+    supabaseSubUx: uniqueIndex('user_supabase_sub_ux').on(t.supabaseSub),
   }),
 )
 
@@ -135,7 +141,6 @@ export const account = pgTable(
     accessTokenExpiresAt: timestamp('accessTokenExpiresAt', { withTimezone: true }),
     refreshTokenExpiresAt: timestamp('refreshTokenExpiresAt', { withTimezone: true }),
     scope: text('scope'),
-    password: text('password'),
     createdAt: timestamp('createdAt', { withTimezone: true }).defaultNow().notNull(),
     updatedAt: timestamp('updatedAt', { withTimezone: true }).defaultNow().notNull(),
   },

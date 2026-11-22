@@ -166,7 +166,7 @@ export const actionDataSchema = z.discriminatedUnion('action', [
     channel: z.enum(['email', 'sms', 'in_app']).optional(),
     // Who the email appears to come from. Absent ⇒ 'beaconhs' (the configured
     // sender — right for system notices). 'submitter' shows "<submitter> via
-    // BeaconHS" and sets Reply-To to the submitter, keeping the verified
+    // Nathara HSE" and sets Reply-To to the submitter, keeping the verified
     // From address. Email channel only.
     sender: z.enum(['beaconhs', 'submitter']).optional(),
     // Email channel only. True ⇒ every recipient gets their own copy, so

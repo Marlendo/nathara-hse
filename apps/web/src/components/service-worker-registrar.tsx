@@ -6,7 +6,7 @@
 // 16.4+ home-screen installs). Renders nothing.
 //
 // The service worker makes the app installable and lets push notifications
-// reach the device. BeaconHS remains deliberately online-only; authenticated
+// reach the device. Nathara HSE remains deliberately online-only; authenticated
 // pages are never placed in a cross-session browser cache. See public/sw.js.
 
 import { useEffect } from 'react'

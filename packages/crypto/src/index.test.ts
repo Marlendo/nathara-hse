@@ -3,7 +3,7 @@ import { sealSecret, unsealSecret } from './index'
 
 beforeAll(() => {
   // Deterministic key material for the round-trip tests.
-  process.env.BETTER_AUTH_SECRET = 'test-secret-for-crypto-suite'
+  process.env.HSE_APP_SECRET = 'test-secret-for-crypto-suite'
 })
 
 describe('secret sealing', () => {

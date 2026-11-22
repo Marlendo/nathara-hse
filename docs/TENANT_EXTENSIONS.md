@@ -1,6 +1,6 @@
 # Tenant extensions
 
-BeaconHS supports trusted, operator-installed server modules. These are executable
+Nathara HSE supports trusted, operator-installed server modules. These are executable
 server code, with the application's privileges, not a sandbox for code uploaded
 by tenant users. Only the deployment operator controls installations.
 

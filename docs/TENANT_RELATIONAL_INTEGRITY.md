@@ -2,7 +2,7 @@
 
 ## Outcome
 
-BeaconHS row-level security correctly restricts rows by `tenant_id`, but RLS is
+Nathara HSE row-level security correctly restricts rows by `tenant_id`, but RLS is
 not a relational-integrity boundary. PostgreSQL explicitly bypasses row security
 while performing internal referential-integrity checks. A child row whose
 `tenant_id` is tenant A can therefore satisfy a conventional `parent_id ->

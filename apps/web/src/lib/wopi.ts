@@ -6,7 +6,7 @@
 // is a compact HMAC-signed grant scoped to ONE attachment for ONE user — the
 // WOPI routes authenticate with it alone (no session cookie crosses that hop).
 //
-// Key derivation mirrors @beaconhs/crypto: HKDF over BETTER_AUTH_SECRET with a
+// Key derivation mirrors @beaconhs/crypto: HKDF over HSE_APP_SECRET with a
 // purpose-scoped info string, so no new env var is required and web + worker
 // deployments sharing the secret verify each other's tokens.
 
@@ -19,10 +19,10 @@ const MAX_WOPI_TOKEN_LENGTH = 4096
 const CLOCK_SKEW_MS = 60_000
 
 function sourceSecret(): string {
-  const secret = process.env.BETTER_AUTH_SECRET
+  const secret = process.env.HSE_APP_SECRET
   if (secret) return secret
   if (process.env.NODE_ENV === 'production') {
-    throw new Error('[wopi] BETTER_AUTH_SECRET is required in production to sign WOPI tokens.')
+    throw new Error('[wopi] HSE_APP_SECRET is required in production to sign WOPI tokens.')
   }
   return FALLBACK_SECRET
 }

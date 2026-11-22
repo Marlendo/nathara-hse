@@ -12,7 +12,7 @@ import {
 const input: EmailSettingsInput = {
   enabled: true,
   provider: 'sendgrid',
-  fromName: 'BeaconHS',
+  fromName: 'Nathara HSE',
   fromEmail: 'beacon@example.com',
   replyTo: 'safety@example.com',
   mailgunDomain: '',
@@ -207,7 +207,7 @@ describe('email provider configuration', () => {
       validateStoredEmailConfig({
         enabled: false,
         provider: 'sendgrid',
-        fromName: 'BeaconHS <alerts>',
+        fromName: 'Nathara HSE <alerts>',
       }),
     ).toThrow('cannot contain angle brackets')
 

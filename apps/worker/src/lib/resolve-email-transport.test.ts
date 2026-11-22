@@ -41,7 +41,7 @@ describe('requireEmailTransport', () => {
     const transport = {
       provider: 'sendgrid' as const,
       apiKey: 'SG.test',
-      from: 'BeaconHS <beacon@example.test>',
+      from: 'Nathara HSE <beacon@example.test>',
     }
     expect(requireEmailTransport({ kind: 'transport', transport, source: 'platform' })).toBe(
       transport,

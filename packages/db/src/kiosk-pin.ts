@@ -11,7 +11,7 @@ const FORMAT = 'bhs_pin_scrypt_v1'
 const KEY_LENGTH = 32
 const SCRYPT_OPTIONS = { N: 16384, r: 8, p: 1 } as const
 
-// The scrypt pepper derives from BETTER_AUTH_SECRET so every process sharing a
+// The scrypt pepper derives from HSE_APP_SECRET so every process sharing a
 // database (web, worker, migrate) peppers PINs identically. Resolved lazily —
 // not at module load — so importing @beaconhs/db never requires the secret;
 // only actually hashing/verifying a PIN does. In production a missing secret is
@@ -20,15 +20,15 @@ const SCRYPT_OPTIONS = { N: 16384, r: 8, p: 1 } as const
 let pepperKey: Buffer | null = null
 function getPepperKey(): Buffer {
   if (pepperKey) return pepperKey
-  const source = process.env.BETTER_AUTH_SECRET
+  const source = process.env.HSE_APP_SECRET
   if (!source) {
     if (process.env.NODE_ENV === 'production') {
       throw new Error(
-        'BETTER_AUTH_SECRET must be set in production — kiosk PIN hashing derives its pepper from it and does not fall back to the insecure dev default.',
+        'HSE_APP_SECRET must be set in production — kiosk PIN hashing derives its pepper from it and does not fall back to the insecure dev default.',
       )
     }
     console.warn(
-      '[kiosk-pin] BETTER_AUTH_SECRET is not set; using the insecure dev pepper (development only).',
+      '[kiosk-pin] HSE_APP_SECRET is not set; using the insecure dev pepper (development only).',
     )
   }
   pepperKey = Buffer.from(

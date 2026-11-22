@@ -45,7 +45,7 @@ export async function GET(req: Request): Promise<NextResponse> {
     }
     return NextResponse.json(
       {
-        name: 'BeaconHS Public API',
+        name: 'Nathara HSE Public API',
         version: '1.0.0',
         documentation: `${origin}/api/v1/docs`,
         openapi: `${origin}/api/v1/openapi.json`,

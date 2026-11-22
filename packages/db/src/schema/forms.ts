@@ -204,7 +204,7 @@ export const formResponseStatus = pgEnum('form_response_status', [
   'non_compliant',
 ])
 
-// How a response was captured: filled in BeaconHS or recorded from a paper or
+// How a response was captured: filled in Nathara HSE or recorded from a paper or
 // customer form. External captures store a reference, issuer, notes and photos.
 export const formResponseCaptureMode = pgEnum('form_response_capture_mode', ['digital', 'external'])
 

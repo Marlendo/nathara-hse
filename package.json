@@ -31,5 +31,37 @@
     "prettier-plugin-tailwindcss": "^0.8.0",
     "turbo": "^2.10.5",
     "typescript": "^6.0.3"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "!packages/etl",
+    "plugins/*"
+  ],
+  "overrides": {
+    "@excalidraw/excalidraw@0.18.1>sass": "-",
+    "next@16.4.1>sass": "-",
+    "pdfjs-dist@4.10.38>@napi-rs/canvas": "-",
+    "vite@8.1.6>sass": "-",
+    "katex@0.16.47": "0.18.2",
+    "postcss-selector-parser@6.0.10": "7.1.7",
+    "vue@3.5.39": "3.5.42",
+    "@vue/server-renderer@3.5.39": "3.5.42",
+    "webpack@5.108.4": "5.112.0",
+    "esbuild@0.18.20": "0.25.12",
+    "esbuild@0.28.0": "0.28.1",
+    "form-data": "4.0.6",
+    "ioredis": "5.11.1",
+    "kysely": "0.28.17",
+    "lodash-es": "4.18.1",
+    "uuid@8.3.2": "11.1.1",
+    "nanoid@3.3.3": "3.3.19",
+    "nanoid@4.0.2": "5.1.16"
+  },
+  "patchedDependencies": {
+    "@braedonsaunders/appkit-reports@2.0.1": "patches/@braedonsaunders__appkit-reports@2.0.1.patch",
+    "@braedonsaunders/appkit-pdf@0.7.0": "patches/@braedonsaunders__appkit-pdf@0.7.0.patch",
+    "next@16.4.1": "patches/next@16.4.1.patch",
+    "pagedjs@0.4.3": "patches/pagedjs@0.4.3.patch"
   }
 }

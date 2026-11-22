@@ -436,7 +436,7 @@ function SqlMapping({
         </Field>
         <Field
           label={tGenerated('m_11161e26747a7a')}
-          help="Required. BeaconHS records returned IDs so a partial retry can remove completed inserts before trying again."
+          help="Required. Nathara HSE records returned IDs so a partial retry can remove completed inserts before trying again."
           required
         >
           <Input

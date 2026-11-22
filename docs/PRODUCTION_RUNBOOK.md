@@ -1,6 +1,6 @@
 # Production operations runbook
 
-This runbook is the minimum operating contract for a BeaconHS environment. It
+This runbook is the minimum operating contract for a Nathara HSE environment. It
 is intentionally separate from the historical implementation plan.
 
 ## Launch gates
@@ -15,7 +15,7 @@ Do not accept production traffic until all of these are true:
   and lifecycle policies.
 - Runtime, migration, backup, and cross-tenant database credentials are
   separate. No long-running container receives migration or backup credentials.
-- BeaconHS web, worker, scheduler, and storage-init containers run as the
+- Nathara HSE web, worker, scheduler, and storage-init containers run as the
   unprivileged image user (UID/GID 1000), not root.
 - Production secrets are unique, stored in the deploy secret manager, and have
   an owner and rotation procedure.
@@ -102,7 +102,7 @@ the sender identity or domain with the selected provider, allow the deployment
 egress addresses when the provider uses an IP allowlist, and send a test from
 **Platform email** to an independently monitored mailbox. Custom SMTP must use
 an externally resolvable public DNS hostname and a certificate that validates
-for that hostname. BeaconHS blocks private, local, reserved, and IP-literal
+for that hostname. Nathara HSE blocks private, local, reserved, and IP-literal
 SMTP targets and requires verified implicit TLS or STARTTLS.
 
 On-prem SQL integrations (inbound database sync and outbound SQL destinations)
@@ -263,7 +263,7 @@ backup-tool changes.
 - Run a daily referenced-key inventory. Alert on missing referenced objects and
   age unreferenced objects through a quarantine window before deletion.
 - Back up or replicate irreplaceable objects to a separate account/region.
-- Never reuse broad company-wide object credentials for BeaconHS.
+- Never reuse broad company-wide object credentials for Nathara HSE.
 
 ## Redis and job recovery
 
@@ -289,7 +289,7 @@ in-flight delivery. Account IDs are text; membership and person IDs are UUIDs.
 
 ## Error monitoring
 
-BeaconHS initializes Sentry only when `SENTRY_DSN` is non-empty. Set the same
+Nathara HSE initializes Sentry only when `SENTRY_DSN` is non-empty. Set the same
 DSN and an explicit `SENTRY_ENVIRONMENT` on web, worker, and scheduler. The web
 image also receives that DSN at build time as `NEXT_PUBLIC_SENTRY_DSN` so client
 render and navigation errors are captured. DSNs are public identifiers, but the
@@ -401,7 +401,7 @@ One-time data backfills (`apps/web/scripts/backfill-*.ts`) are run manually
 with `pnpm --filter @beaconhs/web run cutover:run <script>`; they are no longer
 part of the deployment workflow.
 
-The dev compose currently serves Collabora on the BeaconHS app origin through
+The dev compose currently serves Collabora on the Nathara HSE app origin through
 `/browser`, `/cool`, and `/hosting`. That topology is for the private dev
 environment only: a compromised editor would share the app origin, cookies,
 and browser storage. Before production traffic, give Collabora a dedicated

@@ -7,10 +7,10 @@ import type { ManualArticle } from '../types'
 export const GETTING_STARTED_ARTICLES: ManualArticle[] = [
   {
     slug: 'getting-started',
-    title: 'Welcome to BeaconHS',
+    title: 'Welcome to Nathara HSE',
     group: 'Getting started',
     iconKey: 'gauge',
-    summary: 'Sign in, find your way around, and set up BeaconHS on your phone.',
+    summary: 'Sign in, find your way around, and set up Nathara HSE on your phone.',
     keywords: [
       'login',
       'log in',
@@ -46,13 +46,13 @@ export const GETTING_STARTED_ARTICLES: ManualArticle[] = [
       'bug',
       'issue',
     ],
-    body: `BeaconHS is where your crew reports hazards, fills out forms, and keeps safety records in one place. This article covers signing in and finding your way around.
+    body: `Nathara HSE is where your crew reports hazards, fills out forms, and keeps safety records in one place. This article covers signing in and finding your way around.
 
-The startup logo finishes its animation once when you first open BeaconHS in a tab. Moving between pages does not replay it. If your device uses reduced motion, a static logo appears briefly instead.
+The startup logo finishes its animation once when you first open Nathara HSE in a tab. Moving between pages does not replay it. If your device uses reduced motion, a static logo appears briefly instead.
 
 ## Signing in
 
-BeaconHS does not have public sign-up. Your administrator creates your account and sends an invitation to your work email.
+Nathara HSE does not have public sign-up. Your administrator creates your account and sends an invitation to your work email.
 
 For your first visit:
 
@@ -73,7 +73,7 @@ A normal password or magic-link sign-in does not activate a pending invitation. 
 
 ## Finding your way around
 
-The startup logo plays once when you first open BeaconHS in a browser tab. Moving between pages or refreshing that tab does not replay it. A short placeholder may appear while a page loads.
+The startup logo plays once when you first open Nathara HSE in a browser tab. Moving between pages or refreshing that tab does not replay it. A short placeholder may appear while a page loads.
 
 The left menu lists everything you can use. Items are grouped:
 
@@ -129,14 +129,14 @@ This is a different thing from an Insights dashboard. This one is your personal 
 1. Tap your name in the top right corner.
 2. Use the theme switcher to pick **Light**, **System**, or **Dark**.
 
-## Using BeaconHS on a phone or tablet
+## Using Nathara HSE on a phone or tablet
 
-BeaconHS works in any modern browser and is built for the field. You can also install it so it opens like a regular app:
+Nathara HSE works in any modern browser and is built for the field. You can also install it so it opens like a regular app:
 
-1. Open BeaconHS in your phone's browser.
+1. Open Nathara HSE in your phone's browser.
 2. On iPhone or iPad: tap the Share icon, then choose **Add to Home Screen**.
 3. On Android: open the browser menu, then choose **Install app** or **Add to Home screen**.
-4. Open BeaconHS from the new icon.
+4. Open Nathara HSE from the new icon.
 
 Installing it also lets you get push notifications on iPhone. See [Notifications & Inbox](/help/notifications).
 
@@ -243,13 +243,13 @@ Your wallet holds your certificates and skill cards — like the paper tickets i
       'unread',
       'reminders',
     ],
-    body: `BeaconHS sends you a notification when something needs your attention — a new task, an overdue item, or a training reminder. They all land in your inbox.
+    body: `Nathara HSE sends you a notification when something needs your attention — a new task, an overdue item, or a training reminder. They all land in your inbox.
 
 ## Where to find it
 
 Tap the bell icon in the top bar, or open [Notifications](/notifications). A number on the bell shows how many are unread.
 
-Signature requests open a personal **Review and sign** page. If you need to sign in first, BeaconHS returns to that request after login. Review the frozen job hazards and sign your own name.
+Signature requests open a personal **Review and sign** page. If you need to sign in first, Nathara HSE returns to that request after login. Review the frozen job hazards and sign your own name.
 
 ## Reading and clearing notifications
 
@@ -270,18 +270,18 @@ There is also a search box at the top if you are looking for something specific.
 
 ## Turning on push notifications on your phone
 
-Push notifications pop up on your phone even when BeaconHS is not open.
+Push notifications pop up on your phone even when Nathara HSE is not open.
 
 1. Open [Notification preferences](/notifications/preferences) on the device you want alerts on.
 2. Find the **Push notifications on this device** card.
 3. Tap **Enable on this device** and allow notifications when your phone asks.
 4. Tap **Send a test push** to check it works.
 
-On iPhone and iPad, push only works after you install BeaconHS to your home screen:
+On iPhone and iPad, push only works after you install Nathara HSE to your home screen:
 
 1. In Safari, tap the Share icon.
 2. Choose **Add to Home Screen**.
-3. Open BeaconHS from the new icon, then follow the steps above.
+3. Open Nathara HSE from the new icon, then follow the steps above.
 
 ## Tips
 
@@ -340,7 +340,7 @@ Save your signature in **Account → Signature**, then choose **Saved signature 
 2. Enter your **Current password**, then your **New password** and **Confirm new password**.
 3. Tap **Change password**.
 
-If you cannot remember your current password, tap **Forgot current password?** and BeaconHS emails you a reset link.
+If you cannot remember your current password, tap **Forgot current password?** and Nathara HSE emails you a reset link.
 
 ## Adding a password if you only use magic links
 
@@ -378,7 +378,7 @@ After that you can sign in either way — password or magic link.
       'shortcut',
       'smart search',
     ],
-    body: `The Assistant is a chat built into BeaconHS. Ask it questions in plain English — about your safety records or about how to do something in the app.
+    body: `The Assistant is a chat built into Nathara HSE. Ask it questions in plain English — about your safety records or about how to do something in the app.
 
 ## What this is for
 
@@ -470,7 +470,7 @@ If your role can open the Compliance hub, you can also ask about another person,
       'onboarding',
       'learn',
     ],
-    body: `BeaconHS has two kinds of built-in help: this user guide, and guided tours that show you around live on screen.
+    body: `Nathara HSE has two kinds of built-in help: this user guide, and guided tours that show you around live on screen.
 
 ## The user guide
 
@@ -497,7 +497,7 @@ Some tours start on their own the first time you sign in, to show you the basics
 
 ## For admins: choosing who sees which tours
 
-If you manage BeaconHS for your company, you decide which tours are shown to which roles:
+If you manage Nathara HSE for your company, you decide which tours are shown to which roles:
 
 1. Open **Admin** in the left menu, then go to **Walkthroughs**.
 2. Pick a tour and choose the roles that should see it.
@@ -515,7 +515,7 @@ If you manage BeaconHS for your company, you decide which tours are shown to whi
     iconKey: 'circle-dot',
     requiredPermission: 'feedback.use',
     summary:
-      'Tell BeaconHS when something in the app is broken. We check the user guide first, then file a product report if it is a defect.',
+      'Tell Nathara HSE when something in the app is broken. We check the user guide first, then file a product report if it is a defect.',
     keywords: [
       'report',
       'bug',
@@ -529,7 +529,7 @@ If you manage BeaconHS for your company, you decide which tours are shown to whi
     ],
     body: `The **Report an issue** button lives in the top bar, next to notifications. Use it when a screen is wrong, a button does nothing, or something you expect to work does not.
 
-This is for problems in BeaconHS itself — not for a workplace incident or a hazard on site. Those have their own pages.
+This is for problems in Nathara HSE itself — not for a workplace incident or a hazard on site. Those have their own pages.
 
 ## When to use it
 
@@ -548,7 +548,7 @@ This is for problems in BeaconHS itself — not for a workplace incident or a ha
 2. Type what happened in your own words. You do not need technical language.
 3. A chip shows the page you were on. Leave it on unless the problem is not about that page. Tap **Remove page context** to drop it.
 4. Tap **Send**.
-5. BeaconHS may show a help answer, ask one or two questions, or file a product report.
+5. Nathara HSE may show a help answer, ask one or two questions, or file a product report.
 
 ## If you get a help answer
 
@@ -556,7 +556,7 @@ Read the steps. If they solve it, tap **That helped**. If it is still a product 
 
 ## What happens after you send it
 
-If it is a defect, BeaconHS files a generalized product issue. Names, emails, record ids, and company details are removed first. You will see a confirmation with an issue number. This still works when workspace AI is not set up — the report goes straight to the product tracker.
+If it is a defect, Nathara HSE files a generalized product issue. Names, emails, record ids, and company details are removed first. You will see a confirmation with an issue number. This still works when workspace AI is not set up — the report goes straight to the product tracker.
 
 You do not need to confirm again after it is recognized as a defect.
 
@@ -570,17 +570,17 @@ You do not need to confirm again after it is recognized as a defect.
     title: 'Refreshing after an app update',
     group: 'Getting started',
     iconKey: 'settings',
-    summary: 'Keep your work safe when BeaconHS asks you to refresh.',
+    summary: 'Keep your work safe when Nathara HSE asks you to refresh.',
     keywords: ['update', 'refresh', 'new version', 'button', 'connection', 'saved work'],
-    body: `BeaconHS can be updated while you have it open. A page left open from an earlier version may need a refresh before its buttons work.
+    body: `Nathara HSE can be updated while you have it open. A page left open from an earlier version may need a refresh before its buttons work.
 
 ## When the update message appears
 
-1. Tap **Refresh app** in the **BeaconHS has been updated** message.
+1. Tap **Refresh app** in the **Nathara HSE has been updated** message.
 2. Check any unfinished form before confirming. Journal and record edits saved on your device will sync first.
 3. Confirm **Refresh app**. If your changes cannot sync, keep the page open and reconnect. **Refresh anyway** is available if you accept that unfinished form entries or uploads may be lost.
 4. After the page reloads, repeat the button or action you were trying.
 
-BeaconHS does not repeat a failed action automatically. Check the record before trying again if you are unsure whether a previous action finished.`,
+Nathara HSE does not repeat a failed action automatically. Check the record before trying again if you are unsure whether a previous action finished.`,
   },
 ]

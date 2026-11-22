@@ -5,9 +5,9 @@ async function main() {
   const databaseUrl = process.env.DATABASE_URL
   const redisUrl = process.env.REDIS_URL
   if (!databaseUrl || !redisUrl) throw new Error('Required dependency URL is not configured')
-  const authSecret = process.env.BETTER_AUTH_SECRET
+  const authSecret = process.env.HSE_APP_SECRET
   if (process.env.NODE_ENV === 'production' && (!authSecret || authSecret.length < 32)) {
-    throw new Error('BETTER_AUTH_SECRET is not configured securely')
+    throw new Error('HSE_APP_SECRET is not configured securely')
   }
 
   assertDatabaseConfiguration({ superAdmin: true })

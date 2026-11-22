@@ -1,7 +1,7 @@
 'use server'
 
 // Actions for PowerPoint-mastered training decks. Collabora Impress is the
-// editor and the only playback engine; BeaconHS never rasterizes PPTX slides.
+// editor and the only playback engine; Nathara HSE never rasterizes PPTX slides.
 
 import { revalidatePath } from 'next/cache'
 import { and, eq, isNull } from 'drizzle-orm'
@@ -72,7 +72,7 @@ export async function getPptxEditorSession(
     attachmentId: master.attachment.id,
     tenantId: ctx.tenantId,
     userId: ctx.userId,
-    userName: ctx.membership?.displayName ?? 'BeaconHS user',
+    userName: ctx.membership?.displayName ?? 'Nathara HSE user',
     target,
     targetId,
     audience: 'author',
@@ -111,7 +111,7 @@ async function createPlaybackSession(input: {
     attachmentId: master.attachment.id,
     tenantId: ctx.tenantId,
     userId: ctx.userId,
-    userName: ctx.membership?.displayName ?? 'BeaconHS user',
+    userName: ctx.membership?.displayName ?? 'Nathara HSE user',
     target: input.target,
     targetId: input.targetId,
     audience: input.audience,

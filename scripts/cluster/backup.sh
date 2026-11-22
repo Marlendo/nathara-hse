@@ -4,8 +4,8 @@ set -eu
 umask 077
 
 : "${PGHOST:?Set PGHOST to the PostgreSQL host}"
-: "${PGDATABASE:?Set PGDATABASE to the BeaconHS database}"
-: "${PGUSER:?Set PGUSER to the read-only BeaconHS backup login}"
+: "${PGDATABASE:?Set PGDATABASE to the Nathara HSE database}"
+: "${PGUSER:?Set PGUSER to the read-only Nathara HSE backup login}"
 
 output_dir=${1:-backups}
 recipient=${BACKUP_AGE_RECIPIENT:-}

@@ -39,7 +39,7 @@ export async function GET(req: Request) {
       .where(eq(tenants.id, ctx.tenantId))
       .limit(1)
     const tokenScope = and(scope, eq(equipmentItems.bulkQrToken, request.token))
-    const labels = await loadEquipmentLabelData(tx, t?.name ?? 'BeaconHS', request.ids, tokenScope)
+    const labels = await loadEquipmentLabelData(tx, t?.name ?? 'Nathara HSE', request.ids, tokenScope)
     return { document: normalizeEquipmentLabelDesign(t?.settings ?? {}), labels }
   })
   if (result.labels.length !== request.ids.length) {

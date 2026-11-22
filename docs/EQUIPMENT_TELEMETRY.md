@@ -1,6 +1,6 @@
 # Equipment location integrations
 
-BeaconHS keeps equipment GPS tracking separate from the equipment register and
+Nathara HSE keeps equipment GPS tracking separate from the equipment register and
 manual custody. Fleet Complete / Powerfleet Unity is the first adapter for this
 shared location system. The equipment screens, stored observations, tracker
 assignments, permissions, and health indicators are provider-neutral.
@@ -78,7 +78,7 @@ paused health state.
 ## What the map means
 
 - **Reporting** requires a recent valid GPS fix and a healthy, enabled integration.
-- **GPS observed** is the provider observation time, not the time BeaconHS fetched it.
+- **GPS observed** is the provider observation time, not the time Nathara HSE fetched it.
 - Stale or invalid readings remain identifiable. Refreshing the integration does
   not make an old GPS fix appear current.
 - Equipment without a position remains in the searchable details list.
@@ -127,7 +127,7 @@ history deduplication, preview behavior, and transaction rollback. The productio
 migration path is applied twice in CI to verify idempotence.
 
 The first subscribed fleet contains 57 trackers. The pre-deployment review found
-53 unique matches against BeaconHS equipment. Four source identities need physical
+53 unique matches against Nathara HSE equipment. Four source identities need physical
 equipment confirmation: `PWR6`, `016080004862979`, `000042132001`, and
 `015910002261884`. These counts describe the reviewed inventory and may change as
 the provider fleet changes.

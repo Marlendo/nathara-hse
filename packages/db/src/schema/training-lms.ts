@@ -214,7 +214,7 @@ export const trainingEnrollments = pgTable(
     currentLessonId: uuid('current_lesson_id'),
     startedAt: timestamp('started_at', { withTimezone: true }),
     completedAt: timestamp('completed_at', { withTimezone: true }),
-    // External online providers cannot report completion to BeaconHS. The
+    // External online providers cannot report completion to Nathara HSE. The
     // learner submits for verification; training staff then verify the provider
     // result and explicitly complete the enrollment before a record is issued.
     completionRequestedAt: timestamp('completion_requested_at', { withTimezone: true }),

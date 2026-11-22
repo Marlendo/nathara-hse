@@ -625,7 +625,7 @@ export async function executeFlowPlan(
             failed.push('send_email (no recipients)')
             break
           }
-          // Sender: 'submitter' sends as "<name> via BeaconHS" with Reply-To
+          // Sender: 'submitter' sends as "<name> via Nathara HSE" with Reply-To
           // at the submitter; anything else keeps the configured sender.
           let senderIdentity: { senderName?: string; replyTo?: string } = {}
           if (action.sender === 'submitter') {

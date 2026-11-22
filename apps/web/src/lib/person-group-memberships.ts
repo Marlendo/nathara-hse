@@ -13,7 +13,7 @@ export async function lockPersonGroupMembershipGraph(
   tenantId: string,
 ): Promise<void> {
   await tx.execute(
-    sql`SELECT pg_advisory_xact_lock(hashtextextended(${'beaconhs:person-groups:' + tenantId}, 0))`,
+    sql`SELECT pg_advisory_xact_lock(hashtextextended(${'hse:person-groups:' + tenantId}, 0))`,
   )
 }
 

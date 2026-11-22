@@ -89,7 +89,7 @@ const FIELD_CATALOGUE = Object.values(FIELD_TYPES)
   .map((m) => `- ${m.type}: ${m.label} — ${m.description}`)
   .join('\n')
 
-const APP_SYSTEM = `You design "Apps" (form schemas) for BeaconHS, a construction & industrial health-and-safety platform. Output a SINGLE JSON object matching this TypeScript shape, and NOTHING else (no prose, no markdown fences):
+const APP_SYSTEM = `You design "Apps" (form schemas) for Nathara HSE, a construction & industrial health-and-safety platform. Output a SINGLE JSON object matching this TypeScript shape, and NOTHING else (no prose, no markdown fences):
 
 type FormSchemaV1 = {
   schemaVersion: 1
@@ -184,7 +184,7 @@ export async function generateAppEdit(
   })
 }
 
-const FLOW_SYSTEM = `You design "Flows" (automation graphs) for BeaconHS forms. A Flow is a node graph: triggers → conditions → gates/actions. Output a SINGLE JSON object matching this shape and NOTHING else:
+const FLOW_SYSTEM = `You design "Flows" (automation graphs) for Nathara HSE forms. A Flow is a node graph: triggers → conditions → gates/actions. Output a SINGLE JSON object matching this shape and NOTHING else:
 
 type AutomationGraph = {
   schemaVersion: 1

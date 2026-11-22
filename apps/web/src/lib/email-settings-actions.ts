@@ -278,9 +278,9 @@ export async function testEmailConnection(input: {
   try {
     await sendVia(transport, {
       to,
-      subject: 'BeaconHS test email',
-      text: `This is a test email from BeaconHS, sent via ${transport.provider}. If you received it, your email provider is configured correctly.`,
-      html: `<p>This is a test email from <strong>BeaconHS</strong>, sent via <strong>${transport.provider}</strong>.</p><p>If you received it, your email provider is configured correctly.</p>`,
+      subject: 'Nathara HSE test email',
+      text: `This is a test email from Nathara HSE, sent via ${transport.provider}. If you received it, your email provider is configured correctly.`,
+      html: `<p>This is a test email from <strong>Nathara HSE</strong>, sent via <strong>${transport.provider}</strong>.</p><p>If you received it, your email provider is configured correctly.</p>`,
     })
     await auditEmailTest(ctx, input.scope, 'succeeded', transport.provider)
     return { ok: true, message: `Test email sent to ${to} via ${transport.provider}.` }

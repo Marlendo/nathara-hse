@@ -63,7 +63,7 @@ export async function processPush(job: Job<PushJobData>): Promise<void> {
       subscription: validatedSubscription,
       payload: { title: data.title, body: data.body, linkPath: data.linkPath },
       vapid: {
-        subject: process.env.VAPID_SUBJECT ?? 'mailto:ops@beaconhs.app',
+        subject: process.env.VAPID_SUBJECT ?? 'mailto:ops@nathara-hse.app',
         publicKey,
         privateKey,
       },

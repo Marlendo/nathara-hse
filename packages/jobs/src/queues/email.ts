@@ -21,7 +21,7 @@ export type EmailJobData = {
   html: string
   text: string
   attachments?: EmailAttachment[]
-  /** Per-send sender display name ("<name> via BeaconHS"); see delivery-input. */
+  /** Per-send sender display name ("<name> via Nathara HSE"); see delivery-input. */
   senderName?: string
   /** Per-send Reply-To; overrides the configured transport reply-to. */
   replyTo?: string

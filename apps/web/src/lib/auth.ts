@@ -3,7 +3,7 @@ import { annotateDiagnosticActor, annotateDiagnosticContext } from './diagnostic
 import { cookies, headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { authEntryPath } from './auth-return-path'
-import { getAuth } from '@beaconhs/auth'
+import { getSsoSession, guardAdminHse, SsoAccessDeniedError } from '@beaconhs/auth'
 import { db, withSuperAdmin, type Database } from '@beaconhs/db'
 import { resolveLocalePreferences } from '@beaconhs/i18n'
 import {
@@ -27,10 +27,10 @@ import { actorMayImpersonate, resolveMembershipPerms } from './impersonation'
 import { activeTenantPredicate } from './active-tenant'
 import { isUuid } from './list-params'
 
-export const ACTIVE_TENANT_COOKIE = 'bhs-active-tenant'
+export const ACTIVE_TENANT_COOKIE = 'hse-active-tenant'
 // The single role a multi-role user has switched into. Cleared whenever the
 // active tenant changes (a role id only means something inside one tenant).
-export const ACTIVE_ROLE_COOKIE = 'bhs-active-role'
+export const ACTIVE_ROLE_COOKIE = 'hse-active-role'
 
 function localeContext(
   tenant: { defaultLanguage: string; enabledLanguages: string[] },
@@ -64,22 +64,22 @@ async function resolvePersonId(
 
 export async function getCurrentUserId(): Promise<string | null> {
   try {
-    const session = await getAuth().api.getSession({ headers: await headers() })
-    return session?.user?.id ?? null
+    const session = await getSsoSession(await headers())
+    return session?.userId ?? null
   } catch {
     return null
   }
 }
 
 /**
- * The real signed-in user's display name + email, straight from the Better-Auth
+ * The real signed-in user's display name + email, straight from the SSO
  * session. Unlike RequestContext (which carries the EFFECTIVE / impersonated
  * identity), this is always the actual account — used by the top-bar account menu.
  */
 export async function getSessionUser(): Promise<{ name: string; email: string } | null> {
-  const session = await getAuth().api.getSession({ headers: await headers() })
-  if (!session?.user) return null
-  return { name: session.user.name ?? '', email: session.user.email ?? '' }
+  const session = await getSsoSession(await headers())
+  if (!session) return null
+  return { name: session.name ?? '', email: session.email ?? '' }
 }
 
 type SignedInAccessSummary = {
@@ -100,8 +100,8 @@ type SignedInAccessSummary = {
  * old /login ↔ /dashboard loop for invited, suspended, or orphaned accounts.
  */
 export async function getSignedInAccessSummary(): Promise<SignedInAccessSummary | null> {
-  const session = await getAuth().api.getSession({ headers: await headers() })
-  if (!session?.user?.id) return null
+  const session = await getSsoSession(await headers())
+  if (!session?.userId) return null
   const memberships = await withSuperAdmin(db, (tx) =>
     tx
       .select({
@@ -113,10 +113,10 @@ export async function getSignedInAccessSummary(): Promise<SignedInAccessSummary 
       })
       .from(tenantUsers)
       .innerJoin(tenants, eq(tenants.id, tenantUsers.tenantId))
-      .where(and(eq(tenantUsers.userId, session.user.id), isNull(tenantUsers.removedAt)))
+      .where(and(eq(tenantUsers.userId, session.userId), isNull(tenantUsers.removedAt)))
       .orderBy(asc(tenants.name)),
   )
-  return { userId: session.user.id, email: session.user.email, memberships }
+  return { userId: session.userId, email: session.email, memberships }
 }
 
 /**
@@ -125,7 +125,7 @@ export async function getSignedInAccessSummary(): Promise<SignedInAccessSummary 
  * all call this, but the session + role lookup runs once per render pass.
  *
  * Super-admin resolution:
- *   1. If `bhs-active-tenant` cookie set, view-as that tenant
+ *   1. If `hse-active-tenant` cookie set, view-as that tenant
  *   2. Else if exactly one tenant exists in the DB, auto-pick it
  *   3. Else return null and let the caller show a tenant picker
  *
@@ -134,21 +134,29 @@ export async function getSignedInAccessSummary(): Promise<SignedInAccessSummary 
  *   2. Else if exactly one membership, auto-pick it
  *   3. Else null
  *
+ * Identity source is the SSO session (`users.supabase_sub`), guarded by the
+ * canonical `role == 'admin' AND scope == 'HSE'` check (see `guardAdminHse`).
  * Either way, the returned context's `db()` helper scopes queries to that
  * tenant. Super-admin keeps `isSuperAdmin: true` for permission checks but
  * data is still tenant-bounded (so the UI feels like that tenant's session).
  */
 export const getRequestContext = cache(async (): Promise<RequestContext | null> => {
   const headerStore = await headers()
-  const session = await getAuth().api.getSession({ headers: headerStore })
-  if (!session?.user?.id) return null
+  const session = await getSsoSession(headerStore)
+  if (!session) return null
 
-  const userId = session.user.id
-  annotateDiagnosticActor(headerStore, userId)
+  // Guard kanonis SSO: role == 'admin' AND scope == 'HSE' (exact match,
+  // default deny). Non-HSE callers get the /no-access 403 (see
+  // requireRequestContext), never a silent null.
+  guardAdminHse(session)
+
+  annotateDiagnosticActor(headerStore, session.userId)
   // The real session's token keys the impersonation pointer (stored on the
-  // admin's own session row). The Better-Auth session cookie is never swapped,
+  // admin's own session row). The SSO app-session cookie is never swapped,
   // so this stays the admin's token throughout — "stop" just clears the pointer.
-  const sessionToken = session.session?.token ?? null
+  // Re-aktivasi penuh menunggu sesi app SSO final (TODO-SSO-4); sampai saat
+  // itu tidak ada pointer impersonasi yang bisa ditulis.
+  const sessionToken = session.sessionToken ?? null
   const cookieStore = await cookies()
   const rawTenantId = cookieStore.get(ACTIVE_TENANT_COOKIE)?.value ?? null
   const rawRoleId = cookieStore.get(ACTIVE_ROLE_COOKIE)?.value ?? null
@@ -164,8 +172,20 @@ export const getRequestContext = cache(async (): Promise<RequestContext | null> 
   // connection would see zero rows here. The returned context's db() helper is
   // still tenant-scoped via makeTenantContext.
   const context = await withSuperAdmin(db, async (tx) => {
-    const [u] = await tx.select().from(users).where(eq(users.id, userId)).limit(1)
+    // SSO identity → local user: `session.userId` is the provisioned local id;
+    // additionally accept the stable `supabase_sub` mapping, then email for
+    // accounts provisioned before first SSO login (one-time fallback;
+    // provisioning pins `supabase_sub` afterwards).
+    const [byId] = await tx.select().from(users).where(eq(users.id, session.userId)).limit(1)
+    const [bySub] = !byId
+      ? await tx.select().from(users).where(eq(users.supabaseSub, session.supabaseSub)).limit(1)
+      : []
+    const [byEmail] = !byId && !bySub
+      ? await tx.select().from(users).where(eq(users.email, session.email)).limit(1)
+      : []
+    const u = byId ?? bySub ?? byEmail ?? null
     if (!u) return null
+    const userId = u.id
 
     // Impersonation overlay: when this admin session is "viewing as" another
     // user, resolve the WHOLE request as the target (their tenant, their real
@@ -394,7 +414,14 @@ async function resolveImpersonation(
 }
 
 export async function requireRequestContext(): Promise<RequestContext> {
-  const ctx = await getRequestContext()
+  let ctx: RequestContext | null = null
+  try {
+    ctx = await getRequestContext()
+  } catch (error) {
+    // Guard SSO menolak sesi non-HSE → 403 jelas, bukan loop login.
+    if (error instanceof SsoAccessDeniedError) redirect('/no-access' as any)
+    throw error
+  }
   if (!ctx)
     redirect(
       authEntryPath(

@@ -110,7 +110,7 @@ async function verifyMigrationTracker(db: MigrationDatabase, requireComplete: bo
   )?.exists
   if (!trackerTable) {
     throw new Error(
-      'Existing BeaconHS schema has no drizzle migration tracker. Refusing to mark migrations applied without validating the physical schema.',
+      'Existing Nathara HSE schema has no drizzle migration tracker. Refusing to mark migrations applied without validating the physical schema.',
     )
   }
 

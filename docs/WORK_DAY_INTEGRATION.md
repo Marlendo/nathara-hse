@@ -8,7 +8,7 @@ Use an API key with `compliance.manage` to POST `/api/v1/person_work_days`:
 { "personId": "employee-uuid", "workDate": "2026-10-20", "worked": true, "source": "time-system" }
 ```
 
-The date is the employee's calendar work date in the compliance timezone. `personId` is the BeaconHS tenant person ID; the integration owns external identity mapping. The key cannot target another tenant. `source` is an audit label, not an authorization boundary. The last authorized decision for a person/date wins. A repeated POST updates the same row; standard API `Idempotency-Key` support also applies.
+The date is the employee's calendar work date in the compliance timezone. `personId` is the Nathara HSE tenant person ID; the integration owns external identity mapping. The key cannot target another tenant. `source` is an audit label, not an authorization boundary. The last authorized decision for a person/date wins. A repeated POST updates the same row; standard API `Idempotency-Key` support also applies.
 
 Send `worked:false` for a confirmed day off. Absence means unknown: the engine falls back to weekdays and reports missing work-day data. It never infers time off from a missing or failed feed. Explicit `true` on a weekend requires a journal on that date. Future-dated journals do not count before their work date. Multiple journals on one date count once; extras cannot cover another date.
 

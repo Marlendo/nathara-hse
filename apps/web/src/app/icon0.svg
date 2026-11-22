@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 60">
-  <!-- BeaconHS favicon: the beacon top of the brand lighthouse (see
+  <!-- Nathara HSE favicon (TODO-BRAND-1: ganti aset logo final): the beacon top of the brand lighthouse (see
        components/brand-logo.tsx). Ink follows the OS color scheme so the
        icon stays visible in dark browser chrome; the lamp is always lit. -->
   <style>

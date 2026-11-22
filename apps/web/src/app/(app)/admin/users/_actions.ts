@@ -15,7 +15,7 @@ import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 import { headers } from 'next/headers'
 import { and, asc, eq, isNull, or } from 'drizzle-orm'
-import { getAuth, withAuthEmailContext } from '@beaconhs/auth'
+import { getSsoSession } from '@beaconhs/auth'
 import { nextInviteGenerationDate } from '@beaconhs/auth/invites'
 import {
   auditLog,
@@ -323,43 +323,16 @@ export async function resendInvite(formData: FormData): Promise<void> {
   })
 }
 
-/** Send the selected active member Better Auth's one-time password-reset link. */
+/** Password reset admin — DINONAKTIFKAN (PM-HSE-0001). Kredensial dikelola di Nathara IdP (SSO). */
 export async function sendMemberPasswordReset(formData: FormData): Promise<void> {
   const ctx = await requireUserAdmin('send password reset emails')
   const membershipId = String(formData.get('membershipId') ?? '')
   if (!membershipId) return
-  const member = await loadMember(ctx, membershipId)
-  if (!member) backToDetail(membershipId, 'Membership not found.')
-  if (!canActOn(ctx, member.account)) {
-    backToDetail(membershipId, 'Only a super-admin can reset a super-admin account.')
-  }
-  if (member.membership.status !== 'active') {
-    backToDetail(membershipId, 'Password reset is available only for active members.')
-  }
-
-  try {
-    const requestHeaders = (await headers()) as unknown as Headers
-    await withAuthEmailContext({ tenantId: ctx.tenantId, userId: member.account.id }, () =>
-      getAuth().api.requestPasswordReset({
-        body: { email: member.account.email, redirectTo: '/reset-password' },
-        headers: requestHeaders,
-      }),
-    )
-  } catch {
-    backToDetail(
-      membershipId,
-      'The password reset email could not be sent. Check the email configuration and try again.',
-    )
-  }
-  await recordAudit(ctx, {
-    entityType: 'tenant_user',
-    entityId: membershipId,
-    action: 'update',
-    summary: `Sent password reset email to ${member.account.email}`,
-  })
-  backToTab(membershipId, 'overview', {
-    notice: `Password reset email sent to ${member.account.email}.`,
-  })
+  backToDetail(
+    membershipId,
+    'Password resets are managed in Nathara SSO, not in this app. Direct the member to their identity provider.',
+  )
+  void ctx
 }
 
 // --- membership profile + status ----------------------------------------
@@ -910,7 +883,10 @@ export async function setUserPersonLink(formData: FormData): Promise<void> {
  * OWN session row, then redirect. getRequestContext() reads that pointer and
  * resolves every subsequent request as the target user (their tenant, their
  * real permissions) until it expires or `stopImpersonation` clears it. The real
- * Better-Auth session is never swapped, so exiting is always safe.
+ * SSO app session is never swapped, so exiting is always safe.
+ * RE-AUDIT HSE-0001: pointer tetap server-side di baris sesi milik admin,
+ * diotorisasi ulang tiap request; penulisan pointer aktif kembali penuh saat
+ * sesi app SSO final (TODO-SSO-4). Sampai saat itu start selalu fail-closed.
  *
  * Scope: requires `admin.users.impersonate` IN the tenant the member belongs to
  * (super-admins pass anywhere; tenant admins only within their tenant — the
@@ -944,10 +920,10 @@ export async function startImpersonation(formData: FormData): Promise<void> {
 
   // The pointer is keyed by the actor's current session token (the cookie is
   // never swapped, so this stays the admin's session for the whole overlay).
-  const authSession = await getAuth().api.getSession({
-    headers: (await headers()) as unknown as Headers,
-  })
-  const token = authSession?.session?.token
+  // Fail-closed sampai sesi app SSO final (TODO-SSO-4): tanpa token sesi app,
+  // pointer tidak bisa ditulis.
+  const authSession = await getSsoSession((await headers()) as unknown as Headers)
+  const token = authSession?.sessionToken ?? null
   if (!token) {
     backToDetail(membershipId, 'Could not resolve your session. Sign in again and retry.')
   }

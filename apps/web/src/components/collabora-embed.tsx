@@ -11,12 +11,12 @@ import {
 //
 // - Fetches a WOPI session via the server action supplied by the host surface,
 //   then — as WOPI mandates — form-POSTs the access token into the iframe.
-// - Passes bhsTheme (our own param, enforced inside the frame by the mounted
+// - Passes hseTheme (our own param, enforced inside the frame by the mounted
 //   branding.js) so the editor follows the app's light/dark mode. Collabora's
 //   native darkTheme param is unusable: its mere presence forces dark mode
 //   and clobbers ui_defaults, and COOL's per-browser saved theme would win
 //   over it anyway.
-// - Shows the BeaconHS lighthouse while the frame initializes, then reveals
+// - Shows the Nathara HSE lighthouse while the frame initializes, then reveals
 //   Collabora’s loading progress. Only Document_Loaded permits publishing.
 // - Speaks Collabora's postMessage API (Host_PostmessageReady handshake) and
 //   exposes an imperative handle for host features like the document AI
@@ -145,7 +145,7 @@ export const CollaboraEmbed = forwardRef<
           // Follow the app theme exactly — branding.js inside the frame reads
           // this param and pins Collabora's theme to it.
           const dark = document.documentElement.classList.contains('dark')
-          s = { ...s, actionUrl: `${s.actionUrl}&bhsTheme=${dark ? 'dark' : 'light'}` }
+          s = { ...s, actionUrl: `${s.actionUrl}&hseTheme=${dark ? 'dark' : 'light'}` }
           const url = new URL(s.actionUrl)
           originRef.current = url.origin
           // Collabora serves branding.js with a months-long max-age keyed to
@@ -302,7 +302,7 @@ export const CollaboraEmbed = forwardRef<
       const focus = mode === 'editor'
       win.postMessage(
         JSON.stringify({
-          MessageId: 'BeaconHS_Relayout',
+          MessageId: 'NatharaHSE_Relayout',
           SendTime: Date.now(),
           Values: { focus },
         }),
@@ -328,10 +328,10 @@ export const CollaboraEmbed = forwardRef<
     observer.observe(parent)
     applySize()
     const onHostRelayout = () => applySize()
-    window.addEventListener('beaconhs-collabora-relayout', onHostRelayout)
+    window.addEventListener('hse-collabora-relayout', onHostRelayout)
     return () => {
       observer.disconnect()
-      window.removeEventListener('beaconhs-collabora-relayout', onHostRelayout)
+      window.removeEventListener('hse-collabora-relayout', onHostRelayout)
       if (timer) clearTimeout(timer)
     }
   }, [session, mode, loaded])

@@ -43,7 +43,7 @@ export function createIntegrationEmailBodyRenderer(bodyTemplate: string): (item:
 function renderedSubject(template: string, item: Item): string {
   return (
     normalizeEmailSubject(renderTemplate(template, item, { allowRawValues: false })) ||
-    'Notification from BeaconHS'
+    'Notification from Nathara HSE'
   )
 }
 
@@ -60,7 +60,7 @@ async function test(ctx: DestinationTestContext): Promise<IntegrationResult> {
 
 async function deliver(ctx: DeliverContext): Promise<DeliverResult> {
   const toTpl = String(ctx.config.to ?? '').trim()
-  const subjectTpl = String(ctx.config.subject ?? '').trim() || 'Notification from BeaconHS'
+  const subjectTpl = String(ctx.config.subject ?? '').trim() || 'Notification from Nathara HSE'
   const bodyTpl = String(ctx.mapping.body ?? '').trim()
   if (!toTpl) return { ok: false, error: 'No recipients configured.' }
   if (!bodyTpl) return { ok: false, error: 'An email body is required.' }

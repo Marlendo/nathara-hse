@@ -1155,10 +1155,10 @@ export function buildOpenApiDocument(
   return {
     openapi: '3.1.0',
     info: {
-      title: 'BeaconHS Public API',
+      title: 'Nathara HSE Public API',
       version: '1.0.0',
       description: [
-        'REST access to your BeaconHS data, scoped to the tenant that owns the API key.',
+        'REST access to your Nathara HSE data, scoped to the tenant that owns the API key.',
         '',
         '## Authentication',
         'Send your key as a Bearer token:',

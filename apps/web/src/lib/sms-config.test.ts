@@ -12,7 +12,7 @@ import {
 const input: SmsSettingsInput = {
   enabled: true,
   provider: 'messagebird',
-  fromNumber: 'BeaconHS',
+  fromNumber: 'Nathara HSE',
   twilioAccountSid: '',
   vonageApiKey: '',
   plivoAuthId: '',
@@ -99,7 +99,7 @@ describe('SMS provider configuration', () => {
         {
           enabled: true,
           provider: 'messagebird',
-          fromNumber: 'BeaconHS',
+          fromNumber: 'Nathara HSE',
           keyCiphertext: 'structurally-present-but-corrupt',
           keyNonce: 'also-corrupt',
         },
@@ -120,7 +120,7 @@ describe('SMS provider configuration', () => {
     ).toThrow('Twilio account SID')
     expect(() =>
       validateSmsConfigForSave(
-        { enabled: false, provider: 'messagebird', fromNumber: 'BeaconHS\nInjected' },
+        { enabled: false, provider: 'messagebird', fromNumber: 'Nathara HSE\nInjected' },
         false,
       ),
     ).toThrow('SMS sender')

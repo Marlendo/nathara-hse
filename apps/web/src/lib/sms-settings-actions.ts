@@ -244,7 +244,7 @@ export async function testSmsConnection(input: {
   try {
     await sendSmsVia(transport, {
       to,
-      body: `BeaconHS test message, sent via ${transport.provider}. Your SMS provider is configured correctly.`,
+      body: `Nathara HSE test message, sent via ${transport.provider}. Your SMS provider is configured correctly.`,
     })
     await auditSmsTest(ctx, input.scope, 'succeeded', transport.provider)
     return { ok: true, message: `Test SMS sent to ${to} via ${transport.provider}.` }

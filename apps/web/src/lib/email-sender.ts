@@ -1,5 +1,5 @@
 // Per-send email identity for MANUAL "send email" actions: the message
-// shows "<acting user> via BeaconHS" (configured From address unchanged)
+// shows "<acting user> via Nathara HSE" (configured From address unchanged)
 // and replies go to the acting user. System notices don't use this — they
 // keep the plain configured sender.
 import { eq } from 'drizzle-orm'

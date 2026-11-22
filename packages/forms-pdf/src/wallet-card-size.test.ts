@@ -27,7 +27,7 @@ describe('wallet-card PDF page size', () => {
           {
             document: drifted,
             data: {
-              tenantName: 'BeaconHS',
+              tenantName: 'Nathara HSE',
               recipientFullName: 'Alex Worker',
               credentialName: 'Site Orientation',
             },

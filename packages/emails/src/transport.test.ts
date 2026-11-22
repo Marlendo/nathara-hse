@@ -91,14 +91,14 @@ describe('resolveEmailTransport', () => {
       resolveEmailTransport({
         enabled: true,
         provider: 'resend',
-        fromName: 'BeaconHS',
+        fromName: 'Nathara HSE',
         fromEmail: 'no-reply@b.io',
         ...sealed('re_x'),
       }),
     ).toEqual({
       provider: 'resend',
       apiKey: 're_x',
-      from: 'BeaconHS <no-reply@b.io>',
+      from: 'Nathara HSE <no-reply@b.io>',
       replyTo: undefined,
     })
 
@@ -688,7 +688,7 @@ describe('sendVia (SMTP)', () => {
       secure: false,
       username: 'smtp-user',
       password: 'smtp-secret',
-      from: 'BeaconHS <sender@example.com>',
+      from: 'Nathara HSE <sender@example.com>',
       replyTo: 'support@example.com',
     }
 
@@ -714,7 +714,7 @@ describe('sendVia (SMTP)', () => {
       socketTimeout: 30_000,
     })
     expect(nodemailerMock.sendMail).toHaveBeenCalledWith({
-      from: 'BeaconHS <sender@example.com>',
+      from: 'Nathara HSE <sender@example.com>',
       to: ['dest@example.com'],
       subject: 'Hi',
       text: 'Hi',
@@ -869,22 +869,22 @@ describe('resolveSendIdentity', () => {
   const transport: EmailTransport = {
     provider: 'sendgrid',
     apiKey: 'key',
-    from: 'BeaconHS <no-reply@example.com>',
+    from: 'Nathara HSE <no-reply@example.com>',
     replyTo: 'support@example.com',
   }
 
   it('keeps the configured identity by default', () => {
     expect(resolveSendIdentity(transport, {})).toEqual({
-      from: 'BeaconHS <no-reply@example.com>',
+      from: 'Nathara HSE <no-reply@example.com>',
       replyTo: 'support@example.com',
     })
   })
 
-  it('shows "<name> via BeaconHS" on the configured address and replies to the person', () => {
+  it('shows "<name> via Nathara HSE" on the configured address and replies to the person', () => {
     expect(
       resolveSendIdentity(transport, { senderName: 'Jane Foreman', replyTo: 'jane@example.com' }),
     ).toEqual({
-      from: 'Jane Foreman via BeaconHS <no-reply@example.com>',
+      from: 'Jane Foreman via Nathara HSE <no-reply@example.com>',
       replyTo: 'jane@example.com',
     })
   })

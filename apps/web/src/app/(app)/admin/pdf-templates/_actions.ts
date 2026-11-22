@@ -243,7 +243,7 @@ export async function loadPdfPreviewData(
       book_description:
         sampleBook?.book.description ??
         'Company policies, safe work procedures, and orientation reference documents.',
-      tenant_name: tenant?.name ?? 'BeaconHS',
+      tenant_name: tenant?.name ?? 'Nathara HSE',
       tenant_logo_url: logoUrl ?? '',
       issued_month_year: new Intl.DateTimeFormat('en-CA', {
         month: 'long',

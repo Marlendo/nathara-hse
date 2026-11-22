@@ -3,7 +3,7 @@ import type { LifecycleRule } from '@aws-sdk/client-s3'
 import { storageObjectTagging, withManagedStorageLifecycleRules } from './lifecycle'
 
 describe('storage lifecycle policy', () => {
-  it('preserves operator rules and idempotently replaces BeaconHS-managed rules', () => {
+  it('preserves operator rules and idempotently replaces Nathara HSE-managed rules', () => {
     const existing: LifecycleRule[] = [
       { ID: 'operator-archive', Status: 'Enabled', Expiration: { Days: 365 } },
       { ID: 'expire-unfinalized-uploads', Status: 'Disabled', Expiration: { Days: 7 } },

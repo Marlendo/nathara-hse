@@ -83,7 +83,7 @@ const DELIVERY_META: Record<DeliveryType, DeliveryMeta> = {
   external_certificate: {
     value: 'external_certificate',
     label: 'External certificate',
-    hint: 'Tracks credentials earned outside BeaconHS — no in-app content. Certificates are entered as records or imported.',
+    hint: 'Tracks credentials earned outside Nathara HSE — no in-app content. Certificates are entered as records or imported.',
     hasContent: false,
     selfLaunch: false,
     catalog: 'never',

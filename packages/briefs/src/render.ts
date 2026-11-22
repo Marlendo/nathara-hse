@@ -141,7 +141,7 @@ function body(input: BriefRenderInput, variant: 'email' | 'pdf'): string {
       : ''
   const header = `<div style="background:#0f172a;color:#f8fafc;padding:24px 28px;${variant === 'email' ? 'border-radius:16px 16px 0 0;' : ''}">${logo}<div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:${color};">${escapeHtml(input.tenantName)} · AI brief</div><div style="font-size:24px;font-weight:700;margin-top:6px;line-height:1.2;">${escapeHtml(input.briefName)}</div><div style="font-size:13px;color:#cbd5e1;margin-top:6px;">${escapeHtml(evidence.window.label)}${scope}</div></div>`
   const headline = `<p style="margin:0 0 14px;font-size:18px;font-weight:700;line-height:1.4;color:#0f172a;">${escapeHtml(result.headline)}</p>`
-  const footer = `<p style="margin:26px 0 0;font-size:11px;color:#94a3b8;line-height:1.5;">Written by AI from ${evidence.records.length} record(s)${input.modelLabel ? ` with ${escapeHtml(input.modelLabel)}` : ''}. Figures are computed exactly; review the cited records before acting.${variant === 'email' ? ` <a href="${escapeHtml(`${input.appUrl}${input.runPath}`)}" style="color:${color};">Open in BeaconHS</a>` : ''}</p>`
+  const footer = `<p style="margin:26px 0 0;font-size:11px;color:#94a3b8;line-height:1.5;">Written by AI from ${evidence.records.length} record(s)${input.modelLabel ? ` with ${escapeHtml(input.modelLabel)}` : ''}. Figures are computed exactly; review the cited records before acting.${variant === 'email' ? ` <a href="${escapeHtml(`${input.appUrl}${input.runPath}`)}" style="color:${color};">Open in Nathara HSE</a>` : ''}</p>`
   return `${header}<div style="padding:22px 28px 28px;background:#ffffff;${variant === 'email' ? 'border-radius:0 0 16px 16px;' : ''}">${notice}${headline}${tiles}${summary}${breakdowns}${sections}${changes}${followUps}${sourceList}${footer}</div>`
 }
 
@@ -187,6 +187,6 @@ export function renderBriefText(input: BriefRenderInput): string {
       lines.push(`- [${f.priority}] ${f.action}${f.owner ? ` — ${f.owner}` : ''}`)
     }
   }
-  lines.push('', `Open in BeaconHS: ${input.appUrl}${input.runPath}`)
+  lines.push('', `Open in Nathara HSE: ${input.appUrl}${input.runPath}`)
   return lines.join('\n')
 }

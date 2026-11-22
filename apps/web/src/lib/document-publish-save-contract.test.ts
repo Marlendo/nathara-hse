@@ -36,7 +36,7 @@ describe('document publish save contract', () => {
 
   it('relayouts the iframe in pixels and restores the text caret', () => {
     expect(embed).toContain('new ResizeObserver')
-    expect(embed).toContain("MessageId: 'BeaconHS_Relayout'")
+    expect(embed).toContain("MessageId: 'NatharaHSE_Relayout'")
     expect(embed).toContain("MessageId: 'Grab_Focus'")
     expect(branding).toContain('invalidateSize')
     expect(branding).toContain('nodeNeedsTheme')

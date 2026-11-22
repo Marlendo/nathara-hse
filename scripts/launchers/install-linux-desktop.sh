@@ -12,8 +12,8 @@ cat >"$TARGET_FILE" <<DESKTOP
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=BeaconHS Dev
-Comment=Install dependencies and run BeaconHS in development mode
+Name=Nathara HSE Dev
+Comment=Install dependencies and run Nathara HSE in development mode
 Exec=$SCRIPT_DIR/dev-launcher.sh
 Path=$REPO_ROOT
 Icon=utilities-terminal

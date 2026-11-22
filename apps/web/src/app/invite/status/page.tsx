@@ -13,7 +13,7 @@ export async function generateMetadata() {
 const COPY = {
   expired: {
     title: 'This invitation link has expired',
-    body: 'Invitation links are one-time links and expire after 7 days. Ask your administrator to resend the invitation.',
+    body: 'Invitation links expire after 7 days. Ask your administrator to resend the invitation.',
   },
   invalid: {
     title: 'This invitation is not valid',
@@ -21,11 +21,11 @@ const COPY = {
   },
   pending: {
     title: 'The invitation was not completed',
-    body: 'Your email was verified, but BeaconHS could not safely activate the membership. Ask your administrator to resend the invitation.',
+    body: 'Your SSO sign-in was verified, but Nathara HSE could not safely activate the membership. Ask your administrator to resend the invitation.',
   },
   unverified: {
     title: 'Email verification is required',
-    body: 'Use the one-time link in the invitation email. If it no longer works, ask your administrator to resend it.',
+    body: 'Sign in with Nathara SSO using the invited email address. If the invitation link no longer works, ask your administrator to resend it.',
   },
   suspended: {
     title: 'This membership is suspended',
@@ -37,7 +37,7 @@ const COPY = {
   },
   active: {
     title: 'Invitation accepted',
-    body: 'Your membership is active. Continue to BeaconHS.',
+    body: 'Your membership is active. Continue to Nathara HSE.',
   },
 } as const
 

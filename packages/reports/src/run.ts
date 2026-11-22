@@ -84,8 +84,8 @@ export function validateBeaconReportRuntimeFilters(
 }
 
 /**
- * Execute one AppKit definition inside an already tenant-scoped BeaconHS
- * transaction. AppKit authors and validates the SQL plan; BeaconHS supplies
+ * Execute one AppKit definition inside an already tenant-scoped Nathara HSE
+ * transaction. AppKit authors and validates the SQL plan; Nathara HSE supplies
  * only its RLS transaction, tenant id, and domain catalogue.
  */
 export async function runBeaconReport(

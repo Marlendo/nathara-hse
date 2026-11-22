@@ -1,6 +1,6 @@
 import { GeneratedValue } from '@/i18n/generated'
 import { PRODUCT_NAME } from '@/lib/brand'
-// BeaconHS brand logo — hand-drawn SVG recreation of the lighthouse lockup.
+// Nathara HSE brand logo — hand-drawn SVG recreation of the lighthouse lockup.
 // All ink strokes use `currentColor` (navy in light mode, near-white in dark);
 // the beacon rays and "HS" stay brand amber in both themes. Every shape is a
 // stroke with a normalized pathLength so the splash can draw the logo in.

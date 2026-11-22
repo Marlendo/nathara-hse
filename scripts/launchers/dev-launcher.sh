@@ -132,7 +132,7 @@ cleanup() {
   fi
 
   if [[ -n "${DEV_PID:-}" ]] && kill -0 "$DEV_PID" 2>/dev/null; then
-    log "Stopping BeaconHS dev processes..."
+    log "Stopping Nathara HSE dev processes..."
     stop_process_tree "$DEV_PID"
   fi
 
@@ -465,7 +465,7 @@ run_dev() {
 }
 
 main() {
-  log "BeaconHS development launcher"
+  log "Nathara HSE development launcher"
   ensure_env_file
   resolve_database_mode
   ensure_node_and_pnpm

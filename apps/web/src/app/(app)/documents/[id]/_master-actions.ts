@@ -99,7 +99,7 @@ export async function getDocumentWriterSession(
     attachmentId,
     tenantId: ctx.tenantId,
     userId: ctx.userId,
-    userName: ctx.membership?.displayName ?? 'BeaconHS user',
+    userName: ctx.membership?.displayName ?? 'Nathara HSE user',
     target: 'document',
     targetId: documentId,
     audience: 'document',

@@ -111,7 +111,7 @@ Changing the primary title also adds it to **Held titles**. Removing the current
 
 To manage the title catalogue, open [Job titles](/people/titles) under **Manage people**. Use the **Status** filter to find active or archived titles.
 
-- **Archive** keeps the title and its history but removes it from new selections. BeaconHS blocks archiving while the title still has current or historical person assignments, active tasks, or active compliance obligations. Remove or archive those dependencies first.
+- **Archive** keeps the title and its history but removes it from new selections. Nathara HSE blocks archiving while the title still has current or historical person assignments, active tasks, or active compliance obligations. Remove or archive those dependencies first.
 - Open an archived title and click **Restore** to make it available again.
 - Open **Tasks** on a title to search, reorder, archive, or restore its job-description tasks. After anyone acknowledges a task, its wording is locked. Archive it and add a replacement instead of changing text that was already signed.
 
@@ -139,7 +139,7 @@ On the [People](/people) list, use the **All locations** filter to show the peop
 2. Use **Search custom fields…** or **Status** to find a field. Select **New field** to add one.
 3. Enter the label and field type, then select **Create field**. The field appears on each person's page and saves inline.
 
-The field type is fixed after creation. Removing a choice option or tightening a number range can clear saved values that no longer fit; BeaconHS warns you before it saves. **Delete field** permanently removes the field and every value captured under it. If a saved report or Insights Card uses the field, BeaconHS blocks **Hidden** and **Delete field** until you remove that reference.
+The field type is fixed after creation. Removing a choice option or tightening a number range can clear saved values that no longer fit; Nathara HSE warns you before it saves. **Delete field** permanently removes the field and every value captured under it. If a saved report or Insights Card uses the field, Nathara HSE blocks **Hidden** and **Delete field** until you remove that reference.
 
 ## Org chart
 
@@ -158,7 +158,7 @@ To print a badge:
 1. Open the person's page.
 2. Flip the **ID badge preview** to check both saved sides.
 3. Open **Actions**, then choose **ID badge** to open a print-ready PDF with the front and back of the card.
-4. If the design uses a direct-print provider, choose its **Print with…** command under **Actions** to send the finished 300-DPI faces to the tenant-configured card printer. BeaconHS supports cardPresso, Zebra, Evolis, and HID FARGO and audits every accepted job.
+4. If the design uses a direct-print provider, choose its **Print with…** command under **Actions** to send the finished 300-DPI faces to the tenant-configured card printer. Nathara HSE supports cardPresso, Zebra, Evolis, and HID FARGO and audits every accepted job.
 
 When you have permission to remove a person, **Delete person** is the last item under **Actions**. Its confirmation still applies.
 
@@ -172,7 +172,7 @@ ${CSV_EXPORT_LIMIT_GUIDANCE}
 
 ## Working without signal
 
-On a person's page, every field — including groups, job titles, and company-specific fields — saves to this device first and sends when signal comes back. The badge at the top shows **Saved on device**, **Offline · saved on device**, or **Synced**. Adding files and deleting a person need signal. Without signal, BeaconHS says **You need signal for this step. Your answers are saved on this device.**
+On a person's page, every field — including groups, job titles, and company-specific fields — saves to this device first and sends when signal comes back. The badge at the top shows **Saved on device**, **Offline · saved on device**, or **Synced**. Adding files and deleting a person need signal. Without signal, Nathara HSE says **You need signal for this step. Your answers are saved on this device.**
 
 ## Tips
 
@@ -238,7 +238,7 @@ Locations sit at the top of the tree. You add projects and sites underneath from
 2. Use **Search custom fields…** or **Status** to find a field. Select **New field** to add one.
 3. Enter the label and field type, then select **Create field**. The field appears on each location page and saves inline.
 
-The field type is fixed after creation. Removing a choice option or tightening a number range can clear saved values that no longer fit; BeaconHS warns you before it saves. **Delete field** permanently removes the field and every value captured under it. If a saved report or Insights Card uses the field, BeaconHS blocks **Hidden** and **Delete field** until you remove that reference.
+The field type is fixed after creation. Removing a choice option or tightening a number range can clear saved values that no longer fit; Nathara HSE warns you before it saves. **Delete field** permanently removes the field and every value captured under it. If a saved report or Insights Card uses the field, Nathara HSE blocks **Hidden** and **Delete field** until you remove that reference.
 
 ## What picking a Location on a record means
 
@@ -299,7 +299,7 @@ Open [Reports](/reports) from the sidebar. It has the **Reports** and **Schedule
 3. The report opens with **Run filters and grouping** in the left third and the paper preview in the right two-thirds. On a phone, the controls appear before the preview.
 4. Add one or more filters. The field, operator, and value stay on one row, including on a phone. Every filter uses a field from that report's data source. Fields that draw from a list — people, courses, sites, statuses — show a searchable picker; free-form fields let you type values.
 5. Under **Group results by**, choose the field that should create the printed sections. For training reports, choose **Person** or **Course**.
-6. Under **Sort rows by** and **Sort direction**, choose the field and **Ascending** or **Descending** order for rows. When a report is grouped, BeaconHS keeps each group's rows together first and sorts rows inside each group by your chosen field. **Training — Missing** groups by **Person** and sorts courses alphabetically inside each person by default.
+6. Under **Sort rows by** and **Sort direction**, choose the field and **Ascending** or **Descending** order for rows. When a report is grouped, Nathara HSE keeps each group's rows together first and sorts rows inside each group by your chosen field. **Training — Missing** groups by **Person** and sorts courses alphabetically inside each person by default.
 7. Click **Apply and run**. The paper preview and summary now use those exact filters, grouping, and sort order. The on-screen preview shows up to 5,000 rows and displays a notice if more rows match; CSV and Excel exports include every matching row.
 8. Click **Reset to saved report** to return to the report's saved filters, grouping, and sorting.
 
@@ -357,7 +357,7 @@ Seeded and team-created reports use the same editable report definition. There i
 
 Every published Builder app you can currently open appears as its own named data source under **Apps**. The source is automatically limited to that app's responses. Draft, archived, and role-restricted apps are not exposed. Timed check-ins appear as **Monitored sessions**; they are a general Builder app capability, not a separate native module.
 
-The report list, full viewer, exports, and schedules all run this same saved definition. Seed provenance only lets BeaconHS restore a missing default during setup; it does not make the report read-only.
+The report list, full viewer, exports, and schedules all run this same saved definition. Seed provenance only lets Nathara HSE restore a missing default during setup; it does not make the report read-only.
 
 Compliance reports, including scheduled PDFs, show people by name and other subjects by their record label. If a linked record is unavailable, the report says so instead of printing an internal ID.`,
   },
@@ -380,13 +380,13 @@ Compliance reports, including scheduled PDFs, show people by name and other subj
       'morning email',
       'weekly safety pulse',
     ],
-    body: `An AI brief is a short written summary of what happened — for example, yesterday's journals across the company. BeaconHS reads the records, the AI writes the summary, and the brief is emailed on a schedule.
+    body: `An AI brief is a short written summary of what happened — for example, yesterday's journals across the company. Nathara HSE reads the records, the AI writes the summary, and the brief is emailed on a schedule.
 
 ## What this is for
 
 Use a brief when leaders need the story, not a table: what went well, what is at risk, and what needs follow-up. Every point in a brief links to the journal, incident, or inspection it came from, so you can check it.
 
-Counts in a brief (entries, authors, drafts, failed items) are worked out exactly by BeaconHS. The AI only writes the words around them.
+Counts in a brief (entries, authors, drafts, failed items) are worked out exactly by Nathara HSE. The AI only writes the words around them.
 
 ## Where to find it
 
@@ -492,7 +492,7 @@ For a custom grouping or measure, open **ƒ Fields & functions**. If the data so
 5. Click **Download CSV** or **PDF** to export all matching employees with the same filters and expiry dates. **PDF** prints a landscape pivot matrix matching the on-screen grid, with **Valid**, **Expiring**, and **Expired** cell colours, the status legend, and clean multi-column pages when many courses or skills are included. Exports include every matching page.
 6. To put a matrix on a dashboard, click **Customise**, then **Add content** and choose the matrix card.
 
-Only active employees appear. Renewed skill tickets replace older tickets in the matrix. Missing tickets are blank; **Missing** in the status filter selects people with a missing requirement. Imported divisions use the **Departments / divisions** filter because BeaconHS maintains them as departments. To print wallet cards, use **Reports → Training — Wallet cards** and apply the matching people and course filters.
+Only active employees appear. Renewed skill tickets replace older tickets in the matrix. Missing tickets are blank; **Missing** in the status filter selects people with a missing requirement. Imported divisions use the **Departments / divisions** filter because Nathara HSE maintains them as departments. To print wallet cards, use **Reports → Training — Wallet cards** and apply the matching people and course filters.
 
 ## Save a card as PDF
 
@@ -500,7 +500,7 @@ You need data-export permission to download card data.
 
 1. Open the [Library](/insights/library).
 2. Click the PDF icon on a card, or open the card and click **PDF**.
-3. BeaconHS downloads a branded snapshot using the card's current data. Pivot and heatmap cards print as landscape matrix grids with their cell formatting and legend, continuing across clean column bands when wide.
+3. Nathara HSE downloads a branded snapshot using the card's current data. Pivot and heatmap cards print as landscape matrix grids with their cell formatting and legend, continuing across clean column bands when wide.
 
 Use **Download CSV** on the open card when you need the same live data in a spreadsheet. Exporting an AI card runs its saved analysis and puts the summary and key points in the PDF.
 
@@ -747,11 +747,11 @@ If AI is enabled and you have permission to use it, click **AI** in the designer
 4. In a long chat, click **Load older messages** to read earlier messages.
 5. Review the applied draft in the designer, then click **Publish** only when it is ready.
 
-If a person has several roles and switches roles in BeaconHS, the app gallery, pinned apps, records, and form links immediately follow the role they are acting under. A template builder can still open every app to maintain it, but can only create a live entry after the app is published.
+If a person has several roles and switches roles in Nathara HSE, the app gallery, pinned apps, records, and form links immediately follow the role they are acting under. A template builder can still open every app to maintain it, but can only create a live entry after the app is published.
 
 Builders can review records belonging to a draft or archived app, but those records are read-only. Publish the app before testing live entry, workflow, comment, monitoring, or record-action behaviour.
 
-When you fill a published app — step by step or on its record page — the badge at the top shows where the answers are. **Saved on device** with **Pending** means they are on this device and waiting to send. **Synced** means BeaconHS has them. Answers survive a lost signal or a closed tab and send automatically. You can leave and resume the entry from **In progress**. If the same draft was changed in another tab or on another device, BeaconHS stops the older copy from overwriting it and asks which copy to keep. See [Filling out forms](/help/forms).
+When you fill a published app — step by step or on its record page — the badge at the top shows where the answers are. **Saved on device** with **Pending** means they are on this device and waiting to send. **Synced** means Nathara HSE has them. Answers survive a lost signal or a closed tab and send automatically. You can leave and resume the entry from **In progress**. If the same draft was changed in another tab or on another device, Nathara HSE stops the older copy from overwriting it and asks which copy to keep. See [Filling out forms](/help/forms).
 
 The first publish also generates the app's **PDF template** — the document its record downloads and flow attachments use. Admins can restyle it (or generate one for an older app) under **Admin → PDF templates**.
 
@@ -783,7 +783,7 @@ Watch for the amber warning bar above the canvas. It appears when a flow would d
 
 For **Send email**, **SMS (text)**, and **In-app notification**, recipients are split into **Always included** and **Conditional recipients**. Each conditional row shows its location, department, or assignment rule. Search by recipient or condition and use **Previous** and **Next** for long lists. Click a recipient row to open its settings. This is the same editor for built-in modules and custom apps. **Always included** means included whenever that message action runs; conditions elsewhere in the flow still apply.
 
-For **Send email**, **Sender** chooses who the email appears to come from. **BeaconHS** uses your workspace's usual sender — right for system notices. **Submitter** shows the person who submitted the record (as their name via BeaconHS) and sends replies to them.
+For **Send email**, **Sender** chooses who the email appears to come from. **Nathara HSE** uses your workspace's usual sender — right for system notices. **Submitter** shows the person who submitted the record (as their name via Nathara HSE) and sends replies to them.
 
 Under **Delivery**, turn on **Each recipient gets their own copy (recipients cannot see each other)** when the email goes to several people who should not see each other's addresses. Each person then receives a separate email, and every copy is listed on the record. New **Send email** steps start with this on. Leave it off only when everyone should be on one shared message, like a small team thread.
 
@@ -799,7 +799,7 @@ To send a filled Excel form, add an **XLSX template** under **Spreadsheet attach
 
 Use **Start another form** to choose a published target app. Each run creates one draft and carries over the source record's owner, person, and Location. The quick **Record actions** panel offers only actions that are complete as soon as they are added; configure actions that need recipients, fields, statuses, or a target app on the full **Flows** surface.
 
-Webhook actions send the record payload as JSON to a public **HTTPS** URL. BeaconHS owns the request headers, rejects local or private network destinations when you save the flow, and checks the destination again every time the flow runs.
+Webhook actions send the record payload as JSON to a public **HTTPS** URL. Nathara HSE owns the request headers, rejects local or private network destinations when you save the flow, and checks the destination again every time the flow runs.
 
 ## See the responses
 
@@ -1020,7 +1020,7 @@ For crew signing, open **Admin → Notifications → Hazard assessment signing**
 3. Choose the **Default language**. The default is always enabled and is used by members who choose **Use tenant default**.
 4. Click **Save settings**.
 
-Members choose their own language under **Account settings**. Their choice applies only to this workspace. If you disable a language, BeaconHS clears member choices for that language and those members return to the workspace default. Tenant-wide generated documents and group recap emails use the workspace default.
+Members choose their own language under **Account settings**. Their choice applies only to this workspace. If you disable a language, Nathara HSE clears member choices for that language and those members return to the workspace default. Tenant-wide generated documents and group recap emails use the workspace default.
 
 ## Set the local authority and legislation
 
@@ -1032,14 +1032,14 @@ Members choose their own language under **Account settings**. Their choice appli
 
 ## Build People groups
 
-People groups are the one reusable group list across BeaconHS. The same groups are available in notification rules, Flows, role-based record access, and **Send email** dialogs.
+People groups are the one reusable group list across Nathara HSE. The same groups are available in notification rules, Flows, role-based record access, and **Send email** dialogs.
 
 1. Open **People**, then **Groups**.
 2. Search by group name or description, or click **Add group**.
 3. Open the group. Enter its name, description, and colour, then click **Save**.
 4. Under **Members**, move people into the group and save the membership list.
 
-BeaconHS blocks deletion while a People group is used by a notification rule, Flow, or role scope. Remove those references first, then delete the group.
+Nathara HSE blocks deletion while a People group is used by a notification rule, Flow, or role scope. Remove those references first, then delete the group.
 
 ## Integrations
 
@@ -1077,7 +1077,7 @@ A **Database (SQL)** connection and an **External SQL database** automation both
 
 ## Check outbound deliveries and re-send failures
 
-Open an outbound automation under **Admin → Integrations**. **Delivery history** lists every record it sent, with search, a **Status** filter, and page controls. **Delivered** means the other system accepted it. **Failed** shows the error from the other system. **Not delivered** means BeaconHS published the event but the delivery never landed. Fix the connection first, then click **Re-send** on the failed row. Re-sending never posts twice: destinations that support it replace their earlier rows.
+Open an outbound automation under **Admin → Integrations**. **Delivery history** lists every record it sent, with search, a **Status** filter, and page controls. **Delivered** means the other system accepted it. **Failed** shows the error from the other system. **Not delivered** means Nathara HSE published the event but the delivery never landed. Fix the connection first, then click **Re-send** on the failed row. Re-sending never posts twice: destinations that support it replace their earlier rows.
 
 ## Send training class schedules to another system
 
@@ -1132,14 +1132,14 @@ Platform super-admins set the default provider used for sign-in links, invitatio
 1. Open **Platform**, then click **Platform email**.
 2. Choose the **Policy**. **Tenants choose their own (recommended)** lets a tenant override the default. **Force the platform default for all tenants** sends every tenant's email through this provider. **Disable all email (kill switch)** is the emergency stop.
 3. Choose the **Provider** and enter a verified **From email**. Enter **Reply-to** only when replies should go somewhere else.
-4. Enter the provider credential. If you change providers, enter the new provider's credential in the same save. BeaconHS never reuses one provider's saved credential with another provider. An unauthenticated custom SMTP relay is the only exception and does not need a password.
+4. Enter the provider credential. If you change providers, enter the new provider's credential in the same save. Nathara HSE never reuses one provider's saved credential with another provider. An unauthenticated custom SMTP relay is the only exception and does not need a password.
 5. Turn on **Enable the platform default provider**.
 6. Click **Save platform email**.
 7. Under **Send a test through the platform provider**, enter an address you can check and click **Send test**.
 
 A successful test means the provider accepted the message. Check the inbox as well. Provider accounts can still suppress delivery when the sender or sending domain has not been verified. The global kill switch blocks test messages too. Platform tests are limited to five every ten minutes per administrator. Each tenant applies the same limit to its own test sends.
 
-For custom SMTP in a production deployment, use a public, externally resolvable DNS hostname and a valid TLS certificate that matches that hostname. BeaconHS blocks private, local, reserved, unresolvable, and IP-literal hosts. Leave **Port** blank to use 465 with **Use implicit TLS (port 465)** turned on, or 587 when it is off.
+For custom SMTP in a production deployment, use a public, externally resolvable DNS hostname and a valid TLS certificate that matches that hostname. Nathara HSE blocks private, local, reserved, unresolvable, and IP-literal hosts. Leave **Port** blank to use 465 with **Use implicit TLS (port 465)** turned on, or 587 when it is off.
 
 ## Configure a tenant email provider
 
@@ -1161,7 +1161,7 @@ Platform super-admins set the default provider used for critical text-message no
 1. Open **Platform**, then click **Platform SMS**.
 2. Choose the **Policy**. **Tenants choose their own (recommended)** lets a tenant override the default. **Force the platform default for all tenants** sends every tenant's SMS through this provider. **Disable all SMS (kill switch)** stops all SMS immediately.
 3. Choose the **Provider** and enter the required sender and provider account details.
-4. Enter the provider credential. If you change providers, enter the new provider's credential in the same save. BeaconHS never reuses one provider's saved credential with another provider.
+4. Enter the provider credential. If you change providers, enter the new provider's credential in the same save. Nathara HSE never reuses one provider's saved credential with another provider.
 5. Click **Save platform SMS**.
 6. Under **Send a test through the platform provider**, enter a full E.164 number such as **+15551234567**, then click **Send test**.
 
@@ -1180,11 +1180,11 @@ This option is available only while the platform policy is **Tenants choose thei
 
 When the override is off, the tenant uses the platform default provider. Clicking **Remove key** removes the tenant credential and turns off the override; it does not stop SMS supplied by the platform default. Add a credential and enable the override again before sending another tenant-provider test.
 
-Integration connections can reach public **HTTPS** services only. External database connections need **SSL/TLS** and a certificate that matches the **TLS certificate host name** when the host is an IP address. BeaconHS blocks local, private, and reserved network addresses unless the platform operator has allowlisted that host. When sending to an external SQL table, enter its **Identity column** so a partial retry can remove completed inserts before trying again.
+Integration connections can reach public **HTTPS** services only. External database connections need **SSL/TLS** and a certificate that matches the **TLS certificate host name** when the host is an IP address. Nathara HSE blocks local, private, and reserved network addresses unless the platform operator has allowlisted that host. When sending to an external SQL table, enter its **Identity column** so a partial retry can remove completed inserts before trying again.
 
-If a sync uses **Archive after safe full pulls**, BeaconHS applies it only after a complete full snapshot. An empty entity or failed record blocks archiving and marks the run partial. A page-limit warning means BeaconHS processed only part of the source, so it also skips archiving. Check the run details before trying again.
+If a sync uses **Archive after safe full pulls**, Nathara HSE applies it only after a complete full snapshot. An empty entity or failed record blocks archiving and marks the run partial. A page-limit warning means Nathara HSE processed only part of the source, so it also skips archiving. Check the run details before trying again.
 
-For employee departments, map **Department** to the department name from the source, not its numeric ID. If employees store a department ID, use a custom query that joins the source department list. You can also map **Department external ID** to detect a missing department name: the affected employee fails safely instead of losing their department. BeaconHS reuses matching departments and creates new department names as needed. Synced employees’ departments follow the source on each run, so correct them in NetSuite or your HR source. Department data scopes use these same assignments.
+For employee departments, map **Department** to the department name from the source, not its numeric ID. If employees store a department ID, use a custom query that joins the source department list. You can also map **Department external ID** to detect a missing department name: the affected employee fails safely instead of losing their department. Nathara HSE reuses matching departments and creates new department names as needed. Synced employees’ departments follow the source on each run, so correct them in NetSuite or your HR source. Department data scopes use these same assignments.
 
 On a connection, **Run history** shows every attempt. Search by trigger, status, or error, or use **Status** and **Type** to separate live runs from previews. Use **Next** and **Prev** to move through older runs.
 

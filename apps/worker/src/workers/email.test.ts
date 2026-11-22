@@ -15,14 +15,14 @@ vi.mock('drizzle-orm', () => ({ and: vi.fn(), eq: vi.fn() }))
 vi.mock('@beaconhs/emails', () => ({
   sendVia: mocks.sendVia,
   // Faithful stand-in for the real identity rule (unit-tested in
-  // @beaconhs/emails): per-send name shows as "<name> via BeaconHS" on the
+  // @beaconhs/emails): per-send name shows as "<name> via Nathara HSE" on the
   // configured address; per-send reply-to wins.
   resolveSendIdentity: (
     transport: { from: string; replyTo?: string },
     input: { senderName?: string; replyTo?: string },
   ) => ({
     from: input.senderName
-      ? `${input.senderName} via BeaconHS <${transport.from.replace(/^.*<|>$/g, '')}>`
+      ? `${input.senderName} via Nathara HSE <${transport.from.replace(/^.*<|>$/g, '')}>`
       : transport.from,
     replyTo: input.replyTo ?? transport.replyTo,
   }),
@@ -150,7 +150,7 @@ describe('email worker provider policy', () => {
     const transport = {
       provider: 'sendgrid' as const,
       apiKey: 'SG.secret',
-      from: 'BeaconHS <beacon@example.com>',
+      from: 'Nathara HSE <beacon@example.com>',
     }
     mocks.resolveDelivery.mockResolvedValue({
       kind: 'transport',
@@ -179,7 +179,7 @@ describe('email worker provider policy', () => {
     const transport = {
       provider: 'sendgrid' as const,
       apiKey: 'SG.secret',
-      from: 'BeaconHS <beacon@example.com>',
+      from: 'Nathara HSE <beacon@example.com>',
       replyTo: 'support@example.com',
     }
     mocks.resolveDelivery.mockResolvedValue({
@@ -196,7 +196,7 @@ describe('email worker provider policy', () => {
 
     expect(mocks.inserted).toContainEqual(
       expect.objectContaining({
-        fromAddr: 'Jane Foreman via BeaconHS <beacon@example.com>',
+        fromAddr: 'Jane Foreman via Nathara HSE <beacon@example.com>',
         replyToAddr: 'jane@example.com',
       }),
     )

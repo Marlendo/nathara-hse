@@ -8,7 +8,7 @@ overrides:
   # The published Excalidraw runtime ships precompiled JS/CSS but mistakenly
   # declares its build-time Sass compiler as a production dependency.
   '@excalidraw/excalidraw@0.18.1>sass': '-'
-  # BeaconHS has no Sass sources. Remove the optional compiler peer from the
+  # Nathara HSE has no Sass sources. Remove the optional compiler peer from the
   # exact framework/tool versions so pnpm does not resolve an unused native
   # toolchain merely because another package once exposed Sass transitively.
   'next@16.4.1>sass': '-'

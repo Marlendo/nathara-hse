@@ -482,7 +482,7 @@ function providerOperationError(
 /**
  * The From / Reply-To a send will actually use. A per-send `senderName`
  * keeps the configured From ADDRESS (verified domain, DMARC-aligned) and
- * only changes the display name to "<name> via BeaconHS"; a per-send
+ * only changes the display name to "<name> via Nathara HSE"; a per-send
  * `replyTo` overrides the configured one. Exported so the worker can log
  * the exact identity it sent with.
  *
@@ -496,7 +496,7 @@ export function resolveSendIdentity(
   const replyTo = input.replyTo ?? transport.replyTo
   if (!input.senderName) return { from: transport.from, replyTo }
   const { email } = parseAddress(transport.from)
-  return { from: `${input.senderName} via BeaconHS <${email}>`, replyTo }
+  return { from: `${input.senderName} via Nathara HSE <${email}>`, replyTo }
 }
 
 export async function sendVia(

@@ -123,7 +123,7 @@ export async function ensureBucket(): Promise<void> {
 export async function ensurePrivateBucketReady(): Promise<void> {
   if (process.env.R2_PUBLIC_URL) {
     throw new Error(
-      'R2_PUBLIC_URL must be removed: BeaconHS storage is private and objects are served through authorized or expiring URLs',
+      'R2_PUBLIC_URL must be removed: Nathara HSE storage is private and objects are served through authorized or expiring URLs',
     )
   }
 
@@ -453,7 +453,7 @@ export function assertTenantLogoObjectKey(args: { tenantId: string; key: string 
 }
 
 /**
- * Return a short-lived URL for a tenant logo stored in BeaconHS private
+ * Return a short-lived URL for a tenant logo stored in Nathara HSE private
  * storage. Public HTTPS logo URLs pass through unchanged. Internal keys are
  * tenant-checked before signing so branding cannot become a cross-tenant read.
  */

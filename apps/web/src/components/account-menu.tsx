@@ -12,7 +12,6 @@ import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { Bell, ChevronDown, LogOut, Settings, ShieldCheck, UserRound } from 'lucide-react'
 import { Popover } from '@beaconhs/ui'
-import { signOut } from '@beaconhs/auth/client'
 import { ThemeToggle } from './theme-toggle'
 import { formatAppVersion } from '@/lib/format-app-version'
 import { useOfflineDraftsContext } from '@/lib/offline-drafts/provider'
@@ -150,7 +149,7 @@ export function AccountMenu({
               // Sync (or, with consent, delete) unsynced form drafts on this
               // device before the next person picks it up.
               if (offlineDrafts && !(await offlineDrafts.prepareSignOut())) return
-              await signOut()
+              await fetch('/api/auth/sso/logout', { method: 'POST' }).catch(() => null)
               router.replace('/login')
             })
           }

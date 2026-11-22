@@ -904,7 +904,7 @@ const findComplianceGaps: AssistantToolDef = {
 const searchUserGuide: AssistantToolDef = {
   name: 'search_user_guide',
   description:
-    'Search the built-in BeaconHS user guide (plain-language how-to articles about USING THE APP: reporting incidents, filling hazard assessments, vehicle logs, training, admin, etc.). Use this whenever the user asks how to do something in the app. Returns matching articles with excerpts. Read-only.',
+    'Search the built-in Nathara HSE user guide (plain-language how-to articles about USING THE APP: reporting incidents, filling hazard assessments, vehicle logs, training, admin, etc.). Use this whenever the user asks how to do something in the app. Returns matching articles with excerpts. Read-only.',
   category: 'read',
   gate: { mode: 'public' },
   inputSchema: z.object({
@@ -936,7 +936,7 @@ const searchUserGuide: AssistantToolDef = {
 const readUserGuide: AssistantToolDef = {
   name: 'read_user_guide',
   description:
-    'Read one article from the built-in BeaconHS user guide by slug (find slugs with search_user_guide). Returns the full plain-language article as markdown. Read-only.',
+    'Read one article from the built-in Nathara HSE user guide by slug (find slugs with search_user_guide). Returns the full plain-language article as markdown. Read-only.',
   category: 'read',
   gate: { mode: 'public' },
   inputSchema: z.object({

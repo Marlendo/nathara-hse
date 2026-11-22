@@ -1,0 +1,161 @@
+# HSE STAGING runtime (PM-HSE-0001 Fase 4) — dipakai dengan:
+#   docker compose --env-file .env.staging -f docker-compose.staging.yml up -d
+#
+# Beda dari docker-compose.yml (dev/upstream):
+# - container beaconhs-* → hse-* (rebrand operator, SA-HSE FINAL)
+# - postgres:18-alpine (kunci 18.x, BUKAN latest), container hse-postgres,
+#   port host 5434 (DILARANG 54322/5433), volume hse-postgres-data (isolasi),
+#   seed role via scripts/cluster/staging-init.sh (password dari .env.staging)
+# - minio host ports 9100/9101 (9000 dipakai portainer di mesin ini)
+# - web: image dari Dockerfile repo (build terpisah), gabung siakad-network
+#   agar nginx staging bisa proxy smk3.nathara.ac.id → http://hse-web:3000
+# Scope dikunci: JANGAN pruning service; JANGAN ubah docker-compose.yml dev.
+name: hse-staging
+
+services:
+  postgres:
+    image: postgres:18-alpine
+    container_name: hse-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD wajib di .env.staging}
+      POSTGRES_DB: ${POSTGRES_DB:-beaconhs}
+      HSE_DB_APP_PASSWORD: ${HSE_DB_APP_PASSWORD:?wajib}
+      HSE_DB_SUPER_PASSWORD: ${HSE_DB_SUPER_PASSWORD:?wajib}
+      HSE_DB_MIGRATOR_PASSWORD: ${HSE_DB_MIGRATOR_PASSWORD:?wajib}
+      HSE_DB_BACKUP_PASSWORD: ${HSE_DB_BACKUP_PASSWORD:?wajib}
+    ports:
+      - '5434:5432'
+    volumes:
+      # PG18+: mount INDUK /var/lib/postgresql (bukan .../data) — image 18
+      # menolak mount langsung ke PGDATA (docker-library/postgres#37).
+      - hse-postgres-data:/var/lib/postgresql
+      - ./scripts/cluster/staging-init.sh:/docker-entrypoint-initdb.d/10-hse-roles.sh:ro
+      - ./scripts/cluster/provision.sql:/opt/hse/provision.sql:ro
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - hse-staging
+
+  redis:
+    image: redis:7-alpine
+    container_name: hse-redis
+    ports:
+      - '6380:6379'
+    volumes:
+      - hse-redis-data:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - hse-staging
+
+  minio:
+    image: minio/minio:latest
+    container_name: hse-minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${HSE_MINIO_ROOT_USER:?wajib}
+      MINIO_ROOT_PASSWORD: ${HSE_MINIO_ROOT_PASSWORD:?wajib}
+    ports:
+      - '9100:9000'
+      - '9101:9001'
+    volumes:
+      - hse-minio-data:/data
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:9000/minio/health/live']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - hse-staging
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: hse-mailpit
+    ports:
+      - '1025:1025'
+      - '8025:8025'
+    networks:
+      - hse-staging
+
+  # In-browser PowerPoint editor (sama seperti dev; WOPI callback + framing
+  # diselaraskan ke APP_URL saat web staging hijau — Fase 4 verifikasi login).
+  collabora:
+    image: collabora/code:latest
+    container_name: hse-collabora
+    environment:
+      - aliasgroup1=http://host.docker.internal:3000
+      - extra_params=--o:ssl.enable=false --o:ssl.termination=false --o:net.frame_ancestors=http://localhost:3000 --o:welcome.enable=false --o:home_mode.enable=true --o:storage.wopi.max_file_size=1073741824
+    ports:
+      - '9980:9980'
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    volumes:
+      - ./deploy/collabora-branding.js:/usr/share/coolwsd/browser/dist/branding.js:ro
+    networks:
+      - hse-staging
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DEPLOYMENT_VERSION: ${HSE_DEPLOYMENT_SHA:?set HSE_DEPLOYMENT_SHA=git rev-parse HEAD}
+      secrets:
+        - next_server_actions_key
+    image: hse-web:staging
+    container_name: hse-web
+    environment:
+      APP_ROLE: web
+      NODE_ENV: production
+      HOSTNAME: 0.0.0.0
+      PORT: '3000'
+      APP_VERSION: ${APP_VERSION:-staging}
+      DATABASE_URL: ${HSE_RUNTIME_DATABASE_URL:?wajib}
+      SUPERADMIN_DATABASE_URL: ${HSE_RUNTIME_SUPERADMIN_URL:?wajib}
+      REDIS_URL: ${HSE_RUNTIME_REDIS_URL:?wajib}
+      HSE_APP_SECRET: ${HSE_APP_SECRET:?wajib}
+      HSE_INVITE_SECRET: ${HSE_INVITE_SECRET:?wajib}
+      ATTACHMENT_CAPABILITY_SECRET: ${ATTACHMENT_CAPABILITY_SECRET:?wajib}
+      APP_URL: ${APP_URL:?wajib}
+      COLLABORA_URL: ${COLLABORA_URL:-}
+      COLLABORA_WOPI_URL: ${COLLABORA_WOPI_URL:-}
+    networks:
+      - hse-staging
+      - siakad-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'curl', '--fail', '--silent', 'http://127.0.0.1:3000/api/health/ready']
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    restart: unless-stopped
+
+networks:
+  hse-staging:
+  siakad-network:
+    external: true
+
+secrets:
+  next_server_actions_key:
+    file: ./secrets/next_server_actions_key
+
+volumes:
+  hse-postgres-data:
+    name: hse-postgres-data
+  hse-redis-data:
+    name: hse-redis-data
+  hse-minio-data:
+    name: hse-minio-data

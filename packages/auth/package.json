@@ -21,6 +21,7 @@
     "@beaconhs/emails": "workspace:*",
     "@beaconhs/jobs": "workspace:*",
     "drizzle-orm": "^0.45.2",
+    "jose": "^6.2.2",
     "pg": "^8.22.0"
   },
   "devDependencies": {

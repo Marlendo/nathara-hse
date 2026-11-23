@@ -11254,7 +11254,20 @@
     "m_12c4cdd1fb308a": "Nathara HSE es donde tu equipo registra el trabajo de seguridad: diarios, evaluaciones de riesgos, inspecciones, incidentes y más. Este rápido recorrido te muestra el lugar. Puedes salir en cualquier momento con Saltar.",
     "m_16f8730b85efcd": "¿Ve algo roto en la app? Toque el icono de diana en la barra superior. Describa lo que ocurrió. Nathara HSE consulta primero la guía y, si es un defecto, envía un informe de producto.",
     "m_1f7d41f0e58820": "Para una aplicación de Builder, elija Completar en Nathara HSE para rellenarla digitalmente. Si el cliente exige un formulario en papel, elija Usar formulario externo, escriba la referencia JSA en el papel, indique quién lo emitió y adjunte fotos opcionales antes de completar la captura. En los nuevos planes de protección contra caídas, las comprobaciones de anclajes, inspección de equipos y jerarquía aparecen en Acceso y comunicación; Rescate cubre el plan y el equipo de rescate.",
-    "m_0058643d720809": "mailto:ops@nathara-hse.app"
+    "m_0058643d720809": "mailto:ops@nathara-hse.app",
+    "m_1dfe485545d63c": "Nathara SSO is temporarily unavailable. Please try again later.",
+    "m_05a71baea09e85": "Sign in with Nathara SSO",
+    "m_1b7ecc55c2223a": "Link your email",
+    "m_172b46190b7e93": "Link your email — Nathara HSE",
+    "m_0100fe9c618bfa": "Your Nathara account is verified. Link an email address to finish signing in to Nathara HSE.",
+    "m_1131ac1bb2516b": "The code does not match this login attempt. Request a new code.",
+    "m_198212be60eeb6": "Something went wrong. Please try again.",
+    "m_0d38aae81bfe3a": "Work email",
+    "m_07a89cc0bf1271": "Send verification code",
+    "m_1be807e6cc39a9": "Verification code",
+    "m_0b7953548290a3": "Verify and sign in",
+    "m_09b29661909365": "Terlalu banyak percobaan. Coba lagi nanti.",
+    "m_169a2cc3d556ad": "Method Not Allowed"
   },
   "ManageWorkspace": {
     "title": "Gestionar {module}",

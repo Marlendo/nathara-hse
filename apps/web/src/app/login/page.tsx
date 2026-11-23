@@ -2,7 +2,7 @@ import { GeneratedValue } from '@/i18n/generated'
 import { getGeneratedTranslations } from '@/i18n/generated.server'
 import { redirect } from 'next/navigation'
 import { Alert, AlertDescription, Button } from '@beaconhs/ui'
-import { Logo } from '@/components/brand-logo'
+import { AuthBrandHeader } from '@/components/auth-brand-header'
 import { getCurrentUserId } from '@/lib/auth'
 import { authContinuationPath, authReturnPath } from '@/lib/auth-return-path'
 import { pickString } from '@/lib/list-params'
@@ -26,8 +26,8 @@ export default async function LoginPage({
   return (
     <main className="grid min-h-screen place-items-center px-4">
       <div className="w-full max-w-sm space-y-6">
+        <AuthBrandHeader animated />
         <div className="text-center">
-          <Logo animated className="mx-auto h-11 w-auto" />
           <h1 className="mt-5 text-xl font-semibold">
             <GeneratedValue value="Sign in to Nathara HSE" />
           </h1>

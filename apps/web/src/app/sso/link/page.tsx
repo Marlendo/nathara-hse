@@ -3,7 +3,7 @@ import { getGeneratedTranslations } from '@/i18n/generated.server'
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
 import { Alert, AlertDescription, Button, Card, CardContent, Input, Label } from '@beaconhs/ui'
-import { Logo } from '@/components/brand-logo'
+import { AuthBrandHeader } from '@/components/auth-brand-header'
 import { readSsoLinkCookie } from '@beaconhs/auth/sso'
 
 export async function generateMetadata() {
@@ -35,8 +35,8 @@ export default async function SsoLinkPage({
   return (
     <main className="grid min-h-screen place-items-center px-4">
       <div className="w-full max-w-sm space-y-6">
+        <AuthBrandHeader />
         <div className="text-center">
-          <Logo className="mx-auto h-11 w-auto" />
           <h1 className="mt-5 text-xl font-semibold">
             <GeneratedValue value="Link your email" />
           </h1>

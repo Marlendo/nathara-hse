@@ -2,7 +2,7 @@ import { GeneratedValue } from '@/i18n/generated'
 import { getGeneratedTranslations } from '@/i18n/generated.server'
 import Link from 'next/link'
 import { Card, CardContent } from '@beaconhs/ui'
-import { Logo } from '@/components/brand-logo'
+import { AuthBrandHeader } from '@/components/auth-brand-header'
 import { SSO_ACCESS_DENIED_MESSAGE } from '@beaconhs/auth/sso'
 
 export async function generateMetadata() {
@@ -15,7 +15,7 @@ export default function NoAccessPage() {
   return (
     <main className="grid min-h-screen place-items-center bg-slate-50 px-4 dark:bg-slate-950">
       <div className="w-full max-w-md space-y-5">
-        <Logo className="mx-auto h-10 w-auto" />
+        <AuthBrandHeader logoClassName="h-10" />
         <Card>
           <CardContent className="space-y-4 pt-6 text-center">
             <h1 className="text-xl font-semibold text-slate-900 dark:text-slate-100">

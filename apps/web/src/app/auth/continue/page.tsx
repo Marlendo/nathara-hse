@@ -3,7 +3,7 @@ import { getGeneratedTranslations } from '@/i18n/generated.server'
 import { GeneratedText, GeneratedValue } from '@/i18n/generated'
 import { redirect } from 'next/navigation'
 import { Card, CardContent } from '@beaconhs/ui'
-import { Logo } from '@/components/brand-logo'
+import { AuthBrandHeader } from '@/components/auth-brand-header'
 import { getRequestContext, getSignedInAccessSummary } from '@/lib/auth'
 import { authEntryPath, authReturnPath } from '@/lib/auth-return-path'
 import { pickString } from '@/lib/list-params'
@@ -44,7 +44,7 @@ export default async function AuthContinuePage({
   return (
     <main className="grid min-h-screen place-items-center bg-slate-50 px-4 dark:bg-slate-950">
       <div className="w-full max-w-md space-y-5">
-        <Logo className="mx-auto h-10 w-auto" />
+        <AuthBrandHeader logoClassName="h-10" />
         <Card>
           <CardContent className="space-y-4 pt-6 text-center">
             <h1 className="text-xl font-semibold text-slate-900 dark:text-slate-100">

@@ -87,6 +87,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      target: web
       args:
         DEPLOYMENT_VERSION: ${HSE_DEPLOYMENT_SHA:?set HSE_DEPLOYMENT_SHA=git rev-parse HEAD}
       secrets:

@@ -96,3 +96,31 @@ ENV HOME=/home/node
 EXPOSE 3000
 USER node
 ENTRYPOINT ["/entrypoint.sh"]
+
+# --- Web-only (staging slim, PM-HSE-0001) ---
+# Target ramping: TANPA /prod/worker (578MB), TANPA chrome-headless-shell
+# (273MB) + browser libs-nya, apt MINIMAL. soffice WAJIB tetap ada — Server
+# Action web (documents/[id]/_ai-actions.ts) memanggil sofficeConvert lokal
+# via execFile. Staging hanya jalan APP_ROLE=web; worker penuh tetap di
+# target `runner` di atas. Dipakai via compose `target: web`.
+FROM base AS web
+ARG TARGETARCH
+RUN test "$TARGETARCH" = amd64 || { echo "Nathara HSE runtime requires linux/amd64" >&2; exit 1; }
+ENV NODE_ENV=production
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    fonts-liberation ca-certificates curl unzip \
+    libreoffice-impress libreoffice-writer poppler-utils \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --chown=node:node --from=builder /app/apps/web/.next/standalone ./
+COPY --chown=node:node --from=builder /app/apps/web/.next/static ./apps/web/.next/static
+COPY --chown=node:node --from=builder /app/apps/web/public ./apps/web/public
+COPY --chown=node:node docker/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh && mkdir -p /opt/beaconhs-tenant-plugins
+
+ENV APP_ROLE=web
+ENV HOME=/home/node
+EXPOSE 3000
+USER node
+ENTRYPOINT ["/entrypoint.sh"]

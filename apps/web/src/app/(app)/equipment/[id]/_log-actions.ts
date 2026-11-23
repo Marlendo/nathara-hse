@@ -24,9 +24,9 @@ import {
 
 function logReturnUrl(formData: FormData, itemId: string) {
   const returnHref = optionalTextInput(formData.get('returnHref'), 'Return path', 4000)
-  const returnUrl = new URL(returnHref ?? `/equipment/${itemId}?tab=log`, 'https://beacon.invalid')
+  const returnUrl = new URL(returnHref ?? `/equipment/${itemId}?tab=log`, 'https://nathara-hse.invalid')
   if (
-    returnUrl.origin !== 'https://beacon.invalid' ||
+    returnUrl.origin !== 'https://nathara-hse.invalid' ||
     returnUrl.pathname !== `/equipment/${itemId}`
   )
     throw new Error('Return path is invalid.')

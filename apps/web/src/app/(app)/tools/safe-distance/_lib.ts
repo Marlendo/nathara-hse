@@ -1,6 +1,6 @@
 // Pneumatic pressure-test safe-distance engine.
 //
-// Ported verbatim from the legacy beaconhs SafeDistanceApiController so results
+// Ported verbatim from the legacy SafeDistanceApiController so results
 // match the system being replaced. Pure functions only — shared by the client
 // live-preview island and the server save action (which is authoritative).
 //

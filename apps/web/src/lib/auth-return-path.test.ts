@@ -6,7 +6,7 @@ describe('authentication preserves safe deep links', () => {
     const path = '/hazard-assessments/sign/abc?tenant=123'
     expect(authEntryPath(false, path)).toBe(`/login?next=${encodeURIComponent(path)}`)
     expect(authEntryPath(true, path)).toBe(authContinuationPath(path))
-    const continuation = new URL(authContinuationPath(path), 'https://beaconhs.invalid')
+    const continuation = new URL(authContinuationPath(path), 'https://nathara-hse.invalid')
     expect(authReturnPath(continuation.searchParams.get('next'))).toBe(path)
   })
   it.each([

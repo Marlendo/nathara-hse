@@ -1,15 +1,17 @@
 import { GeneratedValue } from '@/i18n/generated'
 import { PRODUCT_NAME } from '@/lib/brand'
-// Nathara HSE brand logo — hand-drawn SVG recreation of the lighthouse lockup.
+// Nathara HSE brand logo — shield-and-check mark with a "NATHARA HSE"
+// wordmark: a protection shield (safety) closed by an amber verification
+// check.
 // All ink strokes use `currentColor` (navy in light mode, near-white in dark);
-// the beacon rays and "HS" stay brand amber in both themes. Every shape is a
-// stroke with a normalized pathLength so the splash can draw the logo in.
+// the check and "HSE" stay brand amber in both themes. Every shape carries a
+// normalized pathLength so the splash can draw the logo in.
 //
 // Exports:
-//   <Logo />        full horizontal lockup (mark + "beaconHS" wordmark)
-//   <LogoMark />    lighthouse only (square-ish, for tight spots)
+//   <Logo />        full horizontal lockup (mark + "NATHARA HSE" wordmark)
+//   <LogoMark />    shield only (square-ish, for tight spots)
 //   <BrandSplash /> full-screen draw-in animation for route loading
-// Pass `animated` for the looping beacon-ray shimmer (CSS-only, respects
+// Pass `animated` for the looping shimmer (CSS-only, respects
 // prefers-reduced-motion — keyframes live in globals.css under "Brand logo").
 
 import type { CSSProperties, SVGProps } from 'react'
@@ -22,32 +24,19 @@ const INK_CLASS = 'text-[#1B2B4A] dark:text-slate-100'
 type Mode = 'static' | 'loop' | 'draw'
 
 const delay = (s: number) => ({ '--bd': `${s}s` }) as CSSProperties
-const rayDelay = (s: number, pulse: number) =>
-  ({ '--bd': `${s}s`, '--bp': `${pulse}s` }) as CSSProperties
 
-/* ------------------------------- The mark -------------------------------- */
-// Drawn in a 48 × 106 box. Build-up order: base → tower → stripes → gallery →
-// lantern room → roof, then the lamp lights and the rays sweep on.
+const FONT_STACK =
+  'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+
+/* --------------------------------- The mark ------------------------------- */
+// Shield drawn in a 64 × 64 box: outline first, then the verification check.
+// Paths run outer → inner so staggered delays read as closing the shield.
 
 const MARK_STRUCTURE = [
-  'M4 101L44 101', // base
-  'M17 55L11 101', // tower left
-  'M31 55L37 101', // tower right
-  'M14.8 72L32.2 64.5', // upper stripe
-  'M12.2 92L34.9 84.5', // lower stripe
-  'M10.5 55L37.5 55', // gallery ledge
-  'M16 38L32 38L32 53L16 53Z', // lantern room
-  'M11.5 38L24 24L36.5 38Z', // roof
+  'M32 7L52 14.5V31C52 44.5 43.5 54 32 57.5C20.5 54 12 44.5 12 31V14.5Z',
 ]
 
-// Rays ordered left → right so staggered delays read as a sweeping beam.
-const MARK_RAYS = [
-  'M15.1 20.8L2.9 16.4',
-  'M18.6 16.2L11.1 5.6',
-  'M24 14.5L24 3',
-  'M29.4 16.2L36.9 5.6',
-  'M32.9 20.8L45.1 16.4',
-]
+const MARK_CHECK = ['M23 31.5L29.5 38L42 24.5']
 
 function MarkArt({ mode }: { mode: Mode }) {
   const draw = mode === 'draw'
@@ -58,7 +47,7 @@ function MarkArt({ mode }: { mode: Mode }) {
       <GeneratedValue
         value={
           animated ? (
-            <filter id="bhs-glow" x="-150%" y="-150%" width="400%" height="400%">
+            <filter id="nhs-glow" x="-150%" y="-150%" width="400%" height="400%">
               <feGaussianBlur stdDeviation="3" />
             </filter>
           ) : null
@@ -83,47 +72,37 @@ function MarkArt({ mode }: { mode: Mode }) {
           ))}
         />
       </g>
-      {/* lamp — faithful ink in the static logo, lit amber when animated */}
+      {/* verification check — lit amber when animated */}
       <GeneratedValue
         value={
           animated ? (
             <circle
-              cx={24}
-              cy={45.75}
-              r={6}
+              cx={32}
+              cy={32}
+              r={24}
               fill={BRAND_AMBER}
               opacity={0.45}
-              filter="url(#bhs-glow)"
+              filter="url(#nhs-glow)"
               className={draw ? 'brand-glow-draw' : 'brand-glow-loop'}
               style={delay(0.85)}
             />
           ) : null
         }
       />
-      <rect
-        x={20.5}
-        y={42.5}
-        width={7}
-        height={6.5}
-        rx={1.6}
-        fill={animated ? BRAND_AMBER : 'currentColor'}
-        {...(animated
-          ? { className: draw ? 'brand-lamp-draw' : 'brand-lamp-loop', style: delay(0.85) }
-          : {})}
-      />
-      {/* rays beam outward from the lamp (paths run inner → outer) */}
-      <g fill="none" stroke={BRAND_AMBER} strokeWidth={5} strokeLinecap="round">
+      <g
+        fill="none"
+        stroke={BRAND_AMBER}
+        strokeWidth={6}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <GeneratedValue
-          value={MARK_RAYS.map((d, i) => (
+          value={MARK_CHECK.map((d, i) => (
             <path
               key={d}
               d={d}
               {...(animated
-                ? {
-                    pathLength: 1,
-                    className: draw ? 'brand-ray-draw' : 'brand-ray-loop',
-                    style: rayDelay(1.0 + i * 0.07, i * 0.16),
-                  }
+                ? { pathLength: 1, className: strokeCls, style: delay(0.5 + i * 0.07) }
                 : {})}
             />
           ))}
@@ -133,87 +112,67 @@ function MarkArt({ mode }: { mode: Mode }) {
   )
 }
 
-/* ----------------------------- The wordmark ------------------------------ */
-// Monoline geometric letterforms built from circles and arcs, x-height 100,
-// stroke 20 ("beacon" in ink, "HS" in amber) — no font dependency.
+/* ------------------------------- The wordmark ---------------------------- */
+// "NATHARA" in ink + "HSE" in amber, set in the platform sans (no webfont
+// dependency — the logo must render inside the boot splash before any
+// font loads). textLength pins the exact advance width so the lockup never
+// clips or reflows across platforms. The wordmark fades in (no loop pulse)
+// while the shield keeps the draw cycle.
 
-type GlyphStroke = { d: string } | { cx: number; cy: number; r: number }
-type Glyph = { x: number; amber?: boolean; strokes: GlyphStroke[] }
-
-const GLYPHS: Glyph[] = [
-  // b
-  { x: 0, strokes: [{ d: 'M10 -38L10 100' }, { cx: 60, cy: 50, r: 40 }] },
-  // e — ring with the aperture at the lower right; the bar runs flush to the
-  // ring's outer right edge so its terminal doesn't step back at the aperture
-  { x: 124, strokes: [{ d: 'M90 50A40 40 0 1 0 75.7 80.6' }, { d: 'M10 50L100 50' }] },
-  // a — single-storey: bowl + flush right stem
-  { x: 238, strokes: [{ cx: 50, cy: 50, r: 40 }, { d: 'M90 0L90 100' }] },
-  // c
-  { x: 352, strokes: [{ d: 'M79.7 23.2A40 40 0 1 0 79.7 76.8' }] },
-  // o
-  { x: 460, strokes: [{ cx: 50, cy: 50, r: 40 }] },
-  // n
-  { x: 574, strokes: [{ d: 'M10 0L10 100' }, { d: 'M10 50A40 40 0 0 1 90 50L90 100' }] },
-  // H
-  {
-    x: 690,
-    amber: true,
-    strokes: [{ d: 'M10 -36L10 100' }, { d: 'M90 -36L90 100' }, { d: 'M10 32L90 32' }],
-  },
-  // S — two tangent elliptical arcs
-  { x: 804, amber: true, strokes: [{ d: 'M76.6 -12.5A33 27 0 1 0 48 28A37 31 0 1 1 16 74.5' }] },
-]
-
-const WORD_SCALE = 0.44
-const WORD_X = 68 // gap between mark and wordmark
-const WORD_Y = 48 // x-height top within the 116-tall lockup
-const WORD_END = WORD_X + (804 + 96) * WORD_SCALE // right edge of the S
-const LOCKUP_W = Math.ceil(WORD_END + 4)
+const WORD_X = 70 // gap between mark and wordmark
+const WORD_BASELINE = 41
+const WORD_SIZE = 29
+const NATHARA_ADVANCE = 150
+const HSE_GAP = 12
+const HSE_ADVANCE = 72
+const HSE_X = WORD_X + NATHARA_ADVANCE + HSE_GAP
+const LOCKUP_W = Math.ceil(HSE_X + HSE_ADVANCE + 8)
+const LOCKUP_H = 64
 
 function WordmarkArt({ mode }: { mode: Mode }) {
   const draw = mode === 'draw'
-  const animated = mode !== 'static'
-  const strokeCls = draw ? 'brand-stroke-draw' : animated ? 'brand-stroke-loop' : undefined
   return (
-    <g
-      transform={`translate(${WORD_X} ${WORD_Y}) scale(${WORD_SCALE})`}
-      fill="none"
-      strokeWidth={20}
-      strokeLinecap="butt"
-      strokeLinejoin="round"
-    >
-      <GeneratedValue
-        value={GLYPHS.map((g, i) => (
-          <g
-            key={g.x}
-            transform={`translate(${g.x} 0)`}
-            stroke={g.amber ? BRAND_AMBER : 'currentColor'}
+    <GeneratedValue
+      value={
+        <g
+          aria-hidden="true"
+          fontFamily={FONT_STACK}
+          fontSize={WORD_SIZE}
+          fontWeight={800}
+          letterSpacing={1}
+        >
+          <text
+            x={WORD_X}
+            y={WORD_BASELINE}
+            fill="currentColor"
+            textLength={NATHARA_ADVANCE}
+            lengthAdjust="spacingAndGlyphs"
+            {...(draw ? { className: 'brand-text-draw', style: delay(0.5) } : {})}
           >
-            <GeneratedValue
-              value={g.strokes.map((s, j) => {
-                const anim = animated
-                  ? { pathLength: 1, className: strokeCls, style: delay(0.3 + i * 0.06) }
-                  : {}
-                return 'd' in s ? (
-                  <path key={j} d={s.d} {...anim} />
-                ) : (
-                  <circle key={j} cx={s.cx} cy={s.cy} r={s.r} {...anim} />
-                )
-              })}
-            />
-          </g>
-        ))}
-      />
-    </g>
+            NATHARA
+          </text>
+          <text
+            x={HSE_X}
+            y={WORD_BASELINE}
+            fill={BRAND_AMBER}
+            textLength={HSE_ADVANCE}
+            lengthAdjust="spacingAndGlyphs"
+            {...(draw ? { className: 'brand-text-draw', style: delay(0.8) } : {})}
+          >
+            HSE
+          </text>
+        </g>
+      }
+    />
   )
 }
 
 /* ------------------------------- Components ------------------------------ */
 
 type LogoProps = SVGProps<SVGSVGElement> & {
-  /** Loop the beacon-ray shimmer + lit lamp. */
+  /** Loop the shimmer + lit check. */
   animated?: boolean
-  /** Draw the whole logo in once, then keep the beacon looping (splash). */
+  /** Draw the whole logo in once, then keep the shield looping (splash). */
   draw?: boolean
 }
 
@@ -221,7 +180,7 @@ export function LogoMark({ animated, draw, className, ...rest }: LogoProps) {
   const mode: Mode = draw ? 'draw' : animated ? 'loop' : 'static'
   return (
     <svg
-      viewBox="0 0 48 106"
+      viewBox="0 0 64 64"
       role="img"
       aria-label={PRODUCT_NAME}
       className={cn('h-8 w-auto', INK_CLASS, className)}
@@ -236,13 +195,13 @@ export function Logo({ animated, draw, className, ...rest }: LogoProps) {
   const mode: Mode = draw ? 'draw' : animated ? 'loop' : 'static'
   return (
     <svg
-      viewBox={`0 0 ${LOCKUP_W} 116`}
+      viewBox={`0 0 ${LOCKUP_W} ${LOCKUP_H}`}
       role="img"
       aria-label={PRODUCT_NAME}
       className={cn('h-8 w-auto', INK_CLASS, className)}
       {...rest}
     >
-      <g transform="translate(0 5)">
+      <g transform="translate(4 4) scale(0.875)">
         <MarkArt mode={mode} />
       </g>
       <WordmarkArt mode={mode} />
@@ -250,7 +209,7 @@ export function Logo({ animated, draw, className, ...rest }: LogoProps) {
   )
 }
 
-/** Full-screen brand splash: the logo draws itself in, then the beacon keeps
+/** Full-screen brand splash: the logo draws itself in, then the shield keeps
  *  sweeping. Used only by the tab's startup overlay. */
 export function BrandSplash() {
   return (

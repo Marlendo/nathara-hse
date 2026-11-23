@@ -17,7 +17,7 @@ type Phase = 'visible' | 'fading' | 'gone'
 export function SplashScreen() {
   const [phase, setPhase] = useState<Phase>('visible')
   useEffect(() => {
-    const skip = document.documentElement.dataset.beaconSplash === 'skip'
+    const skip = document.documentElement.dataset.natharaSplash === 'skip'
     const min = window.matchMedia('(prefers-reduced-motion: reduce)').matches
       ? REDUCED_MOTION_MIN_MS
       : MIN_VISIBLE_MS
@@ -28,7 +28,7 @@ export function SplashScreen() {
     const fadeT = setTimeout(() => setPhase('fading'), remaining)
     const goneT = setTimeout(
       () => {
-        document.documentElement.dataset.beaconSplash = 'skip'
+        document.documentElement.dataset.natharaSplash = 'skip'
         setPhase('gone')
       },
       remaining + (skip ? 0 : FADE_MS),

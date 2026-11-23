@@ -2,7 +2,7 @@
 //
 // Shared by the `createDraftResponse` Server Action and the
 // /api/apps/draft-save route (the guided fill page's local-first sync queue
-// and its unload beacon), which saves whole-draft snapshots. Record-page
+// and its unload keepalive post), which saves whole-draft snapshots. Record-page
 // field edits go through /api/records/sync instead (see record-edits.ts).
 // Kept out of the 'use server' actions module on purpose: these helpers take
 // a trusted request context argument and must never be exposed as
@@ -185,7 +185,7 @@ type DraftSaveResult =
  * Save the in-flight draft state for a form response.
  *
  * Called by the client sync queue (debounced edits, step changes, retries)
- * and by the unload beacon, both through /api/apps/draft-save.
+ * and by the unload keepalive post, both through /api/apps/draft-save.
  *
  * Audits ONLY on first draft save in a session (when draft_updated_at was
  * null), not every keystroke. Keeps the audit log readable.

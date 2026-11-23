@@ -1287,7 +1287,7 @@ Rental gear, a client's harness, a subcontractor's gear, or your own: check it b
 
 Other PPE only takes pre-use checks. Annual inspections and recertification belong to whoever owns the gear. A failed check is recorded, and nothing else happens: there is no item to take out of service and no corrective action. Tag the gear out, stop using it, and return it to whoever supplied it.
 
-The saved checklist opens as soon as you record it. Find it later in **PPE → Inspections** with the **Other PPE** filter. Checks recorded as "Other PPE" in the old Beacon app are there too, with the old harness and lanyard details in **Notes**.
+The saved checklist opens as soon as you record it. Find it later in **PPE → Inspections** with the **Other PPE** filter. Checks recorded as "Other PPE" in the old app are there too, with the old harness and lanyard details in **Notes**.
 
 ## Return failed gear to service
 

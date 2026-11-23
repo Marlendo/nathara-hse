@@ -34,7 +34,7 @@ type DeliveryMeta = {
    * completing every required lesson, or an evaluator signing off the last
    * practical) mints the training record + certificate automatically.
    *
-   * True for Beacon-verifiable learner/evaluator-driven types (self-paced and
+   * True for verifiable learner/evaluator-driven types (self-paced and
    * on-the-job). FALSE for classroom — an instructor issues those records at
    * class completion with attendance/grade/pass per person — and for external
    * certificates, which are recorded manually. This prevents a stray

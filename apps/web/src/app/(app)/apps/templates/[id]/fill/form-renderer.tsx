@@ -194,7 +194,7 @@ const NO_SERVER_DRAFT: DraftServerCursor = { revision: 0, sessionId: null, seque
 const SavedSignatureContext = createContext<CurrentUser['savedSignature']>(null)
 
 const FIELD_MODE_STORAGE_KEY = 'bhs_field_mode'
-const FIELD_MODE_CHANGE_EVENT = 'beaconhs:field-mode-change'
+const FIELD_MODE_CHANGE_EVENT = 'nathara-hse:field-mode-change'
 
 function readFieldModePreference(): boolean {
   try {

@@ -97,7 +97,7 @@ export async function POST(request: Request) {
       logoUrl: tenant?.branding?.logoUrl,
     }),
     recipientFullName: 'Avery Chen',
-    recipientEmployeeNo: 'BH-1048',
+    recipientEmployeeNo: 'NH-1048',
     recipientPhotoUrl: null,
     credentialName: 'Confined Space Entry and Monitor',
     credentialCode: 'CSE-201',

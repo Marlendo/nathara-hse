@@ -32,7 +32,7 @@ export function safeCategoryReturnTo(value: FormDataEntryValue | null): string {
 }
 
 export function categoryErrorHref(returnTo: string, message: string): string {
-  const url = new URL(returnTo, 'https://beaconhs.invalid')
+  const url = new URL(returnTo, 'https://nathara-hse.invalid')
   url.searchParams.set('categoryError', message)
   return `${url.pathname}?${url.searchParams.toString()}`
 }

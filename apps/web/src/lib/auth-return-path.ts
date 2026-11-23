@@ -5,10 +5,10 @@ export function authReturnPath(value: string | null | undefined): string | null 
   const path = sanitizeFrom(value)
   if (!path || path.length > 2048) return null
   try {
-    const url = new URL(path, 'https://beaconhs.invalid')
+    const url = new URL(path, 'https://nathara-hse.invalid')
     const decoded = decodeURIComponent(url.pathname)
     if (
-      url.origin !== 'https://beaconhs.invalid' ||
+      url.origin !== 'https://nathara-hse.invalid' ||
       decoded.startsWith('//') ||
       decoded.includes('\\') ||
       /[\u0000-\u0020\u007f]/.test(decoded)

@@ -7,7 +7,7 @@ import { resolveAnalyticsAccess } from './analytics-access'
 
 /**
  * Reports and Insights share one authorization-aware source inventory.
- * AppKit receives only the already-authorized Beacon catalogue.
+ * AppKit receives only the already-authorized report catalogue.
  */
 export async function loadAuthorizedReportCatalogInTransaction(ctx: RequestContext, tx: Database) {
   const access = await resolveAnalyticsAccess(ctx, tx)

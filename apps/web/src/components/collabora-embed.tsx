@@ -16,7 +16,7 @@ import {
 //   native darkTheme param is unusable: its mere presence forces dark mode
 //   and clobbers ui_defaults, and COOL's per-browser saved theme would win
 //   over it anyway.
-// - Shows the Nathara HSE lighthouse while the frame initializes, then reveals
+// - Shows the Nathara HSE mark while the frame initializes, then reveals
 //   Collabora’s loading progress. Only Document_Loaded permits publishing.
 // - Speaks Collabora's postMessage API (Host_PostmessageReady handshake) and
 //   exposes an imperative handle for host features like the document AI

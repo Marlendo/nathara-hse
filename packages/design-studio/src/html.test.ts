@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { valueForField } from './html'
 
 const credential = {
-  tenantName: 'Beacon Health & Safety',
+  tenantName: 'Nathara HSE',
   recipientFullName: 'Avery Chen',
   credentialName: 'Confined Space Entry and Monitor',
   credentialCode: 'CSE-201',

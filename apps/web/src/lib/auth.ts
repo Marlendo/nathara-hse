@@ -426,7 +426,7 @@ export async function requireRequestContext(): Promise<RequestContext> {
     redirect(
       authEntryPath(
         Boolean(await getSessionUser()),
-        (await headers()).get('x-beacon-return-path'),
+        (await headers()).get('x-nathara-return-path'),
       ) as any,
     )
   return ctx

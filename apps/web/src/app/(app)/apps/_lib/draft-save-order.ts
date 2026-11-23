@@ -16,7 +16,7 @@ function safeCounter(value: number | undefined): number {
 }
 
 /**
- * Orders whole-draft writes from normal autosave requests and unload beacons.
+ * Orders whole-draft writes from normal autosave requests and unload keepalive posts.
  *
  * Requests from one browser session are ordered by their local edit sequence,
  * so a delayed older request can never replace a newer payload. A different

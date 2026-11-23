@@ -56,7 +56,7 @@ const CATALOG: DesignFieldCatalog = {
     { value: 'verify.qr', label: 'Scan QR code' },
   ],
   sample: {
-    'tenant.name': 'Beacon Health & Safety',
+    'tenant.name': 'Nathara HSE',
     'equipment.name': 'Genie Z45/25J RT Boom Lift',
     'equipment.assetTag': 'LIF6',
     'equipment.serial': 'Z452515A-48291',

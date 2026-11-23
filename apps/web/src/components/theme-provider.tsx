@@ -22,7 +22,7 @@ type ThemeContextValue = {
 const ThemeContext = createContext<ThemeContextValue | null>(null)
 
 const STORAGE_KEY = 'theme'
-const THEME_CHANGE_EVENT = 'beaconhs-theme-change'
+const THEME_CHANGE_EVENT = 'nathara-hse-theme-change'
 let unavailableStorageTheme: Theme | null = null
 
 function systemPrefersDark(): boolean {

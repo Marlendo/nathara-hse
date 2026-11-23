@@ -7,7 +7,7 @@ import {
   useGeneratedValueTranslations,
 } from '@/i18n/generated'
 
-// Vehicle log workspace — the legacy Beacon truck log rebuilt for speed.
+// Vehicle log workspace — the legacy truck log rebuilt for speed.
 // Column layout matches the legacy app exactly, one input per column:
 //   Odometer mode:    Date | Odometer start | end | Personal | Total
 //   Destination mode: Date | Customer/site | Other destination | Business | Personal | Total

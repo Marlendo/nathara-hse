@@ -96,10 +96,10 @@ const FIELD_OPTIONS: { value: CredentialDataField; label: string }[] = [
 // DesignDataField (credential | equipment), and this studio only samples the
 // credential half — the `??` fallbacks at each lookup cover the rest.
 const SAMPLE_VALUES: Partial<Record<DesignDataField, string>> = {
-  'tenant.name': 'Beacon Health & Safety',
+  'tenant.name': 'Nathara HSE',
   'tenant.logo': 'Logo',
   'recipient.fullName': 'Avery Chen',
-  'recipient.employeeNo': 'BH-1048',
+  'recipient.employeeNo': 'NH-1048',
   'recipient.photo': 'Photo',
   'credential.name': 'Confined Space Entry and Monitor',
   'credential.code': 'CSE-201',
@@ -109,7 +109,7 @@ const SAMPLE_VALUES: Partial<Record<DesignDataField, string>> = {
   expiresOn: 'June 11, 2027',
   instructor: 'Morgan Patel',
   grade: '96%',
-  'verify.url': 'beacon.example/verify/73b08c2b',
+  'verify.url': 'verify.example/73b08c2b',
   'verify.token': '73b08c2b3f20f41e',
   'verify.qr': 'QR',
   issuedAt: 'June 11, 2026',

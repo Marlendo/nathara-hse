@@ -66,13 +66,14 @@ describe('self-hosted browser diagnostics', () => {
       .spyOn(globalThis, 'fetch')
       .mockResolvedValue(new Response(null, { status: 204 }))
     const { registerBrowserDiagnostics } = await import('./browser-diagnostics')
+    const { DEPLOYMENT_STALE_EVENT } = await import('./deployment-guard')
     unregister = registerBrowserDiagnostics()
     window.dispatchEvent(new ErrorEvent('error', { error: new Error('secret') }))
     const rejection = new Event('unhandledrejection')
     Object.defineProperty(rejection, 'reason', { value: new TypeError('secret') })
     window.dispatchEvent(rejection)
     window.dispatchEvent(
-      new CustomEvent('beaconhs:deployment-stale', {
+      new CustomEvent(DEPLOYMENT_STALE_EVENT, {
         detail: { reason: 'action_not_found', secret: 'never-log' },
       }),
     )

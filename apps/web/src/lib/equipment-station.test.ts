@@ -185,7 +185,7 @@ describe('station code lookup', () => {
     }
     const tx = { select: () => chain, insert: vi.fn(), update: vi.fn() } as unknown as Database
     expect(
-      await searchStationCore(tx, 'https://beacon.example/equipment/scan/token-123', 24, 'code'),
+      await searchStationCore(tx, 'https://example.com/equipment/scan/token-123', 24, 'code'),
     ).toMatchObject({ equipment: [{ id: asset.id, assetTag: asset.assetTag }], people: [] })
     const { PgDialect } = await import('drizzle-orm/pg-core')
     const query = new PgDialect().sqlToQuery(conditions[0] as import('drizzle-orm').SQL)

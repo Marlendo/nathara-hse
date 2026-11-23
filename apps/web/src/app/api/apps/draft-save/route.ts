@@ -3,8 +3,8 @@
 // The filler's local-first draft queue (apps/web/src/lib/offline-drafts) posts
 // every queued whole-draft snapshot here with fetch, and sends the same body
 // with `navigator.sendBeacon` when the page is hidden or unloaded. A route
-// handler (not a Server Action) is used because a beacon outlives the React
-// tree and a fetch can be timed out and retried from any page.
+// handler (not a Server Action) is used because keepalive delivery outlives
+// the React tree and a fetch can be timed out and retried from any page.
 //
 // The body carries the server ordering cursor and, for an entry whose id was
 // minted on the device, an idempotent `create` block. Validation, tenant

@@ -23,7 +23,7 @@ beforeEach(() => {
   vi.spyOn(performance, 'now').mockReturnValue(0)
   vi.stubGlobal('matchMedia', vi.fn().mockReturnValue({ matches: false }))
   sessionStorage.clear()
-  delete document.documentElement.dataset.beaconSplash
+  delete document.documentElement.dataset.natharaSplash
   container = document.createElement('div')
   document.body.append(container)
   root = createRoot(container)
@@ -33,7 +33,7 @@ afterEach(() => {
   act(() => root.unmount())
   container.remove()
   sessionStorage.clear()
-  delete document.documentElement.dataset.beaconSplash
+  delete document.documentElement.dataset.natharaSplash
   vi.restoreAllMocks()
   vi.unstubAllGlobals()
   vi.useRealTimers()
@@ -42,7 +42,7 @@ afterEach(() => {
 describe('tab startup splash', () => {
   it('plays on a fresh tab, fades once, and never returns for uncached route loading', () => {
     initializeDocument()
-    expect(document.documentElement.dataset.beaconSplash).toBe('show')
+    expect(document.documentElement.dataset.natharaSplash).toBe('show')
     act(() => root.render(<SplashScreen />))
     expect(container.querySelector('[data-boot-splash]')?.className).toContain('opacity-100')
     advance(2_000)
@@ -66,15 +66,15 @@ describe('tab startup splash', () => {
 
   it('hides subsequent documents before hydration and allows a new tab session', () => {
     initializeDocument()
-    delete document.documentElement.dataset.beaconSplash
+    delete document.documentElement.dataset.natharaSplash
     initializeDocument()
-    expect(document.documentElement.dataset.beaconSplash).toBe('skip')
+    expect(document.documentElement.dataset.natharaSplash).toBe('skip')
     act(() => root.render(<SplashScreen />))
     advance(0)
     expect(container.querySelector('[data-boot-splash]')).toBeNull()
     sessionStorage.clear()
     initializeDocument()
-    expect(document.documentElement.dataset.beaconSplash).toBe('show')
+    expect(document.documentElement.dataset.natharaSplash).toBe('show')
   })
 
   it('plays the full animation even when document loading and hydration took longer', () => {
@@ -88,7 +88,7 @@ describe('tab startup splash', () => {
     advance(400)
     expect(container.querySelector('[data-boot-splash]')).toBeNull()
     initializeDocument()
-    expect(document.documentElement.dataset.beaconSplash).toBe('skip')
+    expect(document.documentElement.dataset.natharaSplash).toBe('skip')
   })
 
   it('still completes when browser storage is unavailable', () => {
@@ -96,7 +96,7 @@ describe('tab startup splash', () => {
       throw new Error('Storage blocked')
     })
     expect(initializeDocument).not.toThrow()
-    expect(document.documentElement.dataset.beaconSplash).toBe('show')
+    expect(document.documentElement.dataset.natharaSplash).toBe('show')
     act(() => root.render(<SplashScreen />))
     advance(2_400)
     expect(container.querySelector('[data-boot-splash]')).toBeNull()

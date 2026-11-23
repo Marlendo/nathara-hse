@@ -1,4 +1,5 @@
 import { routeFamily, safeDigest, safeErrorType, safeStaticPositions } from './diagnostic-safety'
+import { DEPLOYMENT_STALE_EVENT } from './deployment-guard'
 
 type BrowserDiagnosticKind =
   | 'unhandled_error'
@@ -135,12 +136,12 @@ export function registerBrowserDiagnostics(): () => void {
   }
   window.addEventListener('error', onError)
   window.addEventListener('unhandledrejection', onRejection)
-  window.addEventListener('beaconhs:deployment-stale', onStale)
+  window.addEventListener(DEPLOYMENT_STALE_EVENT, onStale)
   const stopHeartbeat = startEventLoopDiagnostics()
   return () => {
     stopHeartbeat()
     window.removeEventListener('error', onError)
     window.removeEventListener('unhandledrejection', onRejection)
-    window.removeEventListener('beaconhs:deployment-stale', onStale)
+    window.removeEventListener(DEPLOYMENT_STALE_EVENT, onStale)
   }
 }
